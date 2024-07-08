@@ -1,2 +1,5 @@
 .env
 ./ProyectoBancoPolitecnico/Back-end/node_modules/
+node_modules/
+ProyectoBancoPolitecnico/Back-end/node_modules/
+**node_modules/**
