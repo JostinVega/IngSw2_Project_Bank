@@ -4,6 +4,7 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
+
 /**
  * Envía un mensaje SMS a un número telefónico específico.
  * @param {string} messageBody - El cuerpo del mensaje que se va a enviar.
@@ -27,14 +28,13 @@ async function sendNotification(messageBody, phoneNumber) {
     }
 }
 
-/**
- * Envía un código de seguridad por SMS a un número telefónico específico.
- * @param {string} securityCode - El código de seguridad que se va a enviar.
- * @param {string} phoneNumber - El número telefónico al que se enviará el código de seguridad.
- */
-async function sendSecurityCode(securityCode, phoneNumber) {
-    const messageBody = `Tu codigo de seguridad es ${securityCode}`;
-    await sendNotification(messageBody, phoneNumber);
+//Funcion para la generación del código 5 números
+function generateSecurityCode() {
+    let code = '';
+    for (let i = 0; i < 5; i++) {
+        code += Math.floor(Math.random() * 10).toString();
+    }
+    return code;
 }
 
 /**
@@ -42,9 +42,23 @@ async function sendSecurityCode(securityCode, phoneNumber) {
  * @param {string} securityCode - El código de seguridad que se va a enviar.
  * @param {string} phoneNumber - El número telefónico al que se enviará el código de seguridad.
  */
-async function sendSecurityCode(securityCode, phoneNumber) {
+async function sendSecurityCode(phoneNumber) {
+    const securityCode = generateSecurityCode();//se genera el código
+    const messageBody = `Tu codigo de seguridad es ${securityCode}`;
+    await sendNotification(messageBody, phoneNumber);
+    return securityCode; // Retorna el código para su almacenamiento
+}
+
+/**
+ * Envía un código de seguridad por SMS a un número telefónico específico.
+ * @param {string} securityCode - El código de seguridad que se va a enviar.
+ * @param {string} phoneNumber - El número telefónico al que se enviará el código de seguridad.
+ */
+async function sendSecurityCode(phoneNumber) {
+    const securityCode = generateSecurityCode();
     const messageBody = `Tu codigo de seguridad es ${securityCode}.`;
     await sendNotification(messageBody, phoneNumber);
+    return securityCode; // Retorna el código para su almacenamiento
 }
 
 /**
