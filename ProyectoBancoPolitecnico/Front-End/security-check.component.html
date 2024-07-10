@@ -1,0 +1,11 @@
+<!--Adaptar código de verificacion para ejecucion de las funciones-->
+<div>
+    <button (click)="sendSecurityCode()">Enviar Código de Seguridad</button>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="securityCode" placeholder="Ingrese el código de seguridad" />
+    <button (click)="verifySecurityCode()">Verificar Código de Seguridad</button>
+  </div>
+  <div>
+    <p>{{ message }}</p>
+  </div>
