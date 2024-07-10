@@ -50,15 +50,12 @@ async function sendSecurityCode(phoneNumber) {
 }
 
 /**
- * Envía un código de seguridad por SMS a un número telefónico específico.
- * @param {string} securityCode - El código de seguridad que se va a enviar.
- * @param {string} phoneNumber - El número telefónico al que se enviará el código de seguridad.
+ * Envía un una notificación de login por SMS a un número telefónico específico.
+ * @param {string} phoneNumber - El número telefónico al que se enviará la notificación.
  */
-async function sendSecurityCode(phoneNumber) {
-    const securityCode = generateSecurityCode();
-    const messageBody = `Tu codigo de seguridad es ${securityCode}.`;
+async function sendLoginDetected(phoneNumber) {
+    const messageBody = `Se ha detectado un nuevo inicio de sesión en su cuenta de Banco Politecnico.`;
     await sendNotification(messageBody, phoneNumber);
-    return securityCode; // Retorna el código para su almacenamiento
 }
 
 /**
@@ -80,7 +77,7 @@ async function sendPassChange(phoneNumber) {
 }
 
 /**
- * Envía una notificación de que el usuario se ha cambiado de contraseña
+ * Envía una notificación de que la cuenta del usuario se ha bloqueado temporalmente
  * @param {string} phoneNumber - El número telefónico al que se enviará la notficación.
  */
 async function sendTempBlock(phoneNumber) {
@@ -88,11 +85,22 @@ async function sendTempBlock(phoneNumber) {
     await sendNotification(messageBody, phoneNumber);
 }
 
+/**
+ * Envía una notificación de que se ha realizado una transferencia
+ * @param {string} phoneNumber - El número telefónico al que se enviará la notficación.
+ * @param {string} recieverAccount - El número de cuenta de quien recibió la transferencia.
+ */
+async function sendTransferNotification(phoneNumber, recieverAccount) {
+    const messageBody = `Se ha realizado una transferencia a la cuenta ${recieverAccount}`;
+    await sendNotification(messageBody, phoneNumber);
+}
 
 module.exports = {
     sendSecurityCode,
     sendPassChange,
     sendRegisterConfirmation,
-    sendTempBlock
+    sendTempBlock,
+    sendLoginDetected,
+    sendTransferNotification
 };
 
