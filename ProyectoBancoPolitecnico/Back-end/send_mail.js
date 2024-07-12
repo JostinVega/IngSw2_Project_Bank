@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY_V2)
 
 const msg = {
   to: 'nivek-10@outlook.com', // Change to your recipient
