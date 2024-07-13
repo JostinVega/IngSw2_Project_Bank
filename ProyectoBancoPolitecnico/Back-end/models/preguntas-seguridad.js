@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var questionsSchema = Schema({
+    numero_identidad: String,
     question1: String,
     answer1: String,
     question2: String,
@@ -14,4 +15,4 @@ var questionsSchema = Schema({
     answer5: String
 });
 
-module.exports = mongoose.model('questions', questionsSchema);
+module.exports = mongoose.model('preguntas-seguridad', questionsSchema);
