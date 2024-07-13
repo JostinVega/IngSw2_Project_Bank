@@ -9,7 +9,19 @@ var UsuarioSchema = Schema({
     fecha_nacimiento: String,
     usuario: String,
     contrasena: String,
-    fecha_registro: String
+    question1: String,
+    answer1: String,
+    question2: String,
+    answer2: String,
+    question3: String,
+    answer3: String,
+    question4: String,
+    answer4: String,
+    question5: String,
+    answer5: String,
+    numeroCuenta: String,
+    cuentaNombre: String,
+    tipoCuenta: String,
 });
 
-module.exports=mongoose.model('usuario', UsuarioSchema);
+module.exports=mongoose.model('registro-usuario', UsuarioSchema);
