@@ -78,21 +78,21 @@ async function sendSecurityCode(toEmail, securityCode) {
 
 async function sendLoginDetected(toEmail) {
   const subject = 'Nuevo inicio de sesión detectado';
-  const textBody = 'Se ha detectado un nuevo inicio de sesión en su cuenta de Banco Politecnico.';
+  const textBody = 'Se ha detectado un nuevo inicio de sesión en su cuenta de Banco Politecnico. Si ha sido usted, ignore este mensaje. Si no ha sido usted, procure cambiar la contraseña lo más pronto posible.';
   const htmlBody = createHtmlBody('<p>Se ha detectado un nuevo inicio de sesión en su cuenta de Banco Politecnico.</p> <p> Si ha sido usted, ignore este mensaje. Si no ha sido usted, procure cambiar la contraseña lo más pronto posible. </p>');
   await sendMail(toEmail, subject, textBody, htmlBody);
 }
 
 async function sendRegisterConfirmation(toEmail) {
   const subject = 'Registro Exitoso';
-  const textBody = 'Registro exitoso. Su cuenta de Banco Politecnico ha sido creada.';
+  const textBody = 'Registro exitoso. Su cuenta de Banco Politecnico ha sido creada. ¡Bienvenido a la familia del Banco Politécnico!';
   const htmlBody = createHtmlBody('<p>Registro exitoso. Su cuenta de Banco Politecnico ha sido creada.</p> <p>¡Bienvenido a la familia del Banco Politécnico!</p>');
   await sendMail(toEmail, subject, textBody, htmlBody);
 }
 
 async function sendPassChange(toEmail) {
   const subject = 'Cambio de Contraseña';
-  const textBody = 'Su contraseña de Banco Politecnico se ha cambiado.';
+  const textBody = 'Su contraseña de Banco Politecnico se ha cambiado correctamente.';
   const htmlBody = createHtmlBody('<p>Su contraseña de Banco Politecnico se ha cambiado correctamente.</p>');
   await sendMail(toEmail, subject, textBody, htmlBody);
 }
