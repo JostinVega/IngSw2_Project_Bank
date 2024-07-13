@@ -1,106 +1,56 @@
 require('dotenv').config();
+const twilio = require('twilio');
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = require('twilio')(accountSid, authToken);
+const client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
-
-/**
- * Envía un mensaje SMS a un número telefónico específico.
- * @param {string} messageBody - El cuerpo del mensaje que se va a enviar.
- * @param {string} phoneNumber - El número telefónico al que se enviará el mensaje.
- */
-async function sendNotification(messageBody, phoneNumber) {
-    try {
-        // Asegurarse de que el mensaje no exceda los 160 caracteres
-        if (messageBody.length > 160-38) {
-            throw new Error('El cuerpo del mensaje excede el límite de 160 caracteres.');
-        }
-
-        const message = await client.messages.create({
-            body: messageBody,
-            from: process.env.TWILIO_PHONE_NUMBER,
-            to: phoneNumber
-        });
-        console.log('Mensaje enviado:', message.body);
-    } catch (error) {
-        console.error('Error al enviar el mensaje:', error);
-    }
+async function sendSms(toPhoneNumber, messageBody) {
+  try {
+    await client.messages.create({
+      body: messageBody,
+      to: toPhoneNumber,
+      from: process.env.TWILIO_PHONE_NUMBER
+    });
+    console.log('SMS enviado:', messageBody);
+  } catch (error) {
+    console.error('Error al enviar el SMS:', error);
+  }
 }
 
-//Funcion para la generación del código 5 números
-function generateSecurityCode() {
-    let code = '';
-    for (let i = 0; i < 5; i++) {
-        code += Math.floor(Math.random() * 10).toString();
-    }
-    return code;
+async function sendSecurityCode(toPhoneNumber, securityCode) {
+  const messageBody = `Tu código de seguridad es ${securityCode}`;
+  await sendSms(toPhoneNumber, messageBody);
 }
 
-/**
- * Envía un código de seguridad por SMS a un número telefónico específico.
- * @param {string} securityCode - El código de seguridad que se va a enviar.
- * @param {string} phoneNumber - El número telefónico al que se enviará el código de seguridad.
- */
-async function sendSecurityCode(phoneNumber) {
-    const securityCode = generateSecurityCode();//se genera el código
-    const messageBody = `Tu codigo de seguridad es ${securityCode}`;
-    await sendNotification(messageBody, phoneNumber);
-    return securityCode; // Retorna el código para su almacenamiento
+async function sendLoginDetected(toPhoneNumber) {
+  const messageBody = 'Se ha detectado un nuevo inicio de sesión en su cuenta de Banco Politecnico.';
+  await sendSms(toPhoneNumber, messageBody);
 }
 
-/**
- * Envía un una notificación de login por SMS a un número telefónico específico.
- * @param {string} phoneNumber - El número telefónico al que se enviará la notificación.
- */
-async function sendLoginDetected(phoneNumber) {
-    const messageBody = `Se ha detectado un nuevo inicio de sesión en su cuenta de Banco Politecnico.`;
-    await sendNotification(messageBody, phoneNumber);
+async function sendRegisterConfirmation(toPhoneNumber) {
+  const messageBody = 'Registro exitoso. Su cuenta de Banco Politecnico ha sido creada.';
+  await sendSms(toPhoneNumber, messageBody);
 }
 
-/**
- * Envía una notificación de que el usuario se ha registrado exitosamente en la plataforma
- * @param {string} phoneNumber - El número telefónico al que se enviará la notficación.
- */
-async function sendRegisterConfirmation(phoneNumber) {
-    const messageBody = `Registro exitoso. Su cuenta de Banco Politecnico ha sido creda.`;
-    await sendNotification(messageBody, phoneNumber);
+async function sendPassChange(toPhoneNumber) {
+  const messageBody = 'Su contraseña de Banco Politecnico se ha cambiado.';
+  await sendSms(toPhoneNumber, messageBody);
 }
 
-/**
- * Envía una notificación de que el usuario se ha cambiado de contraseña
- * @param {string} phoneNumber - El número telefónico al que se enviará la notficación.
- */
-async function sendPassChange(phoneNumber) {
-    const messageBody = `Su contrasena de Banco Politecnico se ha cambiado.`;
-    await sendNotification(messageBody, phoneNumber);
+async function sendTempBlock(toPhoneNumber) {
+  const messageBody = 'Su cuenta de Banco Politecnico ha sido bloqueada temporalmente.';
+  await sendSms(toPhoneNumber, messageBody);
 }
 
-/**
- * Envía una notificación de que la cuenta del usuario se ha bloqueado temporalmente
- * @param {string} phoneNumber - El número telefónico al que se enviará la notficación.
- */
-async function sendTempBlock(phoneNumber) {
-    const messageBody = `Su cuenta de Banco Politecnico ha sido bloqueada temporalmente.`;
-    await sendNotification(messageBody, phoneNumber);
-}
-
-/**
- * Envía una notificación de que se ha realizado una transferencia
- * @param {string} phoneNumber - El número telefónico al que se enviará la notficación.
- * @param {string} recieverAccount - El número de cuenta de quien recibió la transferencia.
- */
-async function sendTransferNotification(phoneNumber, recieverAccount) {
-    const messageBody = `Se ha realizado una transferencia a la cuenta ${recieverAccount}`;
-    await sendNotification(messageBody, phoneNumber);
+async function sendTransferNotification(toPhoneNumber, recieverAccount) {
+  const messageBody = `Se ha realizado una transferencia a la cuenta ${recieverAccount}`;
+  await sendSms(toPhoneNumber, messageBody);
 }
 
 module.exports = {
-    sendSecurityCode,
-    sendPassChange,
-    sendRegisterConfirmation,
-    sendTempBlock,
-    sendLoginDetected,
-    sendTransferNotification
+  sendSecurityCode,
+  sendLoginDetected,
+  sendRegisterConfirmation,
+  sendPassChange,
+  sendTempBlock,
+  sendTransferNotification
 };
-
