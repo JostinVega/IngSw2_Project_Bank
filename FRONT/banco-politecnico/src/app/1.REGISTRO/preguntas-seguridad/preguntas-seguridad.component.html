@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro en Banco Politécnico - Preguntas de Seguridad</title>
+    <link rel="stylesheet" href="preguntas-seguridad.component.css">
+    <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.1/dist/tippy.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <div class="icono">
+                    <!-- Logo del banco -->
+                    <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+                    <!-- Nombre del banco -->
+                    <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <p></p>
+            </div>
+        </header>
+        <main>
+            <div class="main-left">
+                <!-- Lista de pasos de registro-->
+                <h2>Sigue estos pasos para registrarte </h2>
+                <ol>
+                    <li class="noactive">
+                        <img src="assets/img/paso1.png" alt="Paso 1" class="step-icon">
+                        Proporciona tu información personal 
+                    </li>
+                    <li class="noactive">
+                        <img src="assets/img/paso2.png" alt="Paso 2" class="step-icon">
+                        Verificación de identidad
+                    </li>
+                    <li class="noactive">
+                        <img src="assets/img/paso3.png" alt="Paso 3" class="step-icon">
+                        Crea tu usuario y contraseña 
+                    </li>
+                    <li class="active">
+                        <img src="assets/img/paso4.png" alt="Paso 4" class="step-icon active">
+                        Selecciona preguntas de seguridad
+                    </li>
+                    <li class="noactive">
+                        <img src="assets/img/paso5.png" alt="Paso 5" class="step-icon">
+                        Elige el tipo de cuenta
+                    </li>
+                    <li class="noactive">
+                        <img src="assets/img/paso6.png" alt="Paso 6" class="step-icon">
+                        Confirmación del registro
+                    </li>
+                </ol>
+            </div>
+            <div class="registration-form">
+                <!-- Formulario de preguntas de seguridad -->
+                <form [formGroup]="securityQuestionsForm" (ngSubmit)="onSubmit()">
+                    <h3>Selecciona y responde tus preguntas de seguridad</h3>
+                    
+                    <div class="form-group" *ngFor="let i of [1, 2, 3, 4, 5]">
+                      <label [for]="'question' + i">Pregunta {{ i }}:</label>
+                      <select [id]="'question' + i" [formControlName]="'question' + i" (change)="onQuestionChange('question' + i)">
+                        <option value="">Seleccione una pregunta</option>
+                        <option *ngFor="let q of questions" [value]="q.value" [disabled]="isQuestionDisabled(q.value)">{{ q.label }}</option>
+                      </select>
+                      <div class="input-wrapper">
+                        <input type="text" [id]="'answer' + i" [formControlName]="'answer' + i" placeholder="Respuesta">
+                        <img *ngIf="isAnswerValid('answer' + i)" src="assets/img/check.png" alt="Verificado" class="check-icon">
+                      </div>
+                    </div>
+                    
+                    <div class="form-buttons">
+                      <button type="submit">Siguiente</button>
+                      <button type="button" (click)="goBack()">Regresar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
+

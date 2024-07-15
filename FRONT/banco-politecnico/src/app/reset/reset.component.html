@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="reset.component.css">
+</head>
+<body>
+    <header>
+        <!-- Barra de navegación -->
+        <div class="navbar">
+            <!-- Texto dinámico en la barra de navegación -->
+            <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
+            <nav>
+                <ul>
+                    <li><a routerLink="/home">Inicio</a></li>
+                    <li><a routerLink="/nosotros">Nosotros</a></li>
+                    <li><a routerLink="/contactos">Contacto</a></li>
+                    <li><a routerLink="/ayuda">Ayuda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="reset-password-form">
+        <div class="form-content">
+            <header class="form-header">
+                <button class="back-button" (click)="goBack()">
+                    <img src="assets/img/back.png" alt="Back Icon" class="icon" />
+                </button>
+                <span>Restablecer contraseña</span>
+            </header>
+            <div class="form-body">
+                <form (ngSubmit)="changePassword()">
+                    <div class="field">
+                        <label>Ingrese su nueva contraseña:</label>
+                        <input type="password" [(ngModel)]="newPassword" name="newPassword" required />
+                    </div>
+                    <div class="field">
+                        <label>Confirme su nueva contraseña:</label>
+                        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required />
+                    </div>
+                    <div class="requirements">
+                        <p class="text">
+                            <span class="error-icon">
+                                <img src="assets/img/advertencia.png" alt="Advertencia" />
+                            </span>
+                            La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.
+                        </p>
+                    </div>
+                    <button type="submit" class="change-password-button" [disabled]="!newPassword || !confirmPassword">Cambiar contraseña</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <!-- Mensaje de derechos de autor con año actual -->
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

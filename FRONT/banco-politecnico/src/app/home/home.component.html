@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
+    <link rel="stylesheet" href="home.component.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
+            <nav>
+                <ul>
+                    <li><a routerLink="/">Inicio</a></li>
+                    <li><a routerLink="/nosotros">Nosotros</a></li>
+                    <li><a routerLink="/contactos">Contacto</a></li>
+                    <li><a routerLink="/ayuda">Ayuda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="hero">
+            <div class="hero-text">
+                <div class="url-protection">
+                    <div class="icono">
+                        <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+                        <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+                    </div>
+                    <div class="url-info">
+                        <p>Protege tu información: asegúrate de que estás en el sitio correcto verificando la URL</p>
+                    </div>
+                    <div class="url-icono">
+                        <img src="assets/img/url.png" alt="URL Icon" class="logo-url">
+                    </div>
+                    <div class="url">
+                        <a class="url" href="https://www.bancopolitecnico.com">https://www.bancopolitecnico.com</a>
+                    </div>
+                </div>
+                <p>Tu seguridad es nuestra prioridad.</p>
+            </div>
+
+            <div class="login-form">
+                <form [formGroup]="homeForm" (ngSubmit)="onSubmit()">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" id="usuario" formControlName="usuario" required (input)="clearErrorMessage()">
+                    <div *ngIf="homeForm.get('usuario')?.invalid && homeForm.get('usuario')?.touched">
+                        <p class="error">Usuario requerido</p>
+                    </div>
+
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" formControlName="contrasena" required (input)="clearErrorMessage()">
+                    <div *ngIf="homeForm.get('contrasena')?.invalid && homeForm.get('contrasena')?.touched">
+                        <p class="error">Ingresar la contraseña</p>
+                    </div>
+
+                    <div *ngIf="errorMessage" class="error-message">
+                        <p>{{ errorMessage }}</p>
+                    </div>
+
+                    <a href="/reset-password">¿Olvidaste tu contraseña?</a>
+                    <button type="submit">Ingresar</button>
+                </form>
+
+                <div class="register-container">
+                    <span class="no-account">¿Aún no tienes una cuenta?</span>
+                    <a routerLink="/registro"><button class="register-button">Registrarse</button></a>
+                </div>
+            </div>
+        </div>
+
+        <section class="services">
+            <h2>Nuestros Servicios</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <h3>Transferencias</h3>
+                    <p>Realiza transferencias de manera rápida y segura entre cuentas de Banco Politécnico.</p>
+                </div>
+                <div class="card">
+                    <h3>Pagos de Servicios</h3>
+                    <p>Paga tus servicios de manera fácil y sin complicaciones.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,407 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+}
+
+/*Barra de navegación*/
+
+/* Estilos para la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2E86C1;
+    padding: 15px 30px;
+}
+
+/* Estilos para el texto animado en la barra de navegación */
+.navbar .text {
+    font-size: 1em;
+    color: white;
+}
+
+/* Estilos para la lista de navegación dentro de la barra */
+.navbar nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Estilos para cada elemento de la lista de navegación */
+.navbar nav ul li {
+    margin-left: 20px;
+}
+
+/* Estilos para los enlaces dentro de la lista de navegación */
+.navbar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease; /* Transición para el cambio de color de fondo */
+}
+
+/* Estilos para los enlaces al pasar el mouse */
+.navbar nav ul li a:hover {
+    background-color: #206ea9; /*  Cambia el color de fondo al pasar el mouse */ 
+    text-decoration: none; 
+}
+
+/* Animación*/
+@keyframes slideAndFade {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Estilos para el texto animado */
+.moving-text {
+    font-size: 1em;
+    color: white;
+    animation: slideAndFade 5s linear forwards;
+}
+
+/*Nombre y logo del banco*/
+
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 20px;
+    background-color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+    flex-wrap: wrap;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 60px;
+    margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 20px;
+    color: #2E86C1;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+/* Información de contacto*/
+
+.contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.contact-info,
+.contact-form {
+    width: 100%;
+    max-width: 45%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.contact-info {
+    width: 45%;
+}
+
+.contact-info h2 {
+    color: #206ea9;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.contact-info li i {
+    margin-right: 10px;
+    color: #206ea9;
+}
+
+/*Formulario de contacto*/
+
+.contact-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 10px;
+    color: #206ea9;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.contact-form textarea {
+    height: 100px;
+    resize: none;
+}
+
+.contact-form input[type="checkbox"] {
+    margin-top: 15px;
+}
+
+.contact-form button {
+    background-color: #206ea9;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.contact-form button:hover {
+    background-color: #1b5889;
+}
+
+/*Redes sociales*/
+
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 15px;
+    font-size: 24px;
+}
+
+.social-media a.facebook {
+    color: #3b5998; 
+}
+
+.social-media a.facebook:hover {
+    color: #2a3c62; 
+}
+
+.social-media a.twitter {
+    color: #1da1f2; 
+}
+
+.social-media a.twitter:hover {
+    color: #0176c8; 
+}
+
+.social-media a.instagram {
+    color: #e4405f; /* Instagram gradient */
+}
+
+.social-media a.instagram:hover {
+    color: #b11f46; /* Instagram gradient */
+}
+
+/*Mapa*/
+
+.map-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+}
+
+/*Pie de página*/
+
+/* Estilos para el contenido del pie de página */
+.footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #2E86C1;
+    color: white;
+}
+
+/* Estilos para el párrafo dentro del pie de página */
+.footer-content p {
+    margin: 5px 0;
+}
+
+/* Media Queries - Responsive*/
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .text {
+        font-size: 0.8em;
+    }
+    .icono {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icono img.logo {
+        margin-bottom: 10px;
+    }
+    
+    .contact-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-info,
+    .contact-form {
+        max-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .map-section iframe {
+        height: 300px;
+    }
+
+    .social-media {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .social-media a {
+        margin: 0 10px;
+    }
+}
+
+/* Mensajes de error*/
+
+/* Estilos para el mensaje de error en los campos del formulario */
+.error {
+    border-color: rgb(252, 153, 153) !important;
+}
+
+/* Estilos personalizados para los tooltips con Tippy.js */
+.tippy-box[data-theme~='custom'] {
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px; /* Aumenta el radio para esquinas más redondeadas */
+    border: 1px solid rgb(252, 153, 153); /* Añade un borde sólido */
+    padding: 5px; /* Disminuye el espacio interior */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más definida y elevada */
+    max-width: 250px; /* Limita el ancho máximo del tooltip */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 12px; /* Disminuye el tamaño de la letra */
+}
+
+.tippy-box[data-theme~='custom'] .tippy-arrow {
+    color: rgb(252, 153, 153); /* Color de la flecha */
+}
+
+/*Iconos en los campos del formulario*/
+
+/* Contenedor para el grupo de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: calc(100% - 40px); /* Espacio para los iconos */
+    padding-right: 40px; /* Espacio para los iconos */
+}
+
+.input-group .icon-check,
+.input-group .icon-error {
+    position: absolute;
+    right: 10px;
+    top: 70%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    display: none; /* Inicialmente oculto */
+    padding-right: 40px; /*Mover la posición del icono*/
+}
+
+/*Colores de los iconos*/
+
+.input-group .icon-check {
+    color: rgb(127, 178, 127);
+}
+
+.input-group .icon-error {
+    color: rgb(252, 153, 153);
+}
+
+/* Mostrar iconos según el estado de validación */
+.input-group.valid .icon-check {
+    display: inline;
+}
+
+.input-group.invalid .icon-error {
+    display: inline;
+}
+
+/* Estilos para los campos de entrada y mensajes de validación */
+input[type="text"].valid, input[type="email"].valid, textarea.valid {
+    border: 2px solid rgb(127, 178, 127); /* Borde verde para entradas válidas */
+    padding-right: 30px; /* Espacio para el ícono */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Ajusta la posición del ícono */
+    background-size: 20px 20px; /* Tamaño del ícono */
+    /*box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Sombra verde para entradas válidas */
+}
+
+input[type="text"].error, input[type="email"].error, textarea.error {
+    border: 2px solid red; /* Borde rojo para entradas no válidas */
+    padding-right: 30px; /* Espacio para el ícono */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Ajusta la posición del ícono */
+    background-size: 20px 20px; /* Tamaño del ícono */
+    /*box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); /* Sombra roja para entradas no válidas */
+}
+
+/* Evitar el desplazamiento del contenido del formulario */
+input[type="text"], input[type="email"], textarea {
+    box-sizing: border-box;
+}
+
+/* Ajuste del padding para evitar que el texto se superponga con el ícono */
+input[type="text"], input[type="email"], textarea {
+    padding-right: 30px;
+}
+
+
+
+
+
