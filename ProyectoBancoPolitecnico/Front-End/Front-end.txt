@@ -1,6 +1,0 @@
-Hola a todos, espero que se encuentren bien
-En esta carpeta irán todos los archivos
-	- HTML
-	- CSS
-
-Que implementan las interfaces de la aplicación web
