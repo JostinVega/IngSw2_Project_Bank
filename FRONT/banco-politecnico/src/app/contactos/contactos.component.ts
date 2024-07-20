@@ -1,6 +1,5 @@
-// contactos.component.ts
-
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contactos',
@@ -8,9 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./contactos.component.css']
 })
 export class ContactosComponent {
+  @ViewChild('contactForm') contactForm!: NgForm;
+
   formData = {
     nombre: '',
-    apellido: '',
     email: '',
     mensaje: '',
     privacidad: false
@@ -18,11 +18,23 @@ export class ContactosComponent {
 
   // Método para enviar el formulario
   submitForm() {
-    // Aquí puedes implementar la lógica para enviar el formulario
-    console.log('Formulario enviado:', this.formData);
-    // Puedes restablecer el formulario después de enviarlo si es necesario
-    // this.resetForm();
+    if (this.formData.privacidad) {
+      console.log('Formulario enviado:', this.formData);
+      // Aquí puedes implementar la lógica para enviar el formulario
+      alert('Su solicitud ha sido enviada correctamente.');
+      // Restablecer el formulario y su estado de validación
+      this.contactForm.resetForm();
+    } else {
+      console.log('Debe aceptar la Política de Privacidad.');
+    }
   }
 
-  // Aquí podrías implementar métodos adicionales si los necesitas
+  // Método para permitir solo letras en el campo de nombre
+  allowOnlyLetters(event: KeyboardEvent): void {
+    const inputChar = String.fromCharCode(event.keyCode);
+    if (!/^[a-zA-Z\s]*$/.test(inputChar)) {
+      // Prevent the default action if the character is not a letter or space
+      event.preventDefault();
+    }
+  }
 }
