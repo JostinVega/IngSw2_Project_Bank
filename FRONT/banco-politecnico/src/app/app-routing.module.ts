@@ -29,6 +29,12 @@ import { ResetComponent } from './reset/reset.component';
 import { ConfirmResetComponent } from './confirm-reset/confirm-reset.component';
 import { VerificarTransferenciaComponent } from './verificar-transferencia/verificar-transferencia.component';
 import { ConfirmChangePasswordComponent } from './confirm-change-password/confirm-change-password.component';
+import { UpdatePersonalComponent } from 'src/app/update-personal/update-personal.component';
+import { VerificarUpdatePersonalComponent } from 'src/app/verificar-update-personal/verificar-update-personal.component';
+import { ConfirmarUpdatePersonalComponent } from 'src/app/confirmar-update-personal/confirmar-update-personal.component';
+import { UserRecoveryComponent } from 'src/app/user-recovery/user-recovery.component';
+import { VerificarUserRecoveryComponent } from 'src/app/verificar-user-recovery/verificar-user-recovery.component';
+import { ConfirmarUserRecoveryComponent } from 'src/app/confirmar-user-recovery/confirmar-user-recovery.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -60,6 +66,12 @@ const routes: Routes = [
   { path: 'confirm-reset', component: ConfirmResetComponent},
   { path: 'verificar-transferencia', component: VerificarTransferenciaComponent},
   { path: 'confirm-change-password', component: ConfirmChangePasswordComponent},
+  { path: 'update-personal', component: UpdatePersonalComponent},
+  { path: 'verificar-update-personal', component: VerificarUpdatePersonalComponent},
+  { path: 'confirmar-update-personal', component: ConfirmarUpdatePersonalComponent},
+  { path: 'user-recovery', component: UserRecoveryComponent},
+  { path: 'verificar-user-recovery', component: VerificarUserRecoveryComponent},
+  { path: 'confirmar-user-recovery', component: ConfirmarUserRecoveryComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige '/' a '/inicio'
   { path: '**', redirectTo: '/home' } // Maneja rutas no encontradas
 ];

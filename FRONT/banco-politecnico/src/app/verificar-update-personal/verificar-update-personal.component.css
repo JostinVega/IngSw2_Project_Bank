@@ -1,0 +1,322 @@
+body {
+  background: #f2f2f2;
+}
+
+
+/* Estilos para la barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #206EA9;
+  padding: 10px 30px;
+}
+
+/* Estilos para el texto animado en la barra de navegación */
+.navbar .text {
+  font-size: 1em;
+  color: white;
+}
+
+/* Estilos para la lista de navegación dentro de la barra */
+.navbar nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+/* Estilos para cada elemento de la lista de navegación */
+.navbar nav ul li {
+  margin-left: 20px;
+}
+
+/* Estilos para los enlaces dentro de la lista de navegación */
+.navbar nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease; /* Transición para el cambio de color de fondo */
+}
+
+/* Estilos para los enlaces al pasar el mouse */
+.navbar nav ul li a:hover {
+  background-color: #2e86c1; /*  Cambia el color de fondo al pasar el mouse */
+  text-decoration: none;
+}
+
+/* Animación*/
+@keyframes slideAndFade {
+  0% {
+      transform: translateX(-100%);
+      opacity: 1;
+  }
+  70% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+  100% {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+}
+
+/* Estilos para el texto animado */
+.moving-text {
+  font-size: 1em;
+  color: white;
+  animation: slideAndFade 5s linear forwards;
+}
+
+/* Estilos para el contenido del pie de página */
+.footer-content {
+  text-align: center;
+  padding: 1px;
+  background-color: #206ea9;
+  color: white;
+}
+
+/* Estilos para el párrafo dentro del pie de página */
+.footer-content p {
+  margin: 1px 0;
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+  max-width: 40px;
+  margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+  font-size: 15px;
+  color: white;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  /* Navegación */
+  .navbar-nav {
+      flex-direction: column;
+  }
+
+  .navbar-nav .nav-item {
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+
+  .navbar-nav .dropdown-menu {
+      width: 100%;
+  }
+
+  /* Estilos para el contenedor del ícono */
+  .icono {
+      display: flex;
+      align-items: right;
+      justify-content: left;
+      margin-bottom: 10px;
+      padding-top: 5px;
+      padding-left: 5px;
+  }
+
+  /* Estilos para el logo dentro del contenedor del ícono */
+  .icono img.logo {
+      max-width: 40px;
+      margin-right: 10px;
+  }
+
+  /* Estilos para el nombre del banco dentro del contenedor del ícono */
+  .icono h1.nombre {
+      font-size: 15px;
+      color: white;
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+  }
+
+
+  /* Pie de página */
+  .footer-content p {
+      font-size: 0.8em;
+  }
+}
+
+
+/*FORM*/
+/* Estilos para el formulario de verificación */
+.verification-form {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #206ea9;
+  background-color: #f2f2f2;
+}
+
+.form-content {
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.verification-form form {
+  padding: 5px 35px;
+  text-align: center;
+}
+
+.verification-form h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #206ea9;
+}
+
+.verification-form p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Estilos para el código de verificación */
+.verification-form .verification-code {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.verification-form .verification-code input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.verification-form .verification-code input:focus {
+  border-color: #206ea9;
+  outline: none;
+}
+
+/*Botón regresar*/
+
+/* Estilos para los botones del formulario */
+.verification-form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.verification-form .form-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #ccc;
+}
+
+.verification-form .form-buttons button:hover {
+  opacity: 1;
+  transform: scale(1.1); /* Agranda el elemento al 110% de su tamaño original */
+  transition: transform 0.3s ease-in-out; /* Transición suave para el efecto */
+  cursor: pointer;
+
+  background-color: darkgray;
+  border-color: darkgray;
+}
+/*Botón verificar*/
+
+.verification-form .form-buttons button[type="submit"] {
+  background-color: #206ea9;
+  color: #fff;
+}
+
+.verification-form .form-buttons button[type="submit"]:hover {
+  opacity: 1;
+  transform: scale(1.1); /* Agranda el elemento al 110% de su tamaño original */
+  transition: transform 0.3s ease-in-out; /* Transición suave para el efecto */
+  cursor: pointer;
+  background-color: #2d5d7a;
+  border-color: #2d5d7a;
+}
+
+
+/*Botón reenviar*/
+
+/* Estilos para los botones adicionales del formulario */
+.verification-form .buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #206ea9;
+  color: white;
+  border-color: #206ea9;
+}
+
+.verification-form .buttons button:hover {
+  opacity: 1;
+  transform: scale(1.1); /* Agranda el elemento al 110% de su tamaño original */
+  transition: transform 0.3s ease-in-out; /* Transición suave para el efecto */
+  cursor: pointer;
+  background-color: #2d5d7a;
+  border-color: #2d5d7a;
+}
+
+/*Responsive*/
+
+@media (max-width: 768px) {
+  .container {
+      width: 100%;
+      padding: 10px;
+  }
+
+  main {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .main-left{
+      padding-left: 150px;
+  }
+  .main-left, .verification-form {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .verification-form {
+      padding: 10px;
+  }
+}

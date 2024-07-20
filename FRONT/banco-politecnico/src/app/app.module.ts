@@ -68,6 +68,10 @@ import { VerificarCodigoComponent } from './verificar-codigo/verificar-codigo.co
 import { CodigoService } from './services/codigo.service';
 import { VerificarTransferenciaComponent } from './verificar-transferencia/verificar-transferencia.component';
 import { ConfirmChangePasswordComponent } from './confirm-change-password/confirm-change-password.component';
+import { VerificarUpdatePersonalComponent } from './verificar-update-personal/verificar-update-personal.component';
+import { ConfirmarUpdatePersonalComponent } from './confirmar-update-personal/confirmar-update-personal.component';
+import { VerificarUserRecoveryComponent } from './verificar-user-recovery/verificar-user-recovery.component';
+import { ConfirmarUserRecoveryComponent } from './confirmar-user-recovery/confirmar-user-recovery.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +106,10 @@ import { ConfirmChangePasswordComponent } from './confirm-change-password/confir
     VerificarCodigoComponent,
     VerificarTransferenciaComponent,
     ConfirmChangePasswordComponent,
+    VerificarUpdatePersonalComponent,
+    ConfirmarUpdatePersonalComponent,
+    VerificarUserRecoveryComponent,
+    ConfirmarUserRecoveryComponent,
   ],
   imports: [
     BrowserModule,
