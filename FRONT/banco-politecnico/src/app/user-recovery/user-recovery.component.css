@@ -1,0 +1,310 @@
+/* Estilos Globales */
+body {
+  background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+/* Barra de Navegación */
+.navbar {
+  background-color: #206ea9 !important;
+  color: white;
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+  color: white !important;
+}
+
+.navbar .nav-item:not(:last-child) {
+  margin-right: 35px;
+}
+
+.dropdown-toggle::after {
+  transition: transform 0.15s linear;
+}
+
+.show.dropdown .dropdown-toggle::after {
+  transform: translateY(3px);
+}
+
+/* Icono y Nombre del Banco */
+.icono {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.icono img.logo {
+  max-width: 40px;
+  margin-right: 10px;
+}
+
+.icono h1.nombre {
+  font-size: 15px;
+  color: white;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+/* Sección de Bienvenida */
+.welcome-section {
+  padding: 20px;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  border-radius: 8px;
+}
+
+/* Contenedor del Resumen de Cuenta */
+.account-summary-container {
+  position: relative;
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.account-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.account-cards-wrapper {
+  display: flex;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.account-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  min-width: calc(100% - 40px);
+  flex-shrink: 0;
+  margin-right: 5px;
+}
+
+.account-card:hover {
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #1b5889;
+}
+
+.favorite-account {
+  display: flex;
+  align-items: center;
+  color: rgb(255, 215, 0);
+}
+
+.favorite-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.account-body p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Contenedor de Accesos Rápidos */
+.quick-access-container {
+  margin: 20px auto;
+  max-width: 1000px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quick-access {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.quick-access-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.quick-access-card:hover {
+  transform: translateY(-5px);
+}
+
+.quick-access-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.quick-access-title {
+  font-weight: bold;
+  color: #1b5889;
+  margin-bottom: 10px;
+}
+
+.quick-access-link {
+  color: #1b5889;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.quick-access-link:hover {
+  color: #2e86c1;
+  text-decoration: underline;
+}
+
+/* Estilos de Logout */
+.logout-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Pie de Página */
+footer {
+  color: white;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-content {
+  text-align: center;
+  padding: 1px;
+  background-color: #206ea9;
+  color: white;
+}
+
+.footer-content p {
+  margin: 1px 0;
+  color: white;
+}
+
+/* Texto */
+.text, .moving-text {
+  font-size: 0.8em;
+  color: white;
+}
+
+.moving-text {
+  animation: slideAndFade 5s linear forwards;
+}
+
+@keyframes slideAndFade {
+  0% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Estilos de Texto */
+.mis-cuentas, .accesos-rapidos {
+  font-size: 20px;
+  color: #1b5889;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Estilos Responsivos */
+@media screen and (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+  }
+
+  .navbar-nav .nav-item {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .navbar-nav .dropdown-menu {
+    width: 100%;
+  }
+
+  .account-summary-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .account-card {
+    min-width: calc(100% - 40px);
+  }
+
+  .quick-access {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quick-access-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .icono {
+    display: flex;
+    align-items: right;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+
+  .icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+  }
+
+  .icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+  }
+
+  .mis-cuentas, .accesos-rapidos {
+    text-align: center;
+  }
+
+  .footer-content p {
+    font-size: 0.8em;
+  }
+}

@@ -16,6 +16,8 @@ import { AgregarBeneficiarioComponent } from './agregar-beneficiario/agregar-ben
 import { AgregarComentarioComponent } from './agregar-comentario/agregar-comentario.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { TransferenciaComponent } from './transferencia/transferencia.component';
+import { UpdatePersonalComponent } from 'src/app/update-personal/update-personal.component';
+import { UserRecoveryComponent } from 'src/app/user-recovery/user-recovery.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'agregar-comentario', component: AgregarComentarioComponent},
   { path: 'transfer', component: TransferComponent},
   { path: 'transferencia', component: TransferenciaComponent},
+  { path: 'update-personal', component: UpdatePersonalComponent},
+  { path: 'user-recovery', component: UserRecoveryComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige '/' a '/inicio'
   { path: '**', redirectTo: '/home' } // Maneja rutas no encontradas
 ];
