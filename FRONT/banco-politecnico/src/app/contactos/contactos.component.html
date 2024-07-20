@@ -53,9 +53,9 @@
                 </div>
                 <div class="icono">
                     <img src="assets/img/logo.png" alt="PoliBanco" class="logo">
-                </div>                   
+                </div>
             </div>
-            
+
             <form class="contact-form" id="contact-form" #contactForm="ngForm" (ngSubmit)="submitForm()">
                 <div class="form-group">
                     <label for="nombre">Nombre completo*</label>
@@ -66,11 +66,11 @@
                         <div *ngIf="nombre.errors?.['pattern']" class="error-message">Ingrese un nombre válido (solo letras y espacios).</div>
                     </div>
                 </div>
-            
+
                 <div class="form-group">
                     <label for="email">Email*</label>
                     <input type="email" id="email" name="email" class="form-control" placeholder="Email"
-                        [(ngModel)]="formData.email" #email="ngModel" required 
+                        [(ngModel)]="formData.email" #email="ngModel" required
                         pattern="[a-z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|epn\.edu\.ec)$">
                     <div *ngIf="email.invalid && (email.dirty || email.touched)">
                         <div *ngIf="email.errors?.['required']" class="error-message">Este campo es obligatorio.</div>
@@ -78,7 +78,7 @@
                         <div *ngIf="email.errors?.['pattern']" class="error-message">El email debe pertenecer a gmail.com, outlook.com, hotmail.com, o epn.edu.ec.</div>
                     </div>
                 </div>
-            
+
                 <div class="form-group">
                     <label for="mensaje">¿Cómo podemos ayudarte?*</label>
                     <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Escribe tu mensaje aquí"
@@ -87,18 +87,18 @@
                         <div *ngIf="mensaje.errors?.['required']" class="error-message">Este campo es obligatorio.</div>
                     </div>
                 </div>
-            
+
                 <div class="form-group form-check d-flex align-items-center">
                     <input type="checkbox" class="form-check-input" id="privacidad" name="privacidad"
                         [(ngModel)]="formData.privacidad" required>
                     <label class="form-check-label ml-2" for="privacidad">Acepto la Política de Privacidad</label>
                 </div>
-            
+
                 <button type="submit" class="btn btn-primary">¡Contáctanos!</button>
             </form>
-            
-            
-            
+
+
+
         </div>
         <div class="map-section">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7908947983874!2d-78.49470407304686!3d-0.2124413000000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a107e1cd44b%3A0x88a284f66939ed4!2sESCUELA%20POLIT%C3%89CNICA%20NACIONAL!5e0!3m2!1ses-419!2sec!4v1719955326887!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

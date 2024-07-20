@@ -36,7 +36,7 @@
                 <ol>
                     <li class="noactive">
                         <img src="assets/img/paso1.png" alt="Paso 1" class="step-icon">
-                        Proporciona tu información personal 
+                        Proporciona tu información personal
                     </li>
                     <li class="noactive">
                         <img src="assets/img/paso2.png" alt="Paso 2" class="step-icon">
@@ -44,7 +44,7 @@
                     </li>
                     <li class="active">
                         <img src="assets/img/paso3.png" alt="Paso 3" class="step-icon active">
-                        Crea tu usuario y contraseña 
+                        Crea tu usuario y contraseña
                     </li>
                     <li class="noactive">
                         <img src="assets/img/paso4.png" alt="Paso 4" class="step-icon">
@@ -74,7 +74,7 @@
                           <small *ngIf="registrationForm.controls['username'].errors?.['pattern']">El usuario solo puede contener letras, números, puntos, guiones bajos y guiones medios.</small>
                         </div>
                       </div>
-                    
+
                       <div class="form-group">
                         <label for="password">Contraseña:</label>
                         <input id="password" type="password" class="form-control" formControlName="password" />
@@ -85,7 +85,7 @@
                           <small *ngIf="registrationForm.controls['password'].errors?.['pattern']">La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.</small>
                         </div>
                       </div>
-                    
+
                       <div class="form-group">
                         <label for="confirmPassword">Confirmar Contraseña:</label>
                         <input id="confirmPassword" type="password" class="form-control" formControlName="confirmPassword" />
@@ -94,12 +94,12 @@
                           <small *ngIf="registrationForm.controls['confirmPassword'].errors?.['mismatch']">Las contraseñas no coinciden.</small>
                         </div>
                       </div>
-                  
+
                     <div class="form-buttons">
                         <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">Registrar</button>
                     </div>
                   </form>
-                   
+
             </div>
         </main>
     </div>
