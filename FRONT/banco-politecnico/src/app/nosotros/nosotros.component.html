@@ -8,29 +8,35 @@
     <link rel="stylesheet" href="nosotros.component.css">
     
 </head>
-<body>
+<body class="movable-bg">
     <header>
-        <!-- Barra de navegación -->
-        <div class="navbar">
-            <!-- Texto dinámico en la barra de navegación -->
-            <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
-            <nav>
-                <ul>
-                    <li><a routerLink="/">Inicio</a></li>
-                    <li><a routerLink="/nosotros">Nosotros</a></li>
-                    <li><a routerLink="/contactos">Contacto</a></li>
-                    <li><a routerLink="/ayuda">Ayuda</a></li>
+        <!--Barra de navegación-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="/home">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/contactos">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/ayuda">Ayuda</a>
+                    </li>
                 </ul>
-            </nav>
-        </div>
-
+                <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
+            </div>
+        </nav>
     </header>
-    <div class="icono">
-        <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
-        <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
-    </div>
-    <div class="container">
-        
+
+    
+    <div class="container">    
         <div class="box">
             <div class="icon mission-icon">
                 <img src="assets/img/mision.png" alt="Ícono de Misión">
@@ -53,11 +59,32 @@
             <p>Integridad, responsabilidad, excelencia, compromiso con la comunidad y respeto por las personas.</p>
         </div> 
     </div>
+
+    <!-- Nueva sección: Nuestros Servicios -->
+    <div class="services-container">
+        <h2>NUESTROS SERVICIOS</h2>
+        <div class="services-card">
+            <div class="services-icon">
+                <img src="assets/img/transferencias.png" alt="Ícono de Transferencias">
+            </div>
+            <h3>Transferencias</h3>
+            <p>Realiza transferencias de manera rápida y segura entre cuentas de Banco Politécnico.</p>
+        </div>
+        <div class="services-card">
+            <div class="services-icon">
+                <img src="assets/img/pagos.png" alt="Ícono de Pagos">
+            </div>
+            <h3>Pagos de Servicios</h3>
+            <p>Paga tus servicios de manera fácil y sin complicaciones.</p>
+        </div>
+    </div>
+
     <div class="video-container">
         <video width="560" height="315" src="assets/img/videobanco.mp4" autoplay muted loop>
             Your browser does not support the video tag.
         </video>
-    </div>    
+    </div>   
+
     <footer>
         <div class="footer-content">
             <!-- Mensaje de derechos de autor con año actual -->
