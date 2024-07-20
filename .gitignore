@@ -1,3 +1,4 @@
-.env
-ProyectoBancoPolitecnico/Back-end/node_modules/
-.vscode/
+/node_modules
+/BACK/node_modules
+/FRONT/banco-politecnico/node_modules
+.vscode

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Banco Politécnico</title>
+    <link rel="stylesheet" href="contactos.component.html">
+    <link rel="icon" type="favicon/x-icon" href="../img/banco.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.1/dist/tippy.css"> <!-- Estilos para tooltips -->
+
+
+</head>
+<body>
+    <header>
+        <!--Barra de navegación-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="/home">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/contactos">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/ayuda">Ayuda</a>
+                    </li>
+                </ul>
+                <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="contact-section">
+            <div class="contact-info">
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i>Av. Ladrón de Guevara E11-253, Quito 170143</li>
+                    <li><i class="fas fa-phone-alt"></i><a href="https://wa.me/593980431877" target="_blank">+593 98 043 1877</a></li>
+                    <li><i class="fas fa-envelope"></i><a href="mailto:info@bancopolitecnico.com" target="_blank">info@bancopolitecnico.com</a></li>
+                </ul>
+                <div class="social-media">
+                    <a href="https://facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="icono">
+                    <img src="assets/img/logo.png" alt="PoliBanco" class="logo">
+                </div>                   
+            </div>
+            
+            <form class="contact-form" id="contact-form" #contactForm="ngForm" (ngSubmit)="submitForm()">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo*</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre completo"
+                        [(ngModel)]="formData.nombre" #nombre="ngModel" required (keypress)="allowOnlyLetters($event)">
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <div *ngIf="nombre.errors?.['required']" class="error-message">Este campo es obligatorio.</div>
+                        <div *ngIf="nombre.errors?.['pattern']" class="error-message">Ingrese un nombre válido (solo letras y espacios).</div>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+                        [(ngModel)]="formData.email" #email="ngModel" required 
+                        pattern="[a-z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|epn\.edu\.ec)$">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors?.['required']" class="error-message">Este campo es obligatorio.</div>
+                        <div *ngIf="email.errors?.['email']" class="error-message">Ingrese un email válido.</div>
+                        <div *ngIf="email.errors?.['pattern']" class="error-message">El email debe pertenecer a gmail.com, outlook.com, hotmail.com, o epn.edu.ec.</div>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label for="mensaje">¿Cómo podemos ayudarte?*</label>
+                    <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Escribe tu mensaje aquí"
+                        [(ngModel)]="formData.mensaje" #mensaje="ngModel" required></textarea>
+                    <div *ngIf="mensaje.invalid && (mensaje.dirty || mensaje.touched)">
+                        <div *ngIf="mensaje.errors?.['required']" class="error-message">Este campo es obligatorio.</div>
+                    </div>
+                </div>
+            
+                <div class="form-group form-check d-flex align-items-center">
+                    <input type="checkbox" class="form-check-input" id="privacidad" name="privacidad"
+                        [(ngModel)]="formData.privacidad" required>
+                    <label class="form-check-label ml-2" for="privacidad">Acepto la Política de Privacidad</label>
+                </div>
+            
+                <button type="submit" class="btn btn-primary">¡Contáctanos!</button>
+            </form>
+            
+            
+            
+        </div>
+        <div class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7908947983874!2d-78.49470407304686!3d-0.2124413000000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a107e1cd44b%3A0x88a284f66939ed4!2sESCUELA%20POLIT%C3%89CNICA%20NACIONAL!5e0!3m2!1ses-419!2sec!4v1719955326887!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <!-- Mensaje de derechos de autor con año actual -->
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+</body>
+</html>

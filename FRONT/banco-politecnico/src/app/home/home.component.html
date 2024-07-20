@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
+    <link rel="stylesheet" href="home.component.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/home">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/nosotros">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contactos">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/ayuda">Ayuda</a>
+                </li>
+            </ul>
+            <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
+        </div>
+    </nav>
+    
+    
+    <div class="container-fluid d-flex minh-100">
+        <div class="row flex-fill">
+            <div class="col-md-6 p-0 d-none d-md-block">
+                <img src="assets/img/bancopolitecnico.png" alt="Imagen representativa" class="img-fluid h-100">
+            </div>
+            <div class="col-md-6 d-flex align-items-center align-items-center">
+                <!--Formulario-->
+                <div class="login-form">
+                    <!--Nombre e icono del banco-->
+                    <div class="icono">
+                        <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+                        <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+                    </div>
+                    <form [formGroup]="homeForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="usuario">Usuario:</label>
+                            <input type="text" id="usuario" formControlName="usuario" required (input)="clearErrorMessage()" class="form-control" >
+                            
+                            <div *ngIf="homeForm.get('usuario')?.invalid && homeForm.get('usuario')?.touched">
+                                <p class="error">El campo "Usuario" es obligatorio.</p>
+                            </div>
+                        </div>
+                        <a href="/" class="text-primary">¿Olvidaste tu usuario?</a>
+
+
+                        <div class="form-group">
+                            <label for="contrasena">Contraseña:</label>
+                            <input type="password" id="contrasena" formControlName="contrasena" required (input)="clearErrorMessage()" class="form-control">  
+                            <div *ngIf="homeForm.get('contrasena')?.invalid && homeForm.get('contrasena')?.touched">
+                                <p class="error">El campo "Contraseña" es obligatorio.</p>
+                            </div>
+                        </div>
+
+                        <div *ngIf="errorMessage" class="error-message">
+                            <p>{{ errorMessage }}</p>
+                        </div>
+
+                        <a href="/reset-password" class="text-primary">¿Olvidaste tu contraseña?</a>
+
+                        <!-- reCAPTCHA widget -->
+                        <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+                        <!-- Replace YOUR_SITE_KEY with the site key provided by Google reCAPTCHA -->
+
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Ingresar</button>
+                    </form>
+
+                    <div class="register-container">
+                        <span class="no-account">¿Aún no tienes una cuenta?</span>
+                        <a routerLink="/registro"><button class="register-button">Registrarse</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Pie de página-->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

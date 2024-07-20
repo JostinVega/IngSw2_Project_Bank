@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="answer-security-questions.component.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
+            <nav>
+                <ul>
+                    <li><a routerLink="/home">Inicio</a></li>
+                    <li><a routerLink="/nosotros">Nosotros</a></li>
+                    <li><a routerLink="/contactos">Contacto</a></li>
+                    <li><a routerLink="/ayuda">Ayuda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="verification-form" *ngIf="questions.length > 0">
+        <div class="form-content">
+            <header class="form-header">
+                <a routerLink="/reset-password">
+                <button class="back-button" (click)="goBack()">
+                    <img src="assets/img/back.png" alt="Back Icon" class="icon" />
+                </button>
+            </a>
+                <span>Verificación de identidad</span>
+            </header>
+            <div class="form-body">
+                <p>Responda a las siguientes preguntas de seguridad para verificar su identidad:</p>
+                <form (ngSubmit)="validateAnswers()">
+                    <div class="question" *ngFor="let question of questions; let i = index">
+                        <label>{{ question }}</label>
+                        <input type="text" [(ngModel)]="answers[i]" name="answer{{i}}" required />
+                    </div>
+                    <button type="submit" class="validate-button">Validar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

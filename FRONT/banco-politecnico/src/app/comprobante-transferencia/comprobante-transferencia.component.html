@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="comprobante-transferencia.component.css">
+</head>
+
+<div class="receipt-container">
+    <div id="receipt" class="receipt">
+      <div class="header">
+        <div class="bank-info">
+          <img src="/assets/img/banco.png" alt="Banco Pichincha" class="bank-logo">
+          <span class="bank-name">BANCO POLITÉCNICO</span>
+        </div>
+        <hr class="header-line">
+      </div>
+      <div class="check-icon">
+        <img src="/assets/img/check-icon.png" alt="Success">
+      </div>
+      <h2>¡Transferencia exitosa!</h2>
+      <p>Comprobante: {{ comprobante }}</p>
+      <div class="details">
+        <div class="detail-item">
+          <strong>Monto:</strong>
+          <span>{{ amount | currency }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Costo de transacción:</strong>
+          <span>{{ costoTransaccion | currency }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>Fecha:</strong>
+          <span>{{ fecha | date: 'dd MMM yyyy' }}</span>
+        </div>
+        <hr>
+        <div class="detail-item">
+          <strong>Cuenta origen</strong>
+          <div class="detail-subitem">
+            <span>Nombre:</span>
+            <span>{{ cuentaOrigen.nombre }}</span>
+          </div>
+          <div class="detail-subitem">
+            <span>Número de cuenta:</span>
+            <!--<span>{{ cuentaOrigen.numeroCuenta }}</span>-->
+            <span>{{ cuentaOrigen.numeroCuenta }}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="detail-item">
+          <strong>Cuenta destino</strong>
+          <div class="detail-subitem">
+            <span>Nombre:</span>
+            <span>{{ beneficiary.name }}</span>
+          </div>
+          <div class="detail-subitem">
+            <span>Número de cuenta:</span>
+            <span>{{ beneficiary.number }}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="detail-item">
+            <div class="detail-item">
+                <strong><span>Descripción:</span></strong>
+                <span>{{ comment }}</span>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+        <button (click)="downloadPDF()">
+            <img src="/assets/img/pdf.png" alt="PDF" class="icon">
+            Descargar como PDF
+        </button>
+
+        <button (click)="downloadPNG()">
+            <img src="/assets/img/png.png" alt="PNG" class="icon">
+            Descargar como PNG
+        </button>
+    </div>
+
+    <div class="actions">
+        <button (click)="goToHome()">Volver a la página de inicio</button>
+    </div>
+  </div>
+  
+  

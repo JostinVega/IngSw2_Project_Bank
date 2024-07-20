@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="inicio.component.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="miPerfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Perfil</a>
+                        <div class="dropdown-menu" aria-labelledby="miPerfilDropdown">
+                            <a class="dropdown-item" href="#">Ver Usuario</a>
+                            <a class="dropdown-item" href="#">Actualizar Información Personal</a>
+                            <a class="dropdown-item" href="#">Configuración de Seguridad</a>
+                            <a class="dropdown-item" (click)="navigateToChangePassword()">Cambiar Contraseña</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
+                        <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                            <a class="dropdown-item" (click)="navigateToNewAccount()">Abrir una nueva cuenta bancaria</a>
+                            <a class="dropdown-item" href="#">Resumen de Cuenta</a>
+                            <a class="dropdown-item" href="#">Detalles de la Cuenta</a>
+                            <a class="dropdown-item" href="#">Historial de Actividad</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="transaccionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transacciones</a>
+                        <div class="dropdown-menu" aria-labelledby="transaccionesDropdown">
+                            <a class="dropdown-item" (click)="navigateToTransfer()">Transferencias</a>
+                            <a class="dropdown-item" href="#">Pagos de Facturas</a>
+                            <a class="dropdown-item" href="#">Historial de Transacciones</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ayudaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda/Soporte</a>
+                        <div class="dropdown-menu" aria-labelledby="ayudaDropdown">
+                            <a class="dropdown-item" href="#">Preguntas Frecuentes</a>
+                            <a class="dropdown-item" href="#">Contactar Soporte</a>
+                            <a class="dropdown-item" href="#">Reportar un Problema</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4" class="account-summary-container">
+        <div *ngIf="usuario" class="alert alert-info">
+            <strong>Usuario:</strong> {{ usuario }}
+        </div>
+        <h2 class="mis-cuentas">Mis Cuentas</h2>
+        <div class="account-summary">
+            <div class="account-nav-left" id="accountNavLeft" (click)="navLeft()">
+                <img src="assets/img/left-icon.png" alt="Previous" class="nav-icon">
+            </div>
+            <div class="account-cards-wrapper" id="accountCardsWrapper">
+                <div class="account-card" *ngFor="let account of accounts">
+                    <div class="account-header">
+                        <span>{{ account.cuentaNombre }}</span>
+                        <span class="favorite-account"><img src="assets/img/star-icon.png" alt="Favorite" class="favorite-icon"> Cuenta favorita</span>
+                    </div>
+                    <div class="account-body">
+                        <p>{{ account.numeroCuenta }}</p>
+                        <p>Saldo disponible</p>
+                        <p>{{ account.saldo }}</p>
+                        <p>{{ account.tipoCuenta }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="account-nav-right" id="accountNavRight" (click)="navRight()">
+                <img src="assets/img/right-icon.png" alt="Next" class="nav-icon">
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4" class="quick-access-container">
+        <h2 class="accesos-rapidos" class="quick-access">Accesos Rápidos</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="quick-access-card">
+                    <img src="assets/img/transfer-icon.png" alt="Transferencias" class="quick-access-icon">
+                    <div class="quick-access-title">Transferencias</div>
+                    <a routerLink="/transfer" class="quick-access-link">Ir a Transferencias</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="quick-access-card">
+                    <img src="assets/img/bill-icon.png" alt="Pago de Facturas" class="quick-access-icon">
+                    <div class="quick-access-title">Pago de Facturas</div>
+                    <a href="#" class="quick-access-link">Ir a Pagos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-4">
+        <div class="container">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

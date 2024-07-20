@@ -1,0 +1,154 @@
+.receipt-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .receipt {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 450px;  /* Ancho ajustado */
+    font-family: Arial, sans-serif;
+    position: relative;
+    background-image: url('/assets/img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #333;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .bank-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .bank-logo {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .bank-name {
+    font-weight: bold;
+    color: #206ea9;
+  }
+  
+  .header-line {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin-top: 10px;
+  }
+  
+  .check-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .check-icon img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #206ea9;
+    font-size: 1.2em;
+  }
+  
+  p {
+    text-align: center;
+    font-size: 0.9em;
+  }
+  
+  .details {
+    margin-top: 20px;
+  }
+  
+  .detail-item {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .detail-item strong {
+    font-weight: bold;
+    display: inline-block;
+    width: 150px;
+  }
+  
+  .detail-item span {
+    display: inline-block;
+  }
+  
+  .detail-subitem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .detail-subitem span {
+    margin: 0;
+    flex: 1;
+    text-align: left;
+  }
+  
+  hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 10px 0;
+  }
+  
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .actions button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #206ea9;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  .actions button:hover {
+    background-color: #2e86c1;
+  }
+
+  .actions button:focus {
+    border: 2px solid #2e86c1; /* Aplica el color que prefieras */
+    outline: none; /* Asegura que no haya borde adicional */
+  }
+  
+  .actions .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+
+  
+
+  
