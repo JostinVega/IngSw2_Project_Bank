@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +10,11 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <!-- Texto dinámico en la barra de navegación -->
-
         <div class="icono">
             <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
             <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
         </div>
         <div class="container-fluid">
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,7 +23,6 @@
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/inicio']">Inicio</a>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="miPerfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Perfil</a>
                         <div class="dropdown-menu" aria-labelledby="miPerfilDropdown">
@@ -70,26 +66,25 @@
     </nav>
 
     <div class="success-message-form">
-      <div class="form-content">
-          <header class="form-header">
-              <a routerLink="/update-personal">
-                  <button class="back-button">
-                      <img src="assets/img/back.png" alt="Back Icon" class="icon" />
-                  </button>
-              </a>
-              <span>Confirmación de Actualización</span>
-          </header>
-          <div class="form-body">
-              <p>Sus datos personales han sido actualizados con éxito.</p>
-              <img src="assets/img/comprobado.png" alt="Éxito" class="success-icon" />
-              <button class="home-button" (click)="goHome()">Volver a Inicio</button>
-          </div>
-      </div>
+        <div class="form-content">
+            <header class="form-header">
+                <a routerLink="/update-personal">
+                    <button class="back-button">
+                        <img src="assets/img/back.png" alt="Back Icon" class="icon" />
+                    </button>
+                </a>
+                <span>Confirmación de Actualización</span>
+            </header>
+            <div class="form-body">
+                <p>Su nombre de usuario ha sido restablecido con éxito.</p>
+                <img src="assets/img/comprobado.png" alt="Éxito" class="success-icon" />
+                <button class="home-button" (click)="goHome()">Volver a Inicio</button>
+            </div>
+        </div>
     </div>
 
     <footer>
         <div class="footer-content">
-            <!-- Mensaje de derechos de autor con año actual -->
             <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
         </div>
     </footer>
