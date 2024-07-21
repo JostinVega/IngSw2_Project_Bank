@@ -63,6 +63,27 @@
             </div>
         </div>
     </nav>
+
+    <div class="cedula-form">
+      <div class="form-content">
+        <header class="form-header">
+          <a routerLink="/home">
+            <button class="back-button">
+              <img src="assets/img/back.png" alt="Back Icon" class="icon" />
+            </button>
+          </a>
+          <span>Ingresar Número de Cédula</span>
+        </header>
+        <div class="form-body">
+          <p>Por favor ingrese su número de cédula.</p>
+          <label for="cedula">Número de Cédula</label>
+          <input type="text" id="cedula" placeholder="Número de Cédula" [(ngModel)]="cedula" required>
+          <div *ngIf="cedulaError" class="text-danger">{{ cedulaError }}</div>
+          <button [disabled]="!cedula" class="submit-button" (click)="onSubmit()">Enviar</button>
+        </div>
+      </div>
+    </div>
+
     <footer class="footer mt-4">
         <div class="container">
             <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
