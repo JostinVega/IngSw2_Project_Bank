@@ -17,7 +17,7 @@ import { ContactosComponent } from './contactos/contactos.component';
     NosotrosComponent,
     AyudaComponent,
     ContactosComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -72,6 +72,8 @@ import { VerificarUpdatePersonalComponent } from './verificar-update-personal/ve
 import { ConfirmarUpdatePersonalComponent } from './confirmar-update-personal/confirmar-update-personal.component';
 import { VerificarUserRecoveryComponent } from './verificar-user-recovery/verificar-user-recovery.component';
 import { ConfirmarUserRecoveryComponent } from './confirmar-user-recovery/confirmar-user-recovery.component';
+import { QuestionsSecUserRecoveryComponent } from './questions-sec-user-recovery/questions-sec-user-recovery.component';
+import { ChangeUsernameRecoveryComponent } from './change-username-recovery/change-username-recovery.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +112,8 @@ import { ConfirmarUserRecoveryComponent } from './confirmar-user-recovery/confir
     ConfirmarUpdatePersonalComponent,
     VerificarUserRecoveryComponent,
     ConfirmarUserRecoveryComponent,
+    QuestionsSecUserRecoveryComponent,
+    ChangeUsernameRecoveryComponent,
   ],
   imports: [
     BrowserModule,
