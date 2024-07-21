@@ -1,6 +1,9 @@
 const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
+const { sendSecurityCode } = require('../send_notifications.js');
+let verificationCode = '';
+let attempts = 0;
 
 var controller = {
     updateContrasena: async function (req, res) {
@@ -43,11 +46,44 @@ var controller = {
             usuario.contrasena = hashedPassword;
             await usuario.save();
 
+             // Generar y enviar el código de verificación
+             verificationCode = await sendSecurityCode(usuario.correo_electronico, usuario.numero_telefono);
+             attempts = 0;
+
             console.log(`Usuario Actualizado: ${JSON.stringify(usuario)}`);
             return res.status(200).send({ usuario: usuario });
         } catch (error) {
             console.error('Error en el try/catch:', error);
             return res.status(500).send({ message: 'Error al actualizar la contraseña', error: error.message });
+        }
+    },
+    verifySecurityCode: async function (req, res) {
+        try {
+            const { enteredCode } = req.body;
+            const usuario = req.usuario; // Suponiendo que el usuario está disponible en req.usuario
+
+            if (!usuario) {
+                return res.status(404).send({ message: 'Usuario no encontrado' });
+            }
+
+            if (verificationCode === enteredCode) {
+                verificationCode = '';
+                attempts = 0;
+                return res.status(200).send({ message: 'Código de seguridad verificado correctamente.' });
+            }
+
+            attempts++;
+
+            if (attempts >= 3) {
+                usuario.estado = 'blocked';
+                await usuario.save();
+                return res.status(403).send({ message: 'Cuenta bloqueada temporalmente.' });
+            }
+
+            return res.status(403).send({ message: 'Código de seguridad incorrecto.' });
+        } catch (error) {
+            console.error('Error al verificar el código de seguridad:', error);
+            return res.status(500).send({ message: 'Error al verificar el código de seguridad.' });
         }
     },
 
