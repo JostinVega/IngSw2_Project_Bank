@@ -35,6 +35,8 @@ import { ConfirmarUpdatePersonalComponent } from 'src/app/confirmar-update-perso
 import { UserRecoveryComponent } from 'src/app/user-recovery/user-recovery.component';
 import { VerificarUserRecoveryComponent } from 'src/app/verificar-user-recovery/verificar-user-recovery.component';
 import { ConfirmarUserRecoveryComponent } from 'src/app/confirmar-user-recovery/confirmar-user-recovery.component';
+import { ChangeUsernameRecoveryComponent } from 'src/app/change-username-recovery/change-username-recovery.component';
+import { QuestionsSecUserRecoveryComponent } from 'src/app/questions-sec-user-recovery/questions-sec-user-recovery.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -72,6 +74,8 @@ const routes: Routes = [
   { path: 'user-recovery', component: UserRecoveryComponent},
   { path: 'verificar-user-recovery', component: VerificarUserRecoveryComponent},
   { path: 'confirmar-user-recovery', component: ConfirmarUserRecoveryComponent},
+  { path: 'change-username-recovery', component: ChangeUsernameRecoveryComponent},
+  { path: 'questions-sec-user-recovery', component: QuestionsSecUserRecoveryComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige '/' a '/inicio'
   { path: '**', redirectTo: '/home' } // Maneja rutas no encontradas
 ];
