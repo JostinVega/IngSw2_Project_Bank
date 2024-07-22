@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./verificar-codigo.component.css']
 })
 export class VerificarCodigoComponent {
-  codigo: string[] = ['', '', '', '', ''];
+  codigo: string = '';
   numero_identidad: string = ''; // Asegúrate de obtener este valor del usuario
 
   constructor(private passwordService: PasswordService, private router: Router) { }
 
   verificarCodigo() {
-    const enteredCode = this.codigo.join('');
+    const enteredCode = this.codigo.split('').join('');
     this.passwordService.verifySecurityCode(this.numero_identidad, enteredCode).subscribe(
       response => {
         if (response.message === 'Código de seguridad verificado correctamente.') {

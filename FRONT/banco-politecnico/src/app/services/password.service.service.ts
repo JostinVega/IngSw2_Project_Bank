@@ -17,4 +17,5 @@ export class PasswordService {
   verifySecurityCode(numero_identidad: string, enteredCode: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuario/verifySecurityCode`, { numero_identidad, enteredCode });
   }
+  
 }

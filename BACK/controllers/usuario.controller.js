@@ -2,6 +2,7 @@ const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const { sendSecurityCode } = require('../send_notifications.js');
+
 let verificationCode = '';
 let attempts = 0;
 
@@ -60,7 +61,7 @@ var controller = {
     verifySecurityCode: async function (req, res) {
         try {
             const { enteredCode } = req.body;
-            const usuario = req.usuario; // Suponiendo que el usuario está disponible en req.usuario
+            const usuario = req.usuario;
 
             if (!usuario) {
                 return res.status(404).send({ message: 'Usuario no encontrado' });
