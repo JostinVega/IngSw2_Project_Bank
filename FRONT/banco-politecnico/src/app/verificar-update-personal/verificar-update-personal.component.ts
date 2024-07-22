@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PersonalInfoService } from '../services/personal-info.service';
 
 @Component({
   selector: 'app-verificar-update-personal',
@@ -9,9 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class VerificarUpdatePersonalComponent {
   digits: string[] = ['', '', '', '', ''];
   cedula: string = '';
+  errorMessage: string = '';
+  
 
   constructor(private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private personalInfoService: PersonalInfoService
   ) {}
 
   ngOnInit(): void {
@@ -19,11 +23,22 @@ export class VerificarUpdatePersonalComponent {
       this.cedula = params['cedula'];
       console.log('Cédula recibida:', this.cedula);
     });
+    // Obtén el correo electrónico del usuario desde un servicio compartido o almacenamiento local
+    this.cedula = localStorage.getItem('numero_identidad') || '';
   }
 
   onSubmit(): void {
     // Lógica para manejar la sumisión del formulario
     console.log('Formulario enviado', this.digits.join(''));
+    const code = this.digits.join('');
+    this.personalInfoService.verifySecurityCode(this.cedula, code).subscribe(
+      (response: any) => {
+        this.router.navigate(['/confirmar-update-personal']);
+      },
+      error => {
+        this.errorMessage = 'Código inválido. Por favor, inténtelo de nuevo.';
+      }
+    );
     // Redirige al componente Reset pasando la cédula
     this.router.navigate(['/reset'], { queryParams: { cedula: this.cedula } });
   }

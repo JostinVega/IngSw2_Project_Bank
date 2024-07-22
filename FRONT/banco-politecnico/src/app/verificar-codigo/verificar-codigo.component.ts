@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PasswordService } from '../services/password.service.service';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../services/usuario.service';
+import { PersonalInfoService } from '../services/personal-info.service';
+
 
 @Component({
   selector: 'app-verificar-codigo',

@@ -12,6 +12,10 @@ async function obtenerUsuario(req, res, next) {
     next();
 }
 
+
+// Actualizar información personal
+router.put('/actualizarPersonal/:numero_identidad', obtenerUsuario, usuarioController.updatePersonalInfo);
+// Verificar código de seguridad
 // Update cambiarContraseña
 router.put('/actualizarContrasena/:numero_identidad',  obtenerUsuario, usuarioController.updateContrasena);
 router.get('/obtenerUsuario/:usuario', usuarioController.getUsuario);
