@@ -77,7 +77,7 @@
         <div class="form-body">
           <p>Por favor ingrese su número de cédula.</p>
           <label for="cedula">Número de Cédula</label>
-          <input type="text" id="cedula" placeholder="Número de Cédula" [(ngModel)]="cedula" required>
+          <!-- <input type="text" id="cedula" placeholder="Número de Cédula" [(ngModel)]="cedula" required> -->
           <div *ngIf="cedulaError" class="text-danger">{{ cedulaError }}</div>
           <button [disabled]="!cedula" class="submit-button" (click)="onSubmit()">Enviar</button>
         </div>

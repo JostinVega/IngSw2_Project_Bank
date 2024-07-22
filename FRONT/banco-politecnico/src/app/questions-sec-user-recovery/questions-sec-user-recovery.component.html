@@ -75,7 +75,7 @@
               <span>Responde tus Preguntas de Seguridad</span>
           </header>
           <div class="form-body">
-              <form [formGroup]="securityQuestionsForm" (ngSubmit)="onSubmit()">
+              <!-- <form [formGroup]="securityQuestionsForm" (ngSubmit)="onSubmit()">
                   <div *ngFor="let i of [0, 1, 2, 3, 4]" class="question-group">
                       <label [for]="'question' + i">Pregunta {{ i + 1 }}:</label>
                       <select [id]="'question' + i" [formControlName]="'question' + i" (change)="onQuestionChange(i)">
@@ -86,7 +86,7 @@
                       <div *ngIf="formErrors[i]" class="text-danger">{{ formErrors[i] }}</div>
                   </div>
                   <button type="submit" class="btn btn-primary mt-3">Enviar</button>
-              </form>
+              </form> -->
           </div>
       </div>
     </div>

@@ -68,17 +68,17 @@
       <div class="form-content">
           <header class="form-header">
               <a routerLink="/home">
-                  <button class="back-button" (click)="goBack()">
+                  <!-- <button class="back-button" (click)="goBack()">
                       <img src="assets/img/back.png" alt="Back Icon" class="icon" />
-                  </button>
+                  </button> -->
               </a>
               <span>Cambiar Nombre de Usuario</span>
           </header>
           <div class="form-body">
               <label for="username">Nuevo Nombre de Usuario</label>
-              <input type="text" id="username" placeholder="Nuevo Nombre de Usuario" [(ngModel)]="username" required>
-              <button [disabled]="!username" class="submit-button" (click)="onSubmit()">Cambiar</button>
-              <div *ngIf="usernameError" class="text-danger">{{ usernameError }}</div>
+              <!-- <input type="text" id="username" placeholder="Nuevo Nombre de Usuario" [(ngModel)]="username" required> -->
+              <!-- <button [disabled]="!username" class="submit-button" (click)="onSubmit()">Cambiar</button> -->
+              <!-- <div *ngIf="usernameError" class="text-danger">{{ usernameError }}</div> -->
           </div>
       </div>
     </div>
