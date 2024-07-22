@@ -30,7 +30,7 @@
                 <ol>
                     <li class="noactive">
                         <img src="assets/img/paso1.png" alt="Paso 1" class="step-icon">
-                        Proporciona tu información personal 
+                        Proporciona tu información personal
                     </li>
                     <li class="active">
                         <img src="assets/img/paso2.png" alt="Paso 2" class="step-icon active">
@@ -38,7 +38,7 @@
                     </li>
                     <li class="noactive">
                         <img src="assets/img/paso3.png" alt="Paso 3" class="step-icon">
-                        Crea tu usuario y contraseña 
+                        Crea tu usuario y contraseña
                     </li>
                     <li class="noactive">
                         <img src="assets/img/paso4.png" alt="Paso 4" class="step-icon">
@@ -59,26 +59,26 @@
                 <form id="verificationForm" (ngSubmit)="onSubmit()" #form="ngForm">
                     <h3>Verificación de identidad</h3>
                     <p>Se ha enviado un código de verificación a su correo electrónico y/o número de teléfono proporcionado.</p>
-                  
-                    <div class="verification-code">
+
+                    <!-- <div class="verification-code">
                       <input type="text" id="digit1" name="digit1" maxlength="1" [(ngModel)]="digits[0]" (keydown)="onKeyDown($event, 0)" (input)="onInput($event, 0)" required autofocus>
                       <input type="text" id="digit2" name="digit2" maxlength="1" [(ngModel)]="digits[1]" (keydown)="onKeyDown($event, 1)" (input)="onInput($event, 1)" required>
                       <input type="text" id="digit3" name="digit3" maxlength="1" [(ngModel)]="digits[2]" (keydown)="onKeyDown($event, 2)" (input)="onInput($event, 2)" required>
                       <input type="text" id="digit4" name="digit4" maxlength="1" [(ngModel)]="digits[3]" (keydown)="onKeyDown($event, 3)" (input)="onInput($event, 3)" required>
                       <input type="text" id="digit5" name="digit5" maxlength="1" [(ngModel)]="digits[4]" (keydown)="onKeyDown($event, 4)" (input)="onInput($event, 4)" required>
-                    </div>
-                  
+                    </div> -->
+
                     <div class="buttons">
                       <button type="button" (click)="resendCode()">Reenviar código</button>
                     </div>
-                  
+
                     <div class="form-buttons">
                       <button type="submit">Verificar</button>
                       <button type="button" (click)="goBack()">Regresar</button>
                     </div>
                   </form>
-                  
-                  
+
+
             </div>
         </main>
     </div>
