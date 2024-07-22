@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const usuarioController = require('../controllers/usuario.controller');
+const Usuario = require('../models/usuario');
 
 async function obtenerUsuario(req, res, next) {
     const usuario = await Usuario.findOne({ numero_identidad: req.params.numero_identidad });

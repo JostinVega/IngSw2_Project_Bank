@@ -30,4 +30,8 @@ export class BancoService {
   deleteUsuario(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/usuario/${id}`);
   }
+
+  verifySecurityCode(numero_identidad: string, enteredCode: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/usuario/verifySecurityCode`, { numero_identidad, enteredCode });
+  }
 }
