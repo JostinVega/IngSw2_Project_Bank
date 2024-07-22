@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-personal',
@@ -10,6 +12,8 @@ export class UpdatePersonalComponent {
   phone: string = '';
   emailError: string | null = null;
   phoneError: string | null = null;
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   validateEmail(email: string): boolean {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

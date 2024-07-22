@@ -58,30 +58,65 @@ var controller = {
             return res.status(500).send({ message: 'Error al actualizar la contraseña', error: error.message });
         }
     },
-    verifySecurityCode: async function (req, res) {
+
+    updatePersonalInfo: async function (req, res) {
         try {
-            const { enteredCode } = req.body;
-            const usuario = req.usuario;
+            const { email, phone } = req.body;
+
+            // Validar formato de correo electrónico
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                return res.status(400).send({ message: 'Correo electrónico inválido' });
+            }
+
+            // Validar número de teléfono
+            const phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                return res.status(400).send({ message: 'Número de teléfono inválido. Debe tener 10 dígitos' });
+            }
+
+            const usuario = req.usuario; // Suponiendo que el usuario está disponible en req.usuario
 
             if (!usuario) {
                 return res.status(404).send({ message: 'Usuario no encontrado' });
             }
 
-            if (verificationCode === enteredCode) {
+            usuario.correo_electronico = email;
+            usuario.numero_telefono = phone;
+            await usuario.save();
+
+            // Generar y enviar el código de verificación
+            verificationCode = await sendSecurityCode(email, phone);
+             attempts = 0;
+
+            return res.status(200).send({ message: 'Datos actualizados. Se ha enviado un código de verificación' });
+        } catch (error) {
+            console.error('Error en el try/catch:', error);
+            return res.status(500).send({ message: 'Error al actualizar la información personal', error: error.message });
+        }
+    }, 
+    
+    verifySecurityCode: async function (req, res) {
+        try {
+            const { enteredCode } = req.body;
+            const obtenerCedula = usuario.cerdula;
+
+            const result = await verifySecurityCodeUtil(usuario, enteredCode, verificationCode);
+
+            if (result.verified) {
                 verificationCode = '';
                 attempts = 0;
-                return res.status(200).send({ message: 'Código de seguridad verificado correctamente.' });
+                return res.status(200).send({ message: result.message });
             }
 
             attempts++;
-
             if (attempts >= 3) {
                 usuario.estado = 'blocked';
                 await usuario.save();
                 return res.status(403).send({ message: 'Cuenta bloqueada temporalmente.' });
             }
 
-            return res.status(403).send({ message: 'Código de seguridad incorrecto.' });
+            return res.status(403).send({ message: result.message });
         } catch (error) {
             console.error('Error al verificar el código de seguridad:', error);
             return res.status(500).send({ message: 'Error al verificar el código de seguridad.' });
