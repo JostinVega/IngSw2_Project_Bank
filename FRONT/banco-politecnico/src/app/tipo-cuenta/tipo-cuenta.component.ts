@@ -20,7 +20,8 @@ export class TipoCuentaComponent {
       accountType: ['', Validators.required],
       numeroCuenta: [''],
       cuentaNombre: [''],
-      tipoCuenta: ['']
+      tipoCuenta: [''],
+      saldo: ['']
     });
   }
 
@@ -28,36 +29,49 @@ export class TipoCuentaComponent {
     let numeroCuenta = '';
     let cuentaNombre = '';
     let tipoCuentaTexto = '';
+    let saldo = '';
 
     if (accountType === 'savings') {
       numeroCuenta = this.generateUniqueAccountNumber('2');
       cuentaNombre = `AHORRO-${numeroCuenta.slice(-3)}`;
       tipoCuentaTexto = 'Ahorro';
+      saldo = '0';
     } else if (accountType === 'current') {
       numeroCuenta = this.generateUniqueAccountNumber('5');
-      cuentaNombre = `CREDITO-${numeroCuenta.slice(-3)}`;
-      tipoCuentaTexto = 'Crédito';
+      cuentaNombre = `CORRIENTE-${numeroCuenta.slice(-3)}`;
+      tipoCuentaTexto = 'Corriente';
+      saldo = '0';
     }
 
     this.accountSelectionForm.patchValue({
       numeroCuenta: numeroCuenta,
       cuentaNombre: cuentaNombre,
-      tipoCuenta: tipoCuentaTexto
+      tipoCuenta: tipoCuentaTexto,
+      saldo: saldo
     });
 
     console.log('Número de cuenta:', numeroCuenta);
     console.log('Nombre de cuenta:', cuentaNombre);
     console.log('Tipo de cuenta:', tipoCuentaTexto);
+    console.log('Saldo', saldo );
   }
 
   onSubmit() {
-    if (this.accountSelectionForm.valid) {
-      const accountType = this.accountSelectionForm.value.accountType;
-      this.generateAccount(accountType);
+    console.log('onSubmit llamado'); // Agregar un mensaje de consola al inicio
+    if (this.accountSelectionForm.invalid) {
+      console.log('Formulario inválido:', this.accountSelectionForm); // Mostrar el estado del formulario
+      this.accountSelectionForm.markAllAsTouched();
+      alert('Debe seleccionar un tipo de cuenta para continuar.');
+      return;
+    }
+  
+    const accountType = this.accountSelectionForm.value.accountType;
+    this.generateAccount(accountType);
+  
+    const accountTypeText = accountType === 'savings' ? 'una cuenta de ahorro' : 'una cuenta corriente';
+    if (confirm(`Has escogido ${accountTypeText}. ¿Deseas continuar?`)) {
       this.registroService.setRegistrationData('step5', this.accountSelectionForm.value);
       this.router.navigateByUrl('/confirmar-registro');
-    } else {
-      // Manejar el caso de que el formulario no sea válido
     }
   }
 
@@ -85,6 +99,12 @@ export class TipoCuentaComponent {
   isAccountNumberUnique(accountNumber: string): boolean {
     // Aquí iría la lógica para verificar si el número de cuenta es único en tu sistema
     return true;
+  }
+
+  // Método en el componente para verificar la validez del control
+  isAccountTypeInvalid() {
+    const control = this.accountSelectionForm.get('accountType');
+    return control?.invalid && (control.dirty || control.touched);
   }
 }
 

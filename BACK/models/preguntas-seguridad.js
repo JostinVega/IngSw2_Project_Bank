@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var questionsSchema = Schema({
-    numero_identidad: String,
+    numeroIdentidad: String,
     question1: String,
     answer1: String,
     question2: String,

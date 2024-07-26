@@ -1,5 +1,6 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:4000'  // URL de la API en desarrollo
+    apiUrl: 'https://bancopolitecnico-backend.vercel.app'  // URL de la API en desarrollo
+    //apiUrl: 'https://bancopolitecnico-backend.vercel.app'
   };
   

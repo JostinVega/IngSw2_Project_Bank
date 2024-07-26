@@ -9,78 +9,49 @@
 </head>
 <body>
     <div class="container">
-        <!-- Encabezado de la página -->
         <header>
-            <div class="header-left">
-                <!-- Logotipo del banco -->
-                <div class="icono">
-                    <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
-                    <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
-                </div>
-            </div>
-            <div class="header-right">
-                <p></p>
+            <div class="icono">
+                <img src="assets/img/banco.png" alt="PoliBanco" class="logo"> <!-- Logo del banco -->
+                <h1 class="nombre">BANCO<br>POLITÉCNICO</h1> <!-- Nombre del banco -->
+                <p class="text moving-text">Comprometidos contigo, hoy y siempre.</p>
             </div>
         </header>
-        <!-- Contenido principal -->
-        <main>
-            <!-- Pasos de registro -->
-            <div class="main-left">
-                <h2>Sigue estos pasos para registrarte </h2>
-                <ol>
-                    <li class="noactive">
-                        <img src="assets/img/paso1.png" alt="Paso 1" class="step-icon">
-                        Proporciona tu información personal
-                    </li>
-                    <li class="active">
-                        <img src="assets/img/paso2.png" alt="Paso 2" class="step-icon active">
-                        Verificación de identidad
-                    </li>
-                    <li class="noactive">
-                        <img src="assets/img/paso3.png" alt="Paso 3" class="step-icon">
-                        Crea tu usuario y contraseña
-                    </li>
-                    <li class="noactive">
-                        <img src="assets/img/paso4.png" alt="Paso 4" class="step-icon">
-                        Selecciona preguntas de seguridad
-                    </li>
-                    <li class="noactive">
-                        <img src="assets/img/paso5.png" alt="Paso 5" class="step-icon">
-                        Elige el tipo de cuenta
-                    </li>
-                    <li class="noactive">
-                        <img src="assets/img/paso6.png" alt="Paso 6" class="step-icon">
-                        Confirmación del registro
-                    </li>
-                </ol>
-            </div>
-            <!-- Formulario de verificación -->
-            <div class="verification-form">
-                <form id="verificationForm" (ngSubmit)="onSubmit()" #form="ngForm">
-                    <h3>Verificación de identidad</h3>
-                    <p>Se ha enviado un código de verificación a su correo electrónico y/o número de teléfono proporcionado.</p>
 
-                    <!-- <div class="verification-code">
-                      <input type="text" id="digit1" name="digit1" maxlength="1" [(ngModel)]="digits[0]" (keydown)="onKeyDown($event, 0)" (input)="onInput($event, 0)" required autofocus>
-                      <input type="text" id="digit2" name="digit2" maxlength="1" [(ngModel)]="digits[1]" (keydown)="onKeyDown($event, 1)" (input)="onInput($event, 1)" required>
-                      <input type="text" id="digit3" name="digit3" maxlength="1" [(ngModel)]="digits[2]" (keydown)="onKeyDown($event, 2)" (input)="onInput($event, 2)" required>
-                      <input type="text" id="digit4" name="digit4" maxlength="1" [(ngModel)]="digits[3]" (keydown)="onKeyDown($event, 3)" (input)="onInput($event, 3)" required>
-                      <input type="text" id="digit5" name="digit5" maxlength="1" [(ngModel)]="digits[4]" (keydown)="onKeyDown($event, 4)" (input)="onInput($event, 4)" required>
-                    </div> -->
-
-                    <div class="buttons">
-                      <button type="button" (click)="resendCode()">Reenviar código</button>
+        <div class="container-fluid d-flex minh-100">
+            <div class="row flex-fill">
+                <div class="col-md-6 p-0 d-none d-md-block">
+                    <img src="assets/img/bancopolitecnico.png" alt="Imagen representativa" class="img-fluid h-100">
+                </div>
+                <div class="col-md-6 d-flex align-items-center align-items-center">
+                    <!--Formulario-->
+                    <div class="verification-form" (ngSubmit)="onSubmit()">
+                        <!-- Formulario de registro -->
+                        <form id="verificationForm" (ngSubmit)="onSubmit()" #form="ngForm">
+                            <h3>Verificación de identidad</h3>
+                            <p>Se ha enviado un código de verificación a su correo electrónico y/o número de teléfono proporcionado.</p>
+                          
+                            <div class="verification-code">
+                              <input type="text" id="digit1" name="digit1" maxlength="1" [(ngModel)]="digits[0]" (keydown)="onKeyDown($event, 0)" (input)="onInput($event, 0)" required autofocus>
+                              <input type="text" id="digit2" name="digit2" maxlength="1" [(ngModel)]="digits[1]" (keydown)="onKeyDown($event, 1)" (input)="onInput($event, 1)" required>
+                              <input type="text" id="digit3" name="digit3" maxlength="1" [(ngModel)]="digits[2]" (keydown)="onKeyDown($event, 2)" (input)="onInput($event, 2)" required>
+                              <input type="text" id="digit4" name="digit4" maxlength="1" [(ngModel)]="digits[3]" (keydown)="onKeyDown($event, 3)" (input)="onInput($event, 3)" required>
+                              <input type="text" id="digit5" name="digit5" maxlength="1" [(ngModel)]="digits[4]" (keydown)="onKeyDown($event, 4)" (input)="onInput($event, 4)" required>
+                            </div>
+                          
+                            <div class="buttons">
+                              <button type="button" (click)="resendCode()" class="btn-reenviar">Reenviar código</button>
+                            </div>
+                          
+                            <div class="form-buttons">
+                                <button type="button" (click)="goBack()" class="btn-regresar">Regresar</button>
+                                <button type="submit" class="btn-siguiente">Verificar</button>
+                            </div>
+                        </form>
                     </div>
-
-                    <div class="form-buttons">
-                      <button type="submit">Verificar</button>
-                      <button type="button" (click)="goBack()">Regresar</button>
-                    </div>
-                  </form>
-
-
+                </div>
             </div>
-        </main>
+        </div>
+
     </div>
 
 </body>

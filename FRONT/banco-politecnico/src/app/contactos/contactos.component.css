@@ -151,6 +151,10 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Agrega margen superior */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los elementos del formulario */
 }
 
 .contact-form label {
@@ -178,10 +182,11 @@ body {
 }
 
 .contact-form button {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
     background-color: #206ea9;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 0; /* Ajusta el padding para mejor apariencia */
     margin-top: 10px;
     cursor: pointer;
     border-radius: 3px;
@@ -258,23 +263,6 @@ body {
 
 /* Media Queries - Responsive*/
 @media screen and (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .navbar .text {
-        font-size: 0.8em;
-    }
-    .icono {
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .icono img.logo {
-        margin-bottom: 10px;
-    }
     
     .contact-section {
         flex-direction: column;
@@ -498,5 +486,12 @@ input[type="text"], input[type="email"], textarea {
 }
 
 
-
-
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  

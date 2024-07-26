@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin.component.css">
+</head>
+<body>
+
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicioAdministrador()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminActionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu" aria-labelledby="adminActionsDropdown">
+                            <a class="dropdown-item" (click)="navigateToAdministrarUsuarios()">Gestionar Usuarios</a>
+                        </div>
+                    </li>
+                    <!-- Nuevo menú Depósitos -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="depositsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Depósitos</a>
+                      <div class="dropdown-menu" aria-labelledby="depositsDropdown">
+                          <a class="dropdown-item" (click)="navigateToDepositos()">Realizar Depósito</a>
+                          <a class="dropdown-item" (click)="navigateToTranferencias()">Historial de Transacciones</a>
+                      </div>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido del Panel de Administración -->
+    <div class="container mt-5">
+      <h2 class="text-center">Bienvenido al Panel de Administración</h2>
+      <p class="text-center">Administre los usuarios y sus cuentas desde aquí.</p>
+      <!-- Cuadro de búsqueda con un botón -->
+      <div class="search-bar mt-4 input-group">
+        <input type="text" class="form-control" placeholder="Buscar por número de identidad o nombre de usuario" [(ngModel)]="searchQuery" (keydown.enter)="onSearch()">
+        <div class="input-group-append">
+            <button class="btn btn-primary" (click)="onSearch()"><i class="fas fa-search"></i> Buscar</button>
+            <button class="btn btn-secondary" (click)="refresh()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+        </div>
+      </div>
+      <!-- Mensaje de no resultados -->
+      <div *ngIf="!filteredUsers.length && searchQuery" class="alert alert-warning mt-3" role="alert">
+          No existe
+      </div>
+      <!-- Tabla de usuarios -->
+      <div class="table-responsive mt-4" *ngIf="filteredUsers.length">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th (click)="sortBy('numeroIdentidad')">Número de Identidad <i [ngClass]="getSortIcon('numeroIdentidad')"></i></th>
+                      <th (click)="sortBy('usuario')">Nombre de Usuario <i [ngClass]="getSortIcon('usuario')"></i></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of filteredUsers; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ user.numeroIdentidad }}</td>
+                      <td>{{ user.usuario }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

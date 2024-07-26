@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BancoService {
 
-  private apiUrl = 'http://localhost:4000/'; // URL de tu servidor Express
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.apiUrl = environment.apiUrl;
+  }
 
   getInicio(): Observable<any> {
     return this.http.get(`${this.apiUrl}/inicio`);
@@ -29,9 +32,5 @@ export class BancoService {
 
   deleteUsuario(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/usuario/${id}`);
-  }
-
-  verifySecurityCode(numero_identidad: string, enteredCode: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/usuario/verifySecurityCode`, { numero_identidad, enteredCode });
   }
 }

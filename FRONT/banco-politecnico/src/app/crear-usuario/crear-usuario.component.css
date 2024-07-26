@@ -1,19 +1,19 @@
 /*Crear credenciales de acceso*/
 
-/* Estilos generales para el cuerpo del documento */
+/* Estilos para el cuerpo del documento */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8;
+    background-color: #E3F5EE !important;
     color: #333;
 }
 
 /* Estilos para el contenedor principal */
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 100px auto;
     padding: 20px;
     box-sizing: border-box;
     background-color: #fff;
@@ -21,97 +21,57 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para el encabezado */
-header {
+
+/* Animación */
+@keyframes slideAndFade {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Estilos para el texto animado */
+.moving-text {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+    color: #C7D8E4;
+    animation: slideAndFade 3s linear normal;
+    width: 40%;
+    text-align: center;
+    opacity: 0;
 }
 
-/* Estilos para el título del encabezado izquierdo */
-.header-left h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #2d5d7a;
-}
-
-/* Estilos para el texto del encabezado derecho */
-.header-right p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-}
-
-/* Estilos para el contenido principal */
-
-main {
+/* Estilos para el contenedor del ícono */
+.icono {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 0;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 20px;
 }
 
-/* Estilos para los pasos de registro */
-.main-left {
-    flex: 1;
-    margin-right: 20px;
-    padding: 80px;
-}
-
-/* Estilos para el título de los pasos de registro*/
-.main-left h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #206ea9;
-}
-
-/* Estilos para la lista de pasos */
-.main-left ol {
-    list-style-type: none;
-    padding-left: 0;
-    color: #333;
-}
-
-/* Estilos para los ítems de la lista de pasos */
-.main-left li {
-    margin-bottom: 10px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-/* Estilos para los íconos de pasos */
-.step-icon {
-    width: 30px;
-    height: 30px;
+/* Estilos para el logotipo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 60px;
     margin-right: 10px;
-    opacity: 0.3;
 }
 
-.step-icon:hover {
-    opacity: 1;
-    transform: scale(1.1); /* Agranda el elemento al 110% de su tamaño original */
-    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto */
-    cursor: pointer;
+/* Estilos para el nombre dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 20px;
+    color: #2E86C1;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
 }
 
-/* Estilos para los íconos de pasos activos */
-.step-icon.active {
-    opacity: 1;
-}
-
-/* Estilos para ítems no activos */
-.noactive {
-    opacity: 0.3;
-}
-
-/* Estilos para ítems activos */
-.active {
-    opacity: 1;
-}
-
+/*Formulario*/
 /* Estilos para el formulario de registro */
 .registration-form {
     flex: 1;
@@ -164,79 +124,36 @@ main {
 }
 
 /* Estilos para el grupo de botones del formulario */
+.btn-registrar {
+    background-color: #206ea9;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-registrar{
+    background-color: #206ea9;
+}
+
+.btn-registrar:hover {
+    background-color: #2E86C1;
+}
+
 .form-buttons {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente si es necesario */
+    width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho disponible */
+    margin-top: 20px; /* Añade un margen superior si es necesario */
 }
 
-/* Estilos para los botones dentro del grupo de botones */
-.form-buttons button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-/* Estilos para el botón de tipo "submit" dentro del grupo de botones */
-.form-buttons button[type="submit"] {
-    background-color: #206ea9;
-    color: #fff;
-}
 
-/* Estilos para el botón de tipo "submit" al pasar el mouse por encima */
-.form-buttons button[type="submit"]:hover {
-    background-color: #2d5d7a;
-}
 
-/* Estilos para el contenedor del ícono */
-.icono {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    margin-bottom: 20px;
-}
 
-/* Estilos para el logotipo dentro del contenedor del ícono */
-.icono img.logo {
-    max-width: 60px;
-    margin-right: 10px;
-}
-
-/* Estilos para el nombre dentro del contenedor del ícono */
-.icono h1.nombre {
-    font-size: 20px;
-    color: #2E86C1;
-    margin: 0;
-    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
-}
-
-/* Mensajes de error*/
-
-/* Estilos para el mensaje de error en los campos del formulario */
-.error {
-    border-color: rgb(252, 153, 153) !important;
-}
-
-/* Estilos personalizados para los tooltips con Tippy.js */
-.tippy-box[data-theme~='custom'] {
-    background-color: #fff;
-    color: #333;
-    border-radius: 8px; /* Aumenta el radio para esquinas más redondeadas */
-    border: 1px solid rgb(252, 153, 153); /* Añade un borde sólido */
-    padding: 5px; /* Disminuye el espacio interior */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más definida y elevada */
-    max-width: 250px; /* Limita el ancho máximo del tooltip */
-    text-align: left; /* Alinea el texto a la izquierda */
-    font-size: 12px; /* Disminuye el tamaño de la letra */
-}
-
-.tippy-box[data-theme~='custom'] .tippy-arrow {
-    color: rgb(252, 153, 153); /* Color de la flecha */
-}
 
 /*Responsive*/
 
@@ -292,4 +209,49 @@ main {
 
 .icon-error {
     color: red;
+}
+
+.requirements .error-icon img {
+    width: 20px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 20px;
+    margin-right: 10px; /* Añade un margen derecho al ícono */
+}
+
+.text{
+    color: black;
+    font-size: 10px;
+    text-align: justify;
+    padding-top: 5px;
+  }
+
+/* Mensajes de error */
+.error{
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 5px; /* Reducir el padding */
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.85em; /* Reducir el tamaño de la fuente */
+    max-width: 100%; /* Limitar el ancho máximo */
+    word-wrap: break-word; /* Permitir que las palabras se dividan en varias líneas */
+}
+
+.error-message {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 5px; /* Reducir el padding */
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.85em; /* Reducir el tamaño de la fuente */
+    max-width: 100%; /* Limitar el ancho máximo */
+    word-wrap: break-word; /* Permitir que las palabras se dividan en varias líneas */
+
+}
+
+.alert.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
 }

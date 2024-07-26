@@ -6,14 +6,15 @@
   }
   
   .receipt {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 450px;  /* Ancho ajustado */
     font-family: Arial, sans-serif;
     position: relative;
-    background-image: url('/assets/img/background.png');
+    /*background-image: url('/assets/img/background.png');*/
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

@@ -9,29 +9,72 @@
     <link rel="stylesheet" href="verificar-update-personal.component.css">
 </head>
 <body>
-    <header>
-        <!-- Barra de navegación -->
-        <div class="navbar">
-            <!-- Texto dinámico en la barra de navegación -->
-            <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
-            <nav>
-                <ul>
-                    <li><a routerLink="/home">Inicio</a></li>
-                    <li><a routerLink="/nosotros">Nosotros</a></li>
-                    <li><a routerLink="/contactos">Contacto</a></li>
-                    <li><a routerLink="/ayuda">Ayuda</a></li>
-                </ul>
-            </nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <!-- Texto dinámico en la barra de navegación -->
+        
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
         </div>
-    </header>
-
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicio()">Inicio</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="miPerfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Perfil</a>
+                        <div class="dropdown-menu" aria-labelledby="miPerfilDropdown">
+                            <a class="dropdown-item" (click)="navigateToVerUsuario()">Ver Usuario</a>
+                            <a class="dropdown-item" (click)="navigateToActualizarInformacion()">Actualizar Información Personal</a>
+                            <a class="dropdown-item" (click)="navigateToChangePassword()">Cambiar contraseña</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
+                        <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                            <a class="dropdown-item" (click)="navigateToNewAccount()">Abrir una nueva cuenta bancaria</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="transaccionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transacciones</a>
+                        <div class="dropdown-menu" aria-labelledby="transaccionesDropdown">
+                            <a class="dropdown-item" (click)="navigateToTransfer()">Transferencias</a>
+                            <a class="dropdown-item" (click)="navigateToAddContact()">Mis contactos</a>
+                            <a class="dropdown-item" (click)="navigateToHistorialTransacciones()">Historial de Transacciones</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ayudaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda/Soporte</a>
+                        <div class="dropdown-menu" aria-labelledby="ayudaDropdown">
+                            <a class="dropdown-item" (click)="navigateToFAQ()">Preguntas Frecuentes</a>
+                            <a class="dropdown-item" (click)="navigateToContactarSoporte()">Contactar Soporte</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
     <!-- Formulario de verificación -->
     <div class="verification-form">
         <div class="form-content">
         <form id="verificationForm" (ngSubmit)="onSubmit()" #form="ngForm">
             <h3>Verificación de identidad</h3>
             <p>Se ha enviado un código de verificación a su correo electrónico y/o número de teléfono proporcionado.</p>
-
+          
             <div class="verification-code">
               <input type="text" id="digit1" name="digit1" maxlength="1" [(ngModel)]="digits[0]" (keydown)="onKeyDown($event, 0)" (input)="onInput($event, 0)" required autofocus>
               <input type="text" id="digit2" name="digit2" maxlength="1" [(ngModel)]="digits[1]" (keydown)="onKeyDown($event, 1)" (input)="onInput($event, 1)" required>
@@ -39,19 +82,21 @@
               <input type="text" id="digit4" name="digit4" maxlength="1" [(ngModel)]="digits[3]" (keydown)="onKeyDown($event, 3)" (input)="onInput($event, 3)" required>
               <input type="text" id="digit5" name="digit5" maxlength="1" [(ngModel)]="digits[4]" (keydown)="onKeyDown($event, 4)" (input)="onInput($event, 4)" required>
             </div>
-
+          
             <div class="buttons">
               <button type="button" (click)="resendCode()">Reenviar código</button>
             </div>
-
+          
             <div class="form-buttons">
+              
+              <button type="button" (click)="goBack()" navigateToActualizarInformacion>Regresar</button>
+
               <button type="submit" class="button-verificar">Verificar</button>
-              <button type="button" (click)="goBack()" class="button-regresar">Regresar</button>
             </div>
-          </form>
+          </form> 
         </div>
     </div>
-
+        
     <footer>
         <div class="footer-content">
             <!-- Mensaje de derechos de autor con año actual -->

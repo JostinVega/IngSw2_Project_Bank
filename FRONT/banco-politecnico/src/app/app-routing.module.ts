@@ -29,14 +29,29 @@ import { ResetComponent } from './reset/reset.component';
 import { ConfirmResetComponent } from './confirm-reset/confirm-reset.component';
 import { VerificarTransferenciaComponent } from './verificar-transferencia/verificar-transferencia.component';
 import { ConfirmChangePasswordComponent } from './confirm-change-password/confirm-change-password.component';
-import { UpdatePersonalComponent } from 'src/app/update-personal/update-personal.component';
-import { VerificarUpdatePersonalComponent } from 'src/app/verificar-update-personal/verificar-update-personal.component';
-import { ConfirmarUpdatePersonalComponent } from 'src/app/confirmar-update-personal/confirmar-update-personal.component';
-import { UserRecoveryComponent } from 'src/app/user-recovery/user-recovery.component';
-import { VerificarUserRecoveryComponent } from 'src/app/verificar-user-recovery/verificar-user-recovery.component';
-import { ConfirmarUserRecoveryComponent } from 'src/app/confirmar-user-recovery/confirmar-user-recovery.component';
-import { ChangeUsernameRecoveryComponent } from 'src/app/change-username-recovery/change-username-recovery.component';
-import { QuestionsSecUserRecoveryComponent } from 'src/app/questions-sec-user-recovery/questions-sec-user-recovery.component';
+import { ActualizarInformacionComponent } from './actualizar-informacion/actualizar-informacion.component';
+import { HistorialTransaccionesComponent } from './historial-transacciones/historial-transacciones.component';
+import { VerificarInicioComponent } from './verificar-inicio/verificar-inicio.component';
+import { VerPerfilComponent } from './ver-perfil/ver-perfil.component';
+import { FaqComponent } from './faq/faq.component';
+import { ContactarSoporteComponent } from './contactar-soporte/contactar-soporte.component';
+import { VerifyChangePasswordComponent } from './verify-change-password/verify-change-password.component';
+import { VerificarUpdatePersonalComponent } from './verificar-update-personal/verificar-update-personal.component';
+import { ConfirmarUpdatePersonalComponent } from './confirmar-update-personal/confirmar-update-personal.component';
+import { ValidacionCedulaComponent } from './validacion-cedula/validacion-cedula.component';
+import { ResponderPreguntasSeguridadComponent } from './responder-preguntas-seguridad/responder-preguntas-seguridad.component';
+import { VerificarUsuarioComponent } from './verificar-usuario/verificar-usuario.component';
+import { RestablecerUsuarioComponent } from './restablecer-usuario/restablecer-usuario.component';
+import { ConfirmarReseteoUsernameComponent } from './confirmar-reseteo-username/confirmar-reseteo-username.component';
+import { CrearContactosComponent } from './crear-contactos/crear-contactos.component';
+import { AdminComponent } from './admin/admin.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ManageAccountsComponent } from './manage-accounts/manage-accounts.component';
+import { DepositComponent } from './deposit/deposit.component';
+import { VerificarAdministradorComponent } from './verificar-administrador/verificar-administrador.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import { VerPerfilUsuarioComponent } from './ver-perfil-usuario/ver-perfil-usuario.component';
+import { RealizarDepositoComponent } from './realizar-deposito/realizar-deposito.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -68,14 +83,29 @@ const routes: Routes = [
   { path: 'confirm-reset', component: ConfirmResetComponent},
   { path: 'verificar-transferencia', component: VerificarTransferenciaComponent},
   { path: 'confirm-change-password', component: ConfirmChangePasswordComponent},
-  { path: 'update-personal', component: UpdatePersonalComponent},
-  { path: 'verificar-update-personal', component: VerificarUpdatePersonalComponent},
+  { path: 'actualizar-informacion', component: ActualizarInformacionComponent},
+  { path: 'historial-transacciones', component: HistorialTransaccionesComponent},
+  { path: 'verificar-inicio', component: VerificarInicioComponent},
+  { path: 'ver-perfil', component: VerPerfilComponent},
+  { path: 'faq', component: FaqComponent},
+  { path: 'contactar-soporte', component: ContactarSoporteComponent},
+  { path: 'verify-change-password', component: VerifyChangePasswordComponent},
   { path: 'confirmar-update-personal', component: ConfirmarUpdatePersonalComponent},
-  { path: 'user-recovery', component: UserRecoveryComponent},
-  { path: 'verificar-user-recovery', component: VerificarUserRecoveryComponent},
-  { path: 'confirmar-user-recovery', component: ConfirmarUserRecoveryComponent},
-  { path: 'change-username-recovery', component: ChangeUsernameRecoveryComponent},
-  { path: 'questions-sec-user-recovery', component: QuestionsSecUserRecoveryComponent},
+  { path: 'verificar-update-personal', component: VerificarUpdatePersonalComponent},
+  { path: 'validacion-cedula', component: ValidacionCedulaComponent},
+  { path: 'responder-preguntas-seguridad', component: ResponderPreguntasSeguridadComponent},
+  { path: 'verificar-usuario', component: VerificarUsuarioComponent},
+  { path: 'restablecer-usuario', component: RestablecerUsuarioComponent  },
+  { path: 'confirmar-reseteo-username', component: ConfirmarReseteoUsernameComponent},
+  { path: 'crear-contactos', component: CrearContactosComponent},
+  { path: 'administrador', component: AdminComponent},
+  { path: 'administrador/users', component: ManageUsersComponent},
+  { path: 'administrador/accounts', component: ManageAccountsComponent},
+  { path: 'administrador/deposito', component: DepositComponent},
+  { path: 'verificar-administrador', component: VerificarAdministradorComponent},
+  { path: 'administrador/transferencias', component: TransactionHistoryComponent},
+  { path: 'administrador/ver-perfil-usuario', component: VerPerfilUsuarioComponent},
+  { path: 'deposito', component: RealizarDepositoComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige '/' a '/inicio'
   { path: '**', redirectTo: '/home' } // Maneja rutas no encontradas
 ];

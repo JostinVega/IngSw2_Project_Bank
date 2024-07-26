@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="transaction-history.component.css">
+</head>
+<body>
+
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicioAdministrador()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminActionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu" aria-labelledby="adminActionsDropdown">
+                            <a class="dropdown-item" (click)="navigateToAdministrarUsuarios()">Gestionar Usuarios</a>
+                        </div>
+                    </li>
+                    <!-- Nuevo menú Depósitos -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="depositsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Depósitos</a>
+                      <div class="dropdown-menu" aria-labelledby="depositsDropdown">
+                          <a class="dropdown-item" (click)="navigateToDepositos()">Realizar Depósito</a>
+                          <a class="dropdown-item" (click)="navigateToTranferencias()">Historial de Transacciones</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido del Historial de Transacciones -->
+    <div class="transfer-form">
+      <div class="form-content">
+          <div class="transaction-history">
+              <h2>Historial de Transacciones de Clientes</h2>
+            
+              <div class="filters">
+                  <div class="filter-group">
+                      <!-- Campo para ingresar el número de cédula -->
+                      <input type="text" placeholder="Número de cédula" [(ngModel)]="searchCedula" (change)="onCedulaChange()" class="filter-item"  (input)="validateCedula($event)" (blur)="checkCedulaLength()" maxlength="10" />
+  
+                      <!-- Seleccionar la cuenta después de ingresar la cédula -->
+                      <select [(ngModel)]="searchAccount" (change)="onAccountChange(searchAccount)" class="filter-item">
+                          <option *ngFor="let account of accounts" [value]="account">{{ account }}</option>
+                      </select>
+  
+                      <select [(ngModel)]="searchAccountType" (change)="filterTransactions()" class="filter-item">
+                          <option value="">Tipo de Cuenta</option>
+                          <option value="corriente">Corriente</option>
+                          <option value="ahorro">Ahorro</option>
+                      </select>
+  
+                      <input type="date" placeholder="Desde" [(ngModel)]="searchDateFrom" (change)="filterTransactions()" class="filter-item" />
+                      <input type="date" placeholder="Hasta" [(ngModel)]="searchDateTo" (change)="filterTransactions()" class="filter-item" />
+                      <select [(ngModel)]="searchType" (change)="filterTransactions()" class="filter-item">
+                          <option value="">Tipo de Transacción</option>
+                          <option value="ingreso">Ingreso</option>
+                          <option value="egreso">Egreso</option>
+                      </select>
+                  </div>
+                  <div class="sort-group">
+                      <button (click)="sortTransactions('asc')" class="sort-button"><img src="assets/img/ascendente1.png" alt="Ascendente" /></button>
+                      <button (click)="sortTransactions('desc')" class="sort-button"><img src="assets/img/descendiente1.png" alt="Descendente" /></button>
+                  </div>
+              </div>
+              <div class="table-container">
+              <table>
+                  <thead>
+                      <tr>
+                          <th><input type="checkbox" (change)="toggleAll($event)" /></th>
+                          <th>Fecha</th>
+                          <th>Monto</th>
+                          <th>Beneficiario</th>
+                          <th>Tipo de Cuenta</th>
+                          <th>Tipo de Transacción</th>
+                          <th>Descripción</th>
+                          <th>Saldo Antes</th>
+                          <th>Saldo Después</th>
+                          <th>Número de Comprobante</th>
+                          <th>Comprobante</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let transaction of filteredTransactions">
+                          <td><input type="checkbox" [(ngModel)]="transaction.selected" /></td>
+                          <td>{{ transaction.date | date }}</td>
+                          <td>{{ transaction.amount | currency }}</td>
+                          <td>{{ transaction.beneficiary }}</td>
+                          <td>{{ transaction.accountType }}</td>
+                          <td>{{ transaction.type }}</td>
+                          <td>{{ transaction.description }}</td>
+                          <td>{{ transaction.balanceBefore | currency }}</td>
+                          <td>{{ transaction.balanceAfter | currency }}</td>
+                          <td>{{ transaction.receiptNumber }}</td>
+                          <td>
+                              <button (click)="downloadFile(transaction.receiptNumber, 'pdf')"><img src="assets/img/pdf.png" alt="PDF" /></button>
+                              <button (click)="downloadFile(transaction.receiptNumber, 'png')"><img src="assets/img/png.png" alt="PNG" /></button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              </div>
+            
+              <div class="download-buttons">
+                  <button (click)="downloadSelectedAsPDF()"><img src="assets/img/pdf.png" alt="PDF" />Descargar Historial (PDF)</button>
+                  <button (click)="downloadSelectedAsExcel()"><img src="assets/img/excel.png" alt="Excel" />Descargar Historial (Excel)</button>
+              </div>
+          </div>               
+      </div>
+  </div>
+  
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

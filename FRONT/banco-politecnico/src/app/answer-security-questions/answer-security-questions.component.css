@@ -1,52 +1,62 @@
+/* Estilos para el cuerpo de la página */
 body {
-    background: #f2f2f2;
-}
-
-
-/* Estilos para la barra de navegación */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #206EA9;
-    padding: 10px 30px;
-}
-
-/* Estilos para el texto animado en la barra de navegación */
-.navbar .text {
-    font-size: 1em;
-    color: white;
-}
-
-/* Estilos para la lista de navegación dentro de la barra */
-.navbar nav ul {
-    list-style-type: none;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    color: #333;
+    background-color: #FFFFFF;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
     display: flex;
+    flex-direction: column;
 }
 
-/* Estilos para cada elemento de la lista de navegación */
-.navbar nav ul li {
-    margin-left: 20px;
+.minh-100 {
+    min-height: 100vh;
 }
 
-/* Estilos para los enlaces dentro de la lista de navegación */
-.navbar nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease; /* Transición para el cambio de color de fondo */
+.navbar {
+    background-color: #2E86C1 !important;
 }
 
-/* Estilos para los enlaces al pasar el mouse */
-.navbar nav ul li a:hover {
-    background-color: #2e86c1; /*  Cambia el color de fondo al pasar el mouse */ 
-    text-decoration: none; 
+.navbar .navbar-brand {
+    color: white !important;
 }
 
-/* Animación*/
+.navbar .navbar-brand:hover {
+    color: #206EA9 !important; /* Color al pasar el ratón */
+}
+
+.navbar .nav-link {
+    color: white !important;
+}
+
+.navbar .nav-link:hover {
+    color: #206EA9!important; /* Color al pasar el ratón */
+}
+
+.navbar .form-inline .form-control {
+    margin-right: 10px;
+}
+
+.navbar .btn-outline-success {
+    color: white !important;
+    border-color: white !important;
+}
+
+.navbar .btn-outline-success:hover {
+    color: #206ea9 !important;
+    border-color: #206ea9 !important;
+}
+
+/* Animación */
 @keyframes slideAndFade {
     0% {
         transform: translateX(-100%);
@@ -66,18 +76,40 @@ body {
 .moving-text {
     font-size: 1em;
     color: white;
-    animation: slideAndFade 5s linear forwards;
+    animation: slideAndFade 3s linear normal;
+    width: 40%;
+    text-align: center;
+    opacity: 0;
 }
 
-/* Estilos para el contenido del pie de página */
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.icono img.logo {
+    max-width: 60px;
+    margin-bottom: 10px;
+}
+
+.icono h1.nombre {
+    font-size: 24px;
+    color: #2E86C1;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Pie de página */
 .footer-content {
     text-align: center;
     padding: 1px;
-    background-color: #206ea9;
+    background-color: #2E86C1;
     color: white;
 }
 
-/* Estilos para el párrafo dentro del pie de página */
 .footer-content p {
     margin: 1px 0;
     color: white;
@@ -241,27 +273,75 @@ body {
     background-color: #2e86c1;
   }
   
-
+/*
   .form-body input {
-    width: 100%; /* Reduce el tamaño del campo de entrada */
+    width: 100%; 
     padding: 10px;
 
-    /*border: 1px solid white;*/
     border: none;
-    border-bottom: 1px solid #ddd; /* Añade solo el borde inferior */
+    border-bottom: 1px solid #ddd; 
     border-radius: 5px;
     font-size: 16px;
     color: #333;
     background-color: #f6f5f5;
-    margin-bottom: 10px; /* Añade un margen inferior a los inputs */
+    margin-bottom: 10px; 
 }
 
-/* Estilos al enfocar los campos */
 .form-body select:focus,
 .form-body input:focus {
     border-color: #206ea9;
     outline: none;
 }
+*/
+
+
+
+/* Estilos para los intentos restantes */
+.attempts-remaining {
+    font-size: 14px;
+    color: #e74c3c;
+    margin-top: 10px;
+}
+
+/* Custom styling for the select dropdown */
+.custom-select {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.custom-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Remove default arrow in IE */
+.custom-select::-ms-expand {
+    display: none;
+}
+
+/* Placeholder color for disabled option */
+.custom-select:invalid {
+    color: #6c757d;
+}
+
 
 
 

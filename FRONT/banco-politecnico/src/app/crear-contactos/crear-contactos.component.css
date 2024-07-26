@@ -1,0 +1,300 @@
+body {
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/*Barra de navegación*/
+.navbar {
+    background-color: #206ea9 !important;
+    color: white;
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: white !important;
+}
+
+.navbar .nav-item:not(:last-child) {
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    transition: transform 0.15s linear;
+}
+
+.show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+/*Icono de salir*/
+.logout-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/*Pie de página */
+/* Estilos para el contenido del pie de página */
+.footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #206ea9;
+    color: white;
+}
+
+/* Estilos para el párrafo dentro del pie de página */
+.footer-content p {
+    margin: 1px 0;
+    color: white;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
+body {
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    gap: 20px; /* Add spacing between left and right panels */
+    padding: 20px;
+    margin: auto; /* Center align the container */
+  }
+  
+  .left-panel {
+    width: 40%; /* Increase the width of the left panel */
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .right-panel {
+    width: 60%; /* Adjust the width of the right panel */
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .form-inline {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .form-control {
+    width: calc(100% - 100px);
+    padding: 10px;
+    box-sizing: border-box;
+    margin-right: 10px;
+  }
+  
+  .btn-outline-success {
+    border: 1px solid #28a745;
+    color: #28a745;
+    background-color: transparent;
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn-outline-primary {
+    border: 1px solid #007bff;
+    color: #007bff;
+    background-color: transparent;
+    width: 100%;
+    margin-top: 20px; /* Add margin to separate from search button */
+    padding: 10px;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px; /* Add spacing above contact list */
+  }
+  
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .contact-list li.selected {
+    background-color: #f0f0f0;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .contact-info {
+    flex-grow: 1;
+  }
+  
+  .contact-name {
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure space between name and icon */
+  }
+  
+  .contact-name .favorite-icon {
+    margin-left: auto;
+    margin-right: 0; /* Ensure icon is positioned at the right edge */
+    color: gold;
+    font-size: 24px; /* Increase the font size to make the star icon larger */
+  }
+  
+  .contact-account-type,
+  .contact-account {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .contact-details {
+    margin-top: 20px;
+  }
+  
+  .contact-details p {
+    margin: 5px 0;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .highlight {
+    background-color: yellow;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"] {
+    margin-top: 10px;
+  }
+  
+  .add-contact-form {
+    margin-top: 20px;
+  }
+
+  .container {
+    display: flex;
+    gap: 20px; /* Add spacing between left and right panels */
+    padding: 20px;
+    margin: auto; /* Center align the container */
+  }
+  
+  .left-panel {
+    width: 40%; /* Increase the width of the left panel */
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .right-panel {
+    width: 60%; /* Adjust the width of the right panel */
+    padding: 20px;
+  }
+  
+  .contact-details, .form-group, .contact-info {
+    margin-top: 20px;
+  }
+  
+  .input, .btn, .form-control {
+    max-width: 100%;
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el width */
+  }
+
+.form-inline {
+  justify-content: center;
+  width: 100%; /* Hacer que ocupe todo el ancho disponible */
+}
+
+  @media (max-width: 767px) {
+    
+    .left-panel, .right-panel {
+        width: 100%; /* Asegurar que los paneles ocupen todo el ancho disponible */
+    }
+
+    .btn-outline-primary, .btn-outline-success {
+        width: 100%; /* Asegurar que los botones ocupen todo el ancho disponible */
+    }
+}

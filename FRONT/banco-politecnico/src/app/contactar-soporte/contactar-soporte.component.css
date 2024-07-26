@@ -1,0 +1,200 @@
+body {
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/*Barra de navegación*/
+.navbar {
+    background-color: #206ea9 !important;
+    color: white;
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: white !important;
+}
+
+.navbar .nav-item:not(:last-child) {
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    transition: transform 0.15s linear;
+}
+
+.show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+/*Icono de salir*/
+.logout-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/*Pie de página */
+/* Estilos para el contenido del pie de página */
+.footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #206ea9;
+    color: white;
+}
+
+/* Estilos para el párrafo dentro del pie de página */
+.footer-content p {
+    margin: 1px 0;
+    color: white;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+
+
+
+.support-section {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: center;
+    width: 500px;
+  }
+  
+  .support-section h1 {
+    margin-bottom: 20px;
+    color: #206ea9;
+    font-size: 20px;
+  }
+  
+  .support-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #2986c1;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.875em;
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 1em;
+    margin-top: 15px;
+  }
+  
+  .btn-primary {
+    background-color: #206ea9;
+    border-color: #206ea9;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2986c1;
+  }
+
+  .btn-primary:focus {
+    background-color: #2986c1;
+  }
+
+  /* Mensajes de error */
+.error-message {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 5px; /* Reducir el padding */
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.85em; /* Reducir el tamaño de la fuente */
+    max-width: 100%; /* Limitar el ancho máximo */
+    word-wrap: break-word; /* Permitir que las palabras se dividan en varias líneas */
+  }
+  
+  .alert.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    padding: 10px; /* Ajustar el padding según sea necesario */
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 0.85em; /* Ajustar el tamaño de la fuente según sea necesario */
+  }
+  
+  .success-message {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 0.85em;
+  }

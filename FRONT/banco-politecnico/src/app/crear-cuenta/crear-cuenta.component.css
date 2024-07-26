@@ -248,7 +248,8 @@ body {
 
 /* Estilos para los botones del formulario */
 .account-selection-form .form-buttons {
-    display: flex;
+    display: block;
+    width: 100% !important;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
@@ -272,6 +273,7 @@ body {
 .account-selection-form .form-buttons button[type="submit"]:hover {
     background-color: #2d5d7a;
 }
+
 
 /* Responsive*/
 @media (max-width: 768px) {

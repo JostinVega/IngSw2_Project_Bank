@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:4000';
+  private apiUrl = 'https://bancopolitecnico-backend.vercel.app';
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:4000';
+  private apiUrl = 'https://bancopolitecnico-backend.vercel.app';
 
   constructor(private http: HttpClient) {}
 
@@ -44,16 +44,19 @@ export class AuthService {
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:4000';
+  private apiUrl: string;
   private loggedIn = false;  // Definir la propiedad loggedIn
   private nombreUsuario: string = '';  // Definir la propiedad nombreUsuario
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.apiUrl = environment.apiUrl;
+  }
 
   login(credentials: { usuario: string; contrasena: string }): Observable<any> {
     console.log('Usuario ingresado:', credentials.usuario);

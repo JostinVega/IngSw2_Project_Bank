@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="ver-perfil-usuario.component.css">
+</head>
+<body>
+
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicioAdministrador()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminActionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu" aria-labelledby="adminActionsDropdown">
+                            <a class="dropdown-item" (click)="navigateToAdministrarUsuarios()">Gestionar Usuarios</a>
+                        </div>
+                    </li>
+                    <!-- Nuevo menú Depósitos -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="depositsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Depósitos</a>
+                      <div class="dropdown-menu" aria-labelledby="depositsDropdown">
+                          <a class="dropdown-item" (click)="navigateToDepositos()">Realizar Depósito</a>
+                          <a class="dropdown-item" (click)="navigateToTranferencias()">Historial de Transacciones</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--
+    <div class="user-info-container">
+        <h2>Información Personal</h2>
+        <div class="personal-info">
+          <div class="info-item">
+            <span><strong>Número de Identificación:</strong> {{ user?.numeroIdentidad }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Nombre Completo:</strong> {{ user?.nombre_completo }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Correo Electrónico:</strong> {{ user?.correo_electronico }}</span>
+            <button (click)="editInfo('email')" class="edit-button">
+              <img src="assets/img/edit-icon.png" alt="Editar" />
+            </button>
+          </div>
+          <div class="info-item">
+            <span><strong>Número de Teléfono:</strong> {{ user?.numero_telefono }}</span>
+            <button (click)="editInfo('phone')" class="edit-button">
+              <img src="assets/img/edit-icon.png" alt="Editar" />
+            </button>
+          </div>
+          <div class="info-item">
+            <span><strong>Fecha de Nacimiento:</strong> {{ user?.fecha_nacimiento }}</span>
+          </div>
+        </div>
+      
+        <h2>Información de Cuentas</h2>
+        <div class="account-info" *ngFor="let account of accounts">
+          <div class="info-item">
+            <span><strong>Nombre de la Cuenta:</strong> {{ account.cuentaNombre }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Tipo de Cuenta:</strong> {{ account.tipoCuenta }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Número de Cuenta:</strong> {{ account.numeroCuenta }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Saldo Actual:</strong> {{ account.saldo | currency }}</span>
+          </div>
+        </div>
+      </div>
+    -->
+
+    <div class="user-info-container">
+        <h2>INFORMACIÓN PERSONAL</h2>
+        <div class="personal-info">
+          <div class="info-item">
+            <span><strong>Número de Identificación:</strong></span>
+            <span>{{ user?.numeroIdentidad }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Nombre Completo:</strong></span>
+            <span>{{ user?.nombre_completo }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Correo Electrónico:</strong></span>
+            <span>{{ user?.correo_electronico }}</span>
+            <!--<button (click)="editInfo('email')" class="edit-button">
+              <img src="assets/img/edit-icon.png" alt="Editar" />
+            </button>-->
+          </div>
+          <div class="info-item">
+            <span><strong>Número de Teléfono:</strong></span>
+            <span>{{ user?.numero_telefono }}</span>
+            <!--<button (click)="editInfo('phone')" class="edit-button">
+              <img src="assets/img/edit-icon.png" alt="Editar" />
+            </button>-->
+          </div>
+          <div class="info-item">
+            <span><strong>Fecha de Nacimiento:</strong></span>
+            <span>{{ user?.fecha_nacimiento }}</span>
+          </div>
+        </div>
+      
+        <h2>INFORMACIÓN DE CUENTAS</h2>
+        <div class="account-info" *ngFor="let account of accounts">
+          <div class="info-item">
+            <span><strong>Nombre de la Cuenta:</strong></span>
+            <span>{{ account.cuentaNombre }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Tipo de Cuenta:</strong></span>
+            <span>{{ account.tipoCuenta }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Número de Cuenta:</strong></span>
+            <span>{{ account.numeroCuenta }}</span>
+          </div>
+          <div class="info-item">
+            <span><strong>Saldo Actual:</strong></span>
+            <span>{{ account.saldo | currency }}</span>
+          </div>
+        </div>
+      </div>
+      
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

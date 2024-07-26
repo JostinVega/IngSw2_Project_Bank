@@ -44,14 +44,34 @@ export class PreguntasSeguridadComponent {
     });
   }
 
+  getQuestionLabel(value: string): string {
+    const question = this.questions.find(q => q.value === value);
+    return question ? question.label : 'Pregunta no encontrada';
+  }
+  
   onSubmit() {
     if (this.securityQuestionsForm.valid) {
-      this.registroService.setRegistrationData('step4', this.securityQuestionsForm.value);
-      this.router.navigate(['/tipo-cuenta']);
+      const confirmMessage = `
+        ¿Desea continuar con las respuestas proporcionadas?
+        Pregunta 1: ${this.getQuestionLabel(this.securityQuestionsForm.value.question1)} - Respuesta: ${this.securityQuestionsForm.value.answer1}
+        Pregunta 2: ${this.getQuestionLabel(this.securityQuestionsForm.value.question2)} - Respuesta: ${this.securityQuestionsForm.value.answer2}
+        Pregunta 3: ${this.getQuestionLabel(this.securityQuestionsForm.value.question3)} - Respuesta: ${this.securityQuestionsForm.value.answer3}
+        Pregunta 4: ${this.getQuestionLabel(this.securityQuestionsForm.value.question4)} - Respuesta: ${this.securityQuestionsForm.value.answer4}
+        Pregunta 5: ${this.getQuestionLabel(this.securityQuestionsForm.value.question5)} - Respuesta: ${this.securityQuestionsForm.value.answer5}
+      `;
+
+      if (confirm(confirmMessage)) {
+        this.registroService.setRegistrationData('step4', this.securityQuestionsForm.value);
+        this.router.navigate(['/tipo-cuenta']);
+      } else {
+        console.log('El usuario canceló la acción.');
+      }
     } else {
       console.log('Formulario no válido');
+      alert('Por favor, responde a todas las preguntas de seguridad antes de continuar.');
     }
   }
+  
 
   goBack() {
     window.history.back();

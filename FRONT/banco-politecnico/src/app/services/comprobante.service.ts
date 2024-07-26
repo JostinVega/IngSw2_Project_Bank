@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ComprobanteService {
-  private apiUrl = 'http://localhost:4000';
+  private apiUrl = 'https://bancopolitecnico-backend.vercel.app';
 
   constructor(private http: HttpClient) { }
 
@@ -18,14 +18,17 @@ export class ComprobanteService {
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComprobanteService {
-  private apiUrl = 'http://localhost:4000';
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.apiUrl = environment.apiUrl;
+  }
 
   saveComprobante(comprobanteData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/comprobantes`, comprobanteData);

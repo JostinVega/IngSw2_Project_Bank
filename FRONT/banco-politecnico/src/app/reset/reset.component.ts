@@ -1,22 +1,46 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-reset',
   templateUrl: './reset.component.html',
   styleUrls: ['./reset.component.css']
 })
-export class ResetComponent {
-  newPassword: string = '';
-  confirmPassword: string = '';
+export class ResetComponent implements OnInit {
+  resetForm: FormGroup;
   cedula: string = '';
+  private apiUrl: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private http: HttpClient
+  ) {
+    this.apiUrl = environment.apiUrl;
+    this.resetForm = this.fb.group(
+      {
+        newPassword: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$/
+            )
+          ]
+        ],
+        confirmPassword: ['', Validators.required]
+      },
+      { validator: this.passwordMatchValidator }
+    );
+  }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.cedula = params['cedula'];
       console.log('Cédula recibida:', this.cedula);
     });
@@ -27,50 +51,86 @@ export class ResetComponent {
   }
 
   changePassword() {
-    if (this.newPassword !== this.confirmPassword) {
-      alert('Las contraseñas no coinciden. Por favor, inténtelo de nuevo.');
+    // Verificar si los campos están vacíos
+    if (!this.newPassword.value || !this.confirmPassword.value) {
+      alert('Todos los campos son obligatorios para continuar.');
       return;
     }
 
-    if (!this.isPasswordValid(this.newPassword)) {
-      alert('La contraseña no cumple con los requisitos de seguridad.');
+    // Verificar si los campos son inválidos
+    if (this.resetForm.invalid) {
+      this.markFormGroupTouched(this.resetForm);
+      
+      if (this.newPassword.invalid) {
+        alert('Por favor, ingrese una nueva contraseña válida.');
+      }
+      
+      if (this.confirmPassword.invalid) {
+        if (this.confirmPassword.errors?.['required']) {
+          alert('Por favor, confirme su nueva contraseña.');
+        } else if (this.confirmPassword.errors?.['passwordMismatch']) {
+          alert('Las contraseñas no coinciden.');
+        }
+      }
+      
       return;
     }
 
-    this.updatePassword(this.cedula, this.newPassword)
+    const newPassword = this.resetForm.get('newPassword')?.value;
+
+    this.updatePassword(this.cedula, newPassword)
       .then(() => {
         console.log('Password changed successfully.');
         this.router.navigate(['/confirm-reset']);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error changing password:', error);
         alert('Error al cambiar la contraseña. Por favor, inténtelo de nuevo.');
       });
   }
 
-  isPasswordValid(password: string): boolean {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordRegex.test(password);
+  passwordMatchValidator(form: AbstractControl) {
+    const newPassword = form.get('newPassword')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    if (newPassword && confirmPassword && newPassword !== confirmPassword) {
+      form.get('confirmPassword')?.setErrors({ passwordMismatch: true });
+    } else {
+      form.get('confirmPassword')?.setErrors(null);
+    }
+    return null;
   }
 
-  async updatePassword(numero_identidad: string, password: string): Promise<void> {
-
+  async updatePassword(numeroIdentidad: string, password: string): Promise<void> {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     try {
-      const response = await this.http.put(`http://localhost:4000/actualizar-contrasena/${numero_identidad}`, { contrasena: hashedPassword }).toPromise();
-      console.log('Response:', response);
-    } catch (error) {
-      console.error('Error updating password:', error);
-      throw error;
-    }
-    try {
-      const response = await this.http.put(`http://localhost:4000/update-contrasena/${numero_identidad}`, { contrasena: hashedPassword }).toPromise();
+      const response = await this.http
+        .put(
+          `${this.apiUrl}/actualizar-contrasena/${numeroIdentidad}`,
+          { contrasena: hashedPassword }
+        )
+        .toPromise();
       console.log('Response:', response);
     } catch (error) {
       console.error('Error updating password:', error);
       throw error;
     }
   }
-  
+
+  markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach((control: AbstractControl) => {
+      control.markAsTouched();
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
+
+  get newPassword() {
+    return this.resetForm.get('newPassword')!;
+  }
+
+  get confirmPassword() {
+    return this.resetForm.get('confirmPassword')!;
+  }
 }

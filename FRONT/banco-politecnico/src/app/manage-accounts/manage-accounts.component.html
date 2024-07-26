@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Cuentas</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="manage-accounts.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/admin">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminActionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu" aria-labelledby="adminActionsDropdown">
+                            <a class="dropdown-item" routerLink="/gestionar-usuarios">Gestionar Usuarios</a>
+                            <!--<a class="dropdown-item" routerLink="/gestionar-cuentas">Gestionar Cuentas</a>-->
+                        </div>
+                    </li>
+                    <!-- Nuevo menú Depósitos -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="depositsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Depósitos</a>
+                      <div class="dropdown-menu" aria-labelledby="depositsDropdown">
+                          <a class="dropdown-item" href="../deposit/deposit.component.html">Realizar Depósito</a>
+                          <a class="dropdown-item" href="../transaction-history/transaction-history.component.html">Historial de Transacciones</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="supportDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda/Soporte</a>
+                        <div class="dropdown-menu" aria-labelledby="supportDropdown">
+                            <a class="dropdown-item" routerLink="/faq">Preguntas frecuentes</a>
+                            <a class="dropdown-item" routerLink="/contactar-soporte">Contactar soporte</a>
+                            <a class="dropdown-item" href="#">Reportar un problema</a>
+                        </div>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gestionar Cuentas -->
+    <div class="container mt-5">
+        <h2 class="text-center">Gestionar Cuentas</h2>
+
+        <!-- Barra de búsqueda y botones -->
+        <div class="search-bar mt-4 input-group">
+          <input type="text" class="form-control" placeholder="Buscar por número de cuenta o nombre del titular" [(ngModel)]="searchQuery" (keydown.enter)="onSearch()">
+          <div class="input-group-append">
+              <button class="btn btn-primary" (click)="onSearch()"><i class="fas fa-search"></i> Buscar</button>
+              <button class="btn btn-secondary" (click)="refresh()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+          </div>
+        </div>
+
+        <!-- Mensaje de no resultados -->
+        <div *ngIf="!filteredAccounts.length && searchQuery" class="alert alert-warning mt-3" role="alert">
+            No existe
+        </div>
+
+        <!-- Tabla de cuentas -->
+        <div class="table-responsive mt-4" *ngIf="filteredAccounts.length">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th (click)="sortBy('numeroCuenta')">Número de Cuenta <i [ngClass]="getSortIcon('numeroCuenta')"></i></th>
+                        <th (click)="sortBy('usuario')">Nombre del Titular <i [ngClass]="getSortIcon('usuario')"></i></th>
+                        <th (click)="sortBy('tipoCuenta')">Tipo de Cuenta <i [ngClass]="getSortIcon('tipoCuenta')"></i></th>
+                        <th (click)="sortBy('saldo')">Saldo <i [ngClass]="getSortIcon('saldo')"></i></th>
+                        <!--<th (click)="sortBy('estado')">Estado <i [ngClass]="getSortIcon('estado')"></i></th>-->
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let account of filteredAccounts; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ account.numeroCuenta }}</td>
+                        <td>{{ account.usuario }}</td>
+                        <td>{{ account.tipoCuenta }}</td>
+                        <td>{{ account.saldo }}</td>
+                        <!--<td>{{ account.estado }}</td>-->
+                        <td>
+                          <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> Ver</button>
+                          <button class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                          <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                          <button class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Crear</button>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

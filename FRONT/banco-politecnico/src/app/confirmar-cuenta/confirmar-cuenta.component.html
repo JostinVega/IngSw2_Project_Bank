@@ -9,63 +9,55 @@
     <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
 </head>
 <body>
+    <!--Barra de navegación-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <!-- Texto dinámico en la barra de navegación -->
-        
         <div class="icono">
             <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
             <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
         </div>
         <div class="container-fluid">
-            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/inicio']">Inicio</a>
+                        <a class="nav-link" (click)="navigateToInicio()">Inicio</a>
                     </li>
-                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="miPerfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Perfil</a>
                         <div class="dropdown-menu" aria-labelledby="miPerfilDropdown">
-                            <a class="dropdown-item" href="#">Ver Usuario</a>
-                            <a class="dropdown-item" href="#">Actualizar Información Personal</a>
-                            <a class="dropdown-item" href="#">Configuración de Seguridad</a>
+                            <a class="dropdown-item" (click)="navigateToVerUsuario()">Ver usuario</a>
+                            <a class="dropdown-item" (click)="navigateToActualizarInformacion()">Actualizar información personal</a>
+                            <a class="dropdown-item" (click)="navigateToChangePassword()">Cambiar contraseña</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
                         <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
-                            <a class="dropdown-item" href="#">Abrir una nueva cuenta bancaria</a>
-                            <a class="dropdown-item" href="#">Detalles de la Cuenta</a>
-                            <a class="dropdown-item" href="#">Historial de Actividad</a>
+                            <a class="dropdown-item" (click)="navigateToNewAccount()">Abrir una nueva cuenta bancaria</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="transaccionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transacciones</a>
                         <div class="dropdown-menu" aria-labelledby="transaccionesDropdown">
-                            <a class="dropdown-item" routerLink="/transfer">Transferencias</a>
-                            <a class="dropdown-item" href="#">Pagos de Facturas</a>
-                            <a class="dropdown-item" href="#">Historial de Transacciones</a>
+                            <a class="dropdown-item" (click)="navigateToTransfer()">Transferencias</a>
+                            <a class="dropdown-item" (click)="navigateToAddContact()">Mis contactos</a>
+                            <a class="dropdown-item" (click)="navigateToHistorialTransacciones()">Historial de transacciones</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="ayudaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda/Soporte</a>
                         <div class="dropdown-menu" aria-labelledby="ayudaDropdown">
-                            <a class="dropdown-item" href="#">Preguntas Frecuentes</a>
-                            <a class="dropdown-item" href="#">Contactar Soporte</a>
-                            <a class="dropdown-item" href="#">Reportar un Problema</a>
+                            <a class="dropdown-item" (click)="navigateToFAQ()">Preguntas frecuentes</a>
+                            <a class="dropdown-item" (click)="navigateToContactarSoporte()">Contactar soporte</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/home']">
+                        <a class="nav-link" routerLink="/home">
                             <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
                         </a>
                     </li>
-                    
-                    
                 </ul>
             </div>
         </div>
@@ -74,28 +66,37 @@
     <div class="confirmation-message">
         <div class="confirmation-content">
           <header class="form-header">
-            <a routerLink="/crear-cuenta">
-            <button class="back-button" (click)="goBack()">
+            
+            <button class="back-button" (click)="navigateToInicio()">
                 <img src="assets/img/back.png" alt="Back Icon" class="icon" />
             </button>
-            </a>
+            
             <span>¡Cuenta creada con éxito!</span>
           </header>
           <div class="form-body">
             <div class="confirmation-icon">
-                <img src="assets/img/confirmar-icono.png" alt="Confirmar" class="icon">
+                <img src="assets/img/iconoo.png" alt="Confirmar" class="icon">
             </div>
             <p>A continuación, los detalles de tu cuenta:</p>
-            <ul>
-                <li><strong>Tipo de cuenta:</strong> {{ tipoCuenta }}</li>
-                <li><strong>Nombre de la cuenta:</strong> {{ cuentaNombre }}</li>
-                <li><strong>Número de cuenta:</strong> {{ cuentaNumero }}</li>
+            <ul class="account-details">
+                <li class="account-details-row">
+                  <span class="account-details-label">Tipo de cuenta:</span>
+                  <span class="account-details-value">{{ tipoCuenta }}</span>
+                </li>
+                <li class="account-details-row">
+                  <span class="account-details-label">Nombre de la cuenta:</span>
+                  <span class="account-details-value">{{ cuentaNombre }}</span>
+                </li>
+                <li class="account-details-row">
+                  <span class="account-details-label">Número de cuenta:</span>
+                  <span class="account-details-value">{{ cuentaNumero }}</span>
+                </li>
             </ul>
-           
-\            <div class="buttons">
-                <a routerLink="/inicio"><button type="submit">Volver a la página de inicio</button></a>
+                    
+            <div class="buttons">
+                <button type="submit" class="full-width-button" (click)="confirmar()">Volver a la página de inicio</button>
             </div>
-            
+
           </div>
         </div>
     </div>

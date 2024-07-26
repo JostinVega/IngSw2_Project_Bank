@@ -1,0 +1,201 @@
+body {
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/*Barra de navegación*/
+.navbar {
+    background-color: #206ea9 !important;
+    color: white;
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: white !important;
+}
+
+.navbar .nav-item:not(:last-child) {
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    transition: transform 0.15s linear;
+}
+
+.show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+/*Icono de salir*/
+.logout-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/*Pie de página */
+/* Estilos para el contenido del pie de página */
+.footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #206ea9;
+    color: white;
+}
+
+/* Estilos para el párrafo dentro del pie de página */
+.footer-content p {
+    margin: 1px 0;
+    color: white;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+
+
+
+
+.faq-section {
+    margin: 20px;
+  }
+  
+  .faq-question {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #f1f1f1;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.4s ease;
+  }
+  
+  .faq-question:hover {
+    background-color: #dadada;
+  }
+  
+  .faq-question.active {
+    background-color: #bfbfbf5a;
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  
+  .faq-answer p {
+    padding: 10px;
+    background-color: white;
+    border-top: 1px solid #f1f1f1;
+  }
+
+  /* Estilos para el título principal */
+.faq-section h1 {
+    font-size: 30px;
+    color: #206ea9;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Estilos para los títulos de las categorías */
+  .category-title {
+    font-size: 20px;
+    color: #206ea9;
+    margin: 20px 0 10px;
+    border-bottom: 2px solid #206ea9;
+    padding-bottom: 5px;
+  }
+  
+  /* Estilos para los títulos de las subcategorías */
+  .subcategory-title {
+    font-size: 13px;
+    color: #206ea9;
+    margin: 10px 0 5px;
+    padding-left: 20px;
+    border-left: 3px solid #206ea9;
+    padding-left: 10px;
+  }
+  
+  
+  .faq-item {
+    margin-bottom: 10px;
+    border: 1px solid #e7e6e6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .faq-question {
+    width: 100%;
+    height: 45px; /* Ajusta el valor según el alto deseado */
+    padding: 15px;
+    text-align: left;
+    background: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #206ea9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question:after {
+    content: '\25BC';
+    font-size: 12px;
+    color: #206ea9;
+  }
+  
+  .faq-question.active:after {
+    content: '\25B2';
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background: #f9f9f9;
+    padding: 0 15px;
+  }
+  
+  .faq-answer p {
+    padding: 15px 0;
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+  

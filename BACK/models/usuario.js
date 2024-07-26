@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UsuarioSchema = Schema({
-    numero_identidad: String,
+    numeroIdentidad: String,
     nombre_completo: String,
     correo_electronico: String,
     numero_telefono: String,
@@ -22,6 +22,9 @@ var UsuarioSchema = Schema({
     numeroCuenta: String,
     cuentaNombre: String,
     tipoCuenta: String,
+    saldo: { type: String, default: '100.00' },
+    estado: { type: String, default: 'Activo' },
+    administrador: { type: Boolean, default: false }
 });
 
 module.exports=mongoose.model('registro-usuario', UsuarioSchema);

@@ -2,12 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var TipoCuentaSchema = Schema({
-    numero_identidad: String,
+    numeroIdentidad: String,
     accountType: String,
     numeroCuenta: String,
     cuentaNombre: String,
     tipoCuenta: String,
-    saldo: String
+    saldo: { type: String, default: '100.00' }
 });
 
 module.exports = mongoose.model('cuenta', TipoCuentaSchema);

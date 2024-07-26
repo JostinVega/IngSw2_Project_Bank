@@ -373,3 +373,10 @@ body {
 .contact-item {
     cursor: pointer;
 }
+
+.favorite-icon {
+  width: 30px; /* Ajusta el tamaño según sea necesario */
+  height: 30px; /* Ajusta el tamaño según sea necesario */
+  margin-left: 10px; /* Espacio entre el nombre y el icono */
+}
+

@@ -1,0 +1,195 @@
+body {
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/*Barra de navegación*/
+.navbar {
+    background-color: #206ea9 !important;
+    color: white;
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: white !important;
+}
+
+.navbar .nav-item:not(:last-child) {
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    transition: transform 0.15s linear;
+}
+
+.show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+/*Icono de salir*/
+.logout-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/*Pie de página */
+/* Estilos para el contenido del pie de página */
+.footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #206ea9;
+    color: white;
+}
+
+/* Estilos para el párrafo dentro del pie de página */
+.footer-content p {
+    margin: 1px 0;
+    color: white;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+.user-info-container {
+    width: 70%;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #f0f2f5;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    border-bottom: 2px solid #206EA8;
+    padding-bottom: 10px;
+    color: #206EA8;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.personal-info,
+.account-info {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: grid;
+    grid-template-columns: 250px 1fr auto; /* Ancho de columna modificado */
+    grid-column-gap: 180px; /* Aumenta este valor para mayor separación */
+    align-items: center;
+    padding: 10px 0;
+}
+
+.info-item span {
+    font-size: 1.2em;
+    color: #333333;
+}
+
+.info-item strong {
+    display: block;
+    width: 100%;
+}
+
+.edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.edit-button img {
+    width: 30px; /* Aumentado el tamaño del icono */
+    height: 30px; /* Aumentado el tamaño del icono */
+}
+
+.edit-button:hover img {
+    filter: brightness(1.2);
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .user-info-container {
+        width: 90%;
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .edit-button {
+        margin-top: 5px;
+    }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 1459px) {
+    .user-info-container {
+        width: 90%;
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    .info-item {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+        grid-column-gap: 10px; /* Ajusta el espacio entre columnas */
+    }
+
+    .info-item span {
+        font-size: 1em; /* Ajusta el tamaño de fuente */
+    }
+
+    .info-item strong {
+        font-size: 1em; /* Ajusta el tamaño de fuente */
+    }
+
+    .edit-button img {
+        width: 20px; /* Ajusta el tamaño del icono */
+        height: 20px; /* Ajusta el tamaño del icono */
+    }
+}
+
+

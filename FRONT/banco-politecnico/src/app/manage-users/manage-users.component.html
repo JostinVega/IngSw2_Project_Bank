@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Usuarios</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="manage-users.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicioAdministrador()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminActionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu" aria-labelledby="adminActionsDropdown">
+                            <a class="dropdown-item" (click)="navigateToAdministrarUsuarios()">Gestionar Usuarios</a>
+                        </div>
+                    </li>
+                    <!-- Nuevo menú Depósitos -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="depositsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Depósitos</a>
+                      <div class="dropdown-menu" aria-labelledby="depositsDropdown">
+                          <a class="dropdown-item" (click)="navigateToDepositos()">Realizar Depósito</a>
+                          <a class="dropdown-item" (click)="navigateToTranferencias()">Historial de Transacciones</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gestionar Usuarios -->
+    <div class="container mt-5">
+        <h2 class="text-center">Gestionar Usuarios</h2>
+
+        <!-- Barra de búsqueda y botones -->
+        <div class="search-bar mt-4 input-group">
+          <input type="text" class="form-control" placeholder="Buscar por número de identidad o nombre de usuario" [(ngModel)]="searchQuery" (keydown.enter)="onSearch()">
+          <div class="input-group-append">
+              <button class="btn btn-primary" (click)="onSearch()"><i class="fas fa-search"></i> Buscar</button>
+              <button class="btn btn-secondary" (click)="refresh()"><i class="fas fa-sync-alt"></i> Actualizar</button>
+              <!--<button class="btn btn-success" (click)="addUser()"><i class="fas fa-user-plus"></i> Añadir Usuario</button>-->
+          </div>
+        </div>
+
+        <!-- Mensaje de no resultados -->
+        <div *ngIf="!filteredUsers.length && searchQuery" class="alert alert-warning mt-3" role="alert">
+            No existen resultados para la búsqueda.
+        </div>
+
+        <!-- Tabla de usuarios -->
+        <div class="table-responsive mt-4" *ngIf="filteredUsers.length">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th (click)="sortBy('numeroIdentidad')">Número de Identidad <i [ngClass]="getSortIcon('numeroIdentidad')"></i></th>
+                        <th (click)="sortBy('usuario')">Nombre de Usuario <i [ngClass]="getSortIcon('usuario')"></i></th>
+                        <th (click)="sortBy('correo_electronico')">Correo Electrónico <i [ngClass]="getSortIcon('correo_electronico')"></i></th>
+                        <th (click)="sortBy('administrador')">Rol <i [ngClass]="getSortIcon('administrador')"></i></th>
+                        <th (click)="sortBy('estado')">Estado <i [ngClass]="getSortIcon('estado')"></i></th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of filteredUsers; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ user.numeroIdentidad }}</td>
+                        <td>{{ user.usuario }}</td>
+                        <td>{{ user.correo_electronico }}</td>
+                        <td>{{ getRolLabel(user.administrador) }}</td>
+                        <td>{{ user.estado }}</td>
+                        <td>
+                          <button class="btn btn-primary btn-sm" (click)="navigateToViewUser(user)"><i class="fas fa-eye"></i> Ver</button>
+                          <button class="btn btn-secondary btn-sm" (click)="editUser(user)"><i class="fas fa-edit"></i> Editar</button>
+                          <button class="btn btn-danger btn-sm" (click)="deleteUser(user)"><i class="fas fa-trash-alt"></i> Eliminar</button>                          
+                          <button class="btn btn-success btn-sm" (click)="addAccount(user)"><i class="fas fa-plus"></i> Agregar cuenta</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Formulario de edición -->
+        <div *ngIf="isEditing" class="mt-4">
+            <h3>Editar Usuario</h3>
+            <form (ngSubmit)="saveChanges()">
+              <div class="form-group">
+                <label for="administrador">Rol</label>
+                <select [(ngModel)]="editingUser!.administrador" name="administrador" class="form-control">
+                  <option [ngValue]="true">Administrador</option>
+                  <option [ngValue]="false">Usuario</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <select [(ngModel)]="editingUser!.estado" name="estado" class="form-control">
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+              <button type="button" class="btn btn-secondary" (click)="isEditing = false">Cancelar</button>
+            </form>
+          </div>
+          
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

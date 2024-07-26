@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { PasswordService } from '../services/password.service.service';
-
-
 import { RegistroService } from '../services/informacion-registro.service';
 
 @Component({
@@ -11,31 +9,43 @@ import { RegistroService } from '../services/informacion-registro.service';
   styleUrls: ['./verificar.component.css']
 })
 export class VerificarComponent {
-  codigo: string[] = ['', '', '', '', ''];
-  numero_identidad: string = ''; // Asegúrate de obtener este valor del usuario
+  digits: string[] = ['', '', '', '', ''];
+  attempts: number = 0;
 
   constructor(
-    private registroService: RegistroService, 
-    private passwordService: PasswordService, 
+    private registroService: RegistroService,
+    private http: HttpClient,
     private router: Router
   ) {}
 
+  /*
   onSubmit(): void {
     // Verificar el código ingresado
-    const enteredCode = this.codigo.join('');
-    this.passwordService.verifySecurityCode(this.numero_identidad, enteredCode).subscribe(
-      response => {
-        if (response.message === 'Código de seguridad verificado correctamente.') {
-          this.router.navigate(['/siguiente-pagina']);
-        } else {
-          response.errorMessage = 'Código inválido. Por favor, inténtelo de nuevo.';
-        }
-      },
-      error => {
-        // Manejar errores
-        error.errorMessage = 'Ocurrió un error. Por favor, inténtelo de nuevo.';
+    const verificationCode = this.digits.join('');
+    // Supongamos que el código de verificación es '12345'
+    if (verificationCode === '12345') {
+      this.router.navigateByUrl('/crear-usuario');
+    } else {
+      alert('Código de verificación incorrecto.');
+    }
+  }
+    */
+
+  onSubmit(): void {
+    const email = this.registroService.getRegistrationData('step1').correo_electronico;
+    const verificationCode = this.digits.join('');
+    this.http.post('https://bancopolitecnico-backend.vercel.app/verify-code', { email, code: verificationCode }).subscribe(() => {
+      this.router.navigateByUrl('/crear-usuario');
+    }, () => {
+      this.attempts++;
+      if (this.attempts >= 3) {
+        alert('Ha excedido el número de intentos. Intente nuevamente más tarde.');
+        this.router.navigate(['/home']);
+        // Implementa lógica adicional para bloquear al usuario si es necesario
+      } else {
+        alert('Código de verificación incorrecto.');
       }
-    );
+    });
   }
 
   onKeyDown(event: KeyboardEvent, index: number): void {
@@ -49,7 +59,7 @@ export class VerificarComponent {
       if (prevInput) {
         prevInput.focus();
       }
-    } else if (event.key === 'ArrowRight' && index < this.codigo.length - 1) {
+    } else if (event.key === 'ArrowRight' && index < this.digits.length - 1) {
       const nextInput = document.getElementById('digit' + (index + 2)) as HTMLInputElement;
       if (nextInput) {
         nextInput.focus();
@@ -65,8 +75,8 @@ export class VerificarComponent {
   onInput(event: Event, index: number): void {
     const input = event.target as HTMLInputElement;
     if (/^\d$/.test(input.value)) {
-      this.codigo[index] = input.value;
-      if (index < this.codigo.length - 1) {
+      this.digits[index] = input.value;
+      if (index < this.digits.length - 1) {
         const nextInput = document.getElementById('digit' + (index + 2)) as HTMLInputElement;
         if (nextInput) {
           nextInput.focus();
@@ -82,6 +92,9 @@ export class VerificarComponent {
   }
 
   resendCode(): void {
-    alert('Se ha reenviado el código de verificación.');
+    const email = this.registroService.getRegistrationData('step1').correo_electronico;
+    this.http.post('https://bancopolitecnico-backend.vercel.app/send-code', { email }).subscribe(() => {
+      alert('Se ha reenviado el código de verificación.');
+    });
   }
 }

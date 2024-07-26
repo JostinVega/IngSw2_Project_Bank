@@ -9,53 +9,76 @@
     <link rel="stylesheet" href="reset.component.css">
 </head>
 <body>
-    <header>
-        <!-- Barra de navegación -->
-        <div class="navbar">
-            <!-- Texto dinámico en la barra de navegación -->
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/home">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/nosotros">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contactos">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/ayuda">Ayuda</a>
+                </li>
+            </ul>
             <div class="text moving-text">Comprometidos contigo, hoy y siempre.</div>
-            <nav>
-                <ul>
-                    <li><a routerLink="/home">Inicio</a></li>
-                    <li><a routerLink="/nosotros">Nosotros</a></li>
-                    <li><a routerLink="/contactos">Contacto</a></li>
-                    <li><a routerLink="/ayuda">Ayuda</a></li>
-                </ul>
-            </nav>
         </div>
-    </header>
+    </nav>
 
     <div class="reset-password-form">
         <div class="form-content">
-            <header class="form-header">
-                <button class="back-button" (click)="goBack()">
-                    <img src="assets/img/back.png" alt="Back Icon" class="icon" />
-                </button>
-                <span>Restablecer contraseña</span>
-            </header>
-            <div class="form-body">
-                <form (ngSubmit)="changePassword()">
-                    <div class="field">
-                        <label>Ingrese su nueva contraseña:</label>
-                        <input type="password" [(ngModel)]="newPassword" name="newPassword" required />
-                    </div>
-                    <div class="field">
-                        <label>Confirme su nueva contraseña:</label>
-                        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required />
-                    </div>
-                    <div class="requirements">
-                        <p class="text">
-                            <span class="error-icon">
-                                <img src="assets/img/advertencia.png" alt="Advertencia" />
-                            </span>
-                            La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.
-                        </p>
-                    </div>
-                    <button type="submit" class="change-password-button" [disabled]="!newPassword || !confirmPassword">Cambiar contraseña</button>
-                </form>
-            </div>
+          <header class="form-header">
+            <button class="back-button" (click)="goBack()">
+              <img src="assets/img/back.png" alt="Back Icon" class="icon" />
+            </button>
+            <span>Restablecer contraseña</span>
+          </header>
+          <div class="form-body">
+            <form [formGroup]="resetForm" (ngSubmit)="changePassword()">
+              <div class="field">
+                <label>Ingrese su nueva contraseña:</label>
+                <input type="password" formControlName="newPassword" required />
+                <div *ngIf="newPassword.invalid && (newPassword.touched || newPassword.dirty)" class="error-message alert alert-danger">
+                  <div *ngIf="newPassword.errors?.['required']">Por favor, ingrese una nueva contraseña.</div>
+                  <div *ngIf="newPassword.errors?.['pattern']">
+                    La contraseña debe tener entre 8 y 64 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Confirme su nueva contraseña:</label>
+                <input type="password" formControlName="confirmPassword" required />
+                <div *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)" class="error-message alert alert-danger">
+                  <div *ngIf="confirmPassword.errors?.['required']">Por favor, confirme su nueva contraseña.</div>
+                  <div *ngIf="confirmPassword.errors?.['passwordMismatch']">Las contraseñas no coinciden.</div>
+                </div>
+              </div>
+              <div class="requirements">
+                <p class="text">
+                  <span class="error-icon">
+                    <img src="assets/img/advertencia.png" alt="Advertencia" />
+                  </span>
+                  La contraseña debe tener entre 8 y 64 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.
+                </p>
+              </div>
+              <button type="submit" class="change-password-button" [disabled]="resetForm.invalid">Cambiar contraseña</button>
+            </form>
+          </div>
         </div>
-    </div>
+      </div>
+      
+      
+      
+      
+      
     
     <footer>
         <div class="footer-content">

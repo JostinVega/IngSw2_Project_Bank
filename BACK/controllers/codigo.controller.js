@@ -1,6 +1,4 @@
 const Usuario = require('../models/user');
-const express = require('express');
-const router = express.Router();
 const Cuenta = require('../models/cuenta');
 const { sendSecurityCode, sendTempBlock } = require('../send_notifications.js');
 

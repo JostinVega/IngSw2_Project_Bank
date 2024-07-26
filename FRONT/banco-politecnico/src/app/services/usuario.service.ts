@@ -2,27 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrlUsuario = 'http://localhost:4000/usuario';
-  private apiUrlLabel = 'http://localhost:4000/label';
-  private apiUrl = 'http://localhost:4000'; 
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.apiUrl = environment.apiUrl;
+  }
 
-  getUsuario(numero_identidad: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrlUsuario}/${numero_identidad}`);
+  getUsuario(numeroIdentidad: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/usuario/${numeroIdentidad}`);
   }
 
   getLabel(value: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrlLabel}/${value}`);
+    return this.http.get<any>(`${this.apiUrl}/label/${value}`);
   }
 
-  getUsuarioWithLabels(numero_identidad: string): Observable<any> {
-    return this.getUsuario(numero_identidad).pipe(
+  getUsuarioWithLabels(numeroIdentidad: string): Observable<any> {
+    return this.getUsuario(numeroIdentidad).pipe(
       switchMap(usuario => {
         const questions = [
           usuario.usuario.question1,

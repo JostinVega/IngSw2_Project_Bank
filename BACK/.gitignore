@@ -1,1 +1,13 @@
-./node_modules
+.env
+ProyectoBancoPolitecnico/Back-end/node_modules/
+# Node modules
+node_modules/
+
+npm-debug.log
+yarn-error.log
+dist/
+
+# Vercel
+.vercel
+vercel/
+.vercel/

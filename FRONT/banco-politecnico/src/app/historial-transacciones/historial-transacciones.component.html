@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="favicon/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="historial-transacciones.component.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <!-- Texto dinámico en la barra de navegación -->
+        
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicio()">Inicio</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="miPerfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Perfil</a>
+                        <div class="dropdown-menu" aria-labelledby="miPerfilDropdown">
+                            <a class="dropdown-item" (click)="navigateToVerUsuario()">Ver usuario</a>
+                            <a class="dropdown-item" (click)="navigateToActualizarInformacion()">Actualizar información personal</a>
+                            <a class="dropdown-item" (click)="navigateToChangePassword()">Cambiar contraseña</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
+                        <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                            <a class="dropdown-item" (click)="navigateToNewAccount()">Abrir una nueva cuenta bancaria</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="transaccionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transacciones</a>
+                        <div class="dropdown-menu" aria-labelledby="transaccionesDropdown">
+                            <a class="dropdown-item" (click)="navigateToTransfer()">Transferencias</a>
+                            <a class="dropdown-item" (click)="navigateToAddContact()">Mis contactos</a>
+                            <a class="dropdown-item" (click)="navigateToHistorialTransacciones()">Historial de transacciones</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ayudaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda/Soporte</a>
+                        <div class="dropdown-menu" aria-labelledby="ayudaDropdown">
+                            <a class="dropdown-item" (click)="navigateToFAQ()">Preguntas frecuentes</a>
+                            <a class="dropdown-item" (click)="navigateToContactarSoporte()">Contactar soporte</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/home']">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="transfer-form">
+        <div class="form-content">
+            <div class="transaction-history">
+                <h2>Historial de Transacciones</h2>
+              
+                <div class="filters">
+                  <div class="filter-group">
+                    <select [(ngModel)]="searchAccount" (change)="onAccountChange(searchAccount)" class="filter-item">
+                      <option *ngFor="let account of accounts" [value]="account">{{ account }}</option>
+                    </select>
+                    <select [(ngModel)]="searchAccountType" (change)="filterTransactions()" class="filter-item">
+                      <option value="">Tipo de Cuenta</option>
+                      <option value="corriente">Corriente</option>
+                      <option value="ahorro">Ahorro</option>
+                    </select>
+                    <input type="date" placeholder="Desde" [(ngModel)]="searchDateFrom" (change)="filterTransactions()" class="filter-item" />
+                    <input type="date" placeholder="Hasta" [(ngModel)]="searchDateTo" (change)="filterTransactions()" class="filter-item" />
+                    <select [(ngModel)]="searchType" (change)="filterTransactions()" class="filter-item">
+                      <option value="">Tipo de Transacción</option>
+                      <option value="ingreso">Ingreso</option>
+                      <option value="egreso">Egreso</option>
+                    </select>
+                  </div>
+                  <div class="sort-group">
+                    <button (click)="sortTransactions('asc')" class="sort-button"><img src="assets/img/ascendente1.png" alt="Ascendente" /></button>
+                    <button (click)="sortTransactions('desc')" class="sort-button"><img src="assets/img/descendiente1.png" alt="Descendente" /></button>
+                  </div>
+                </div>
+                <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th><input type="checkbox" (change)="toggleAll($event)" /></th>
+                      <th>Fecha</th>
+                      <th>Monto</th>
+                      <th>Beneficiario</th>
+                      <th>Tipo de Cuenta</th>
+                      <th>Tipo de Transacción</th>
+                      <th>Descripción</th>
+                      <th>Saldo Antes</th>
+                      <th>Saldo Después</th>
+                      <th>Número de Comprobante</th>
+                      <th>Comprobante</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let transaction of filteredTransactions">
+                      <td><input type="checkbox" [(ngModel)]="transaction.selected" /></td>
+                      <td>{{ transaction.date | date }}</td>
+                      <td>{{ transaction.amount | currency }}</td> <!-- Columna Importe -->
+                      <td>{{ transaction.beneficiary }}</td>
+                      <td>{{ transaction.accountType }}</td>
+                      <td>{{ transaction.type }}</td>
+                      <td>{{ transaction.description }}</td>
+                      <td>{{ transaction.balanceBefore | currency }}</td>
+                      <td>{{ transaction.balanceAfter | currency }}</td>
+                      <td>{{ transaction.receiptNumber }}</td>
+                      <td>
+                        <!--
+                        <button (click)="showAlert()"><img src="assets/img/pdf.png" alt="PDF" /></button>
+                        <button (click)="showAlert()"><img src="assets/img/png.png" alt="PNG" /></button>
+                        -->
+                        <button (click)="downloadFile(transaction.receiptNumber, 'pdf')"><img src="assets/img/pdf.png" alt="PDF" /></button>
+                        <button (click)="downloadFile(transaction.receiptNumber, 'png')"><img src="assets/img/png.png" alt="PNG" /></button>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+              
+                <div class="download-buttons">
+                  <button (click)="downloadSelectedAsPDF()"><img src="assets/img/pdf.png" alt="PDF" />Descargar Historial (PDF)</button>
+                  <button (click)="downloadSelectedAsExcel()"><img src="assets/img/excel.png" alt="Excel" />Descargar Historial (Excel)</button>
+                </div>
+              </div>               
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <!-- Mensaje de derechos de autor con año actual -->
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    
+    
+</body>
+</html>

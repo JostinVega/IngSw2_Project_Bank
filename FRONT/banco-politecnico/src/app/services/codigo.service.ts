@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -6,16 +6,39 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CodigoService {
-  url = 'http://localhost:4000';
+  url = 'https://bancopolitecnico-backend.vercel.app';
 
   constructor(private http: HttpClient) { }
 
-  sendSecurityCode(numero_identidad: string): Observable<any> {
-    return this.http.post(`${this.url}/send-security-code`, { numero_identidad });
+  sendSecurityCode(numeroIdentidad: string): Observable<any> {
+    return this.http.post(`${this.url}/send-security-code`, { numeroIdentidad });
   }
 
-  verifySecurityCode(numero_identidad: string, enteredCode: string): Observable<any> {
-    return this.http.post(`${this.url}/verify-security-code`, { numero_identidad, enteredCode });
+  verifySecurityCode(enteredCode: string): Observable<any> {
+    return this.http.post(`${this.url}/verify-security-code`, { enteredCode });
+  }
+}*/
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CodigoService {
+  private apiUrl: string;
+
+  constructor(private http: HttpClient) { 
+    this.apiUrl = environment.apiUrl;
+  }
+
+  sendSecurityCode(numeroIdentidad: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/send-security-code`, { numeroIdentidad });
+  }
+
+  verifySecurityCode(enteredCode: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/verify-security-code`, { enteredCode });
   }
 }
-

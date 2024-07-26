@@ -1,0 +1,351 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #FFFFFF;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.minh-100 {
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: #2E86C1 !important;
+}
+
+.navbar .navbar-brand {
+    color: white !important;
+}
+
+.navbar .navbar-brand:hover {
+    color: #206EA9 !important; /* Color al pasar el ratón */
+}
+
+.navbar .nav-link {
+    color: white !important;
+}
+
+.navbar .nav-link:hover {
+    color: #206EA9!important; /* Color al pasar el ratón */
+}
+
+.navbar .form-inline .form-control {
+    margin-right: 10px;
+}
+
+.navbar .btn-outline-success {
+    color: white !important;
+    border-color: white !important;
+}
+
+.navbar .btn-outline-success:hover {
+    color: #206ea9 !important;
+    border-color: #206ea9 !important;
+}
+
+/* Animación */
+@keyframes slideAndFade {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Estilos para el texto animado */
+.moving-text {
+    font-size: 1em;
+    color: white;
+    animation: slideAndFade 3s linear normal;
+    width: 40%;
+    text-align: center;
+    opacity: 0;
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.icono img.logo {
+    max-width: 60px;
+    margin-bottom: 10px;
+}
+
+.icono h1.nombre {
+    font-size: 24px;
+    color: #2E86C1;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Pie de página */
+.footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #2E86C1;
+    color: white;
+}
+
+.footer-content p {
+    margin: 1px 0;
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+    /* Navegación */
+    .navbar-nav {
+        flex-direction: column;
+    }
+    
+    .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar-nav .dropdown-menu {
+        width: 100%;
+    }
+
+    /* Estilos para el contenedor del ícono */
+    .icono {
+        display: flex;
+        align-items: right;
+        justify-content: left;
+        margin-bottom: 10px;
+        padding-top: 5px;
+        padding-left: 5px;
+    }
+
+    /* Estilos para el logo dentro del contenedor del ícono */
+    .icono img.logo {
+        max-width: 40px;
+        margin-right: 10px;
+    }
+
+    /* Estilos para el nombre del banco dentro del contenedor del ícono */
+    .icono h1.nombre {
+        font-size: 15px;
+        color: white;
+        margin: 0;
+        font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+    }
+
+
+    /* Pie de página */
+    .footer-content p {
+        font-size: 0.8em;
+    }
+}
+
+/*Form*/
+
+/* Form styling */
+.verification-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #206ea9;
+    height: 100vh;
+  }
+  
+  .form-content {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  .form-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .back-button .icon {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .form-header span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-body label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  
+  .validate-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #206ea9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .validate-button:hover {
+    background-color: #2e86c1;
+  }
+  
+/*
+  .form-body input {
+    width: 100%; 
+    padding: 10px;
+
+    border: none;
+    border-bottom: 1px solid #ddd; 
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f6f5f5;
+    margin-bottom: 10px; 
+}
+
+.form-body select:focus,
+.form-body input:focus {
+    border-color: #206ea9;
+    outline: none;
+}
+*/
+
+
+
+/* Estilos para los intentos restantes */
+.attempts-remaining {
+    font-size: 14px;
+    color: #e74c3c;
+    margin-top: 10px;
+}
+
+/* Custom styling for the select dropdown */
+.custom-select {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.custom-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Remove default arrow in IE */
+.custom-select::-ms-expand {
+    display: none;
+}
+
+/* Placeholder color for disabled option */
+.custom-select:invalid {
+    color: #6c757d;
+}
+
+
+
+
+  
+  
+ 
+

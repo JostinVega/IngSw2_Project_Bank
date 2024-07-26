@@ -7,11 +7,19 @@ var TransferenciaSchema = new Schema({
     fecha: { type: String, required: true },
     cuenta_origen: { 
         nombre_completo: { type: String, required: true },
-        numero_cuenta: { type: String, required: true }
+        numero_cuenta: { type: String, required: true },
+        tipoCuenta: { type: String, required: true },
+        tipoTransaccion: { type: String, default: 'Egreso' },
+        saldoAntes: { type: String, required: true },
+        saldoDespues: { type: String, required: true }
     },
     cuenta_destino: { 
         nombre_completo: { type: String, required: true },
-        numero_cuenta: { type: String, required: true }
+        numero_cuenta: { type: String, required: true },
+        tipoCuenta: { type: String, required: true },
+        tipoTransaccion: { type: String, default: 'Ingreso' },
+        saldoAntes: { type: String, required: true },
+        saldoDespues: { type: String, required: true }
     },
     comentario: { type: String, required: false },
     numero_cuenta: { type: String, required: true },

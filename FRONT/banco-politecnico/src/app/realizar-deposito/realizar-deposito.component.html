@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="realizar-deposito.component.css">
+</head>
+<body>
+
+    <!-- Formulario de depósito -->
+    <div class="container mt-5 deposit-form-container">
+        <h2>Realizar Depósito</h2>
+        <form (ngSubmit)="onSubmit()" #depositForm="ngForm">
+            <div class="form-group">
+                <label for="numeroCuenta">Número de Cuenta</label>
+                <input type="text" class="form-control" id="numeroCuenta" [(ngModel)]="numeroCuenta" name="numeroCuenta" (blur)="onCuentaBlur()" required>
+                <div *ngIf="cuentaErrorMessage" class="alert alert-danger mt-2" role="alert">
+                    {{ cuentaErrorMessage }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuario" [(ngModel)]="usuario" name="usuario" disabled>
+            </div>
+            <div class="form-group">
+                <label for="tipoCuenta">Tipo de Cuenta</label>
+                <input type="text" class="form-control" id="tipoCuenta" [(ngModel)]="tipoCuenta" name="tipoCuenta" disabled>
+            </div>
+            <div class="form-group">
+                <label for="monto">Monto</label>
+                <input type="number" class="form-control" id="monto" [(ngModel)]="amount" name="amount" min="1" max="15000" required (ngModelChange)="validateAmount()">
+                <div *ngIf="amountErrorMessage" class="alert alert-danger mt-2" role="alert">
+                    {{ amountErrorMessage }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!depositForm.form.valid">Realizar Depósito</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

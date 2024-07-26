@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="faq.component.css">
+</head>
+<body>
+
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicio()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="miPerfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Perfil</a>
+                        <div class="dropdown-menu" aria-labelledby="miPerfilDropdown">
+                            <a class="dropdown-item" (click)="navigateToVerUsuario()">Ver usuario</a>
+                            <a class="dropdown-item" (click)="navigateToActualizarInformacion()">Actualizar información personal</a>
+                            <a class="dropdown-item" (click)="navigateToChangePassword()">Cambiar contraseña</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
+                        <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                            <a class="dropdown-item" (click)="navigateToNewAccount()">Abrir una nueva cuenta bancaria</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="transaccionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transacciones</a>
+                        <div class="dropdown-menu" aria-labelledby="transaccionesDropdown">
+                            <a class="dropdown-item" (click)="navigateToTransfer()">Transferencias</a>
+                            <a class="dropdown-item" (click)="navigateToAddContact()">Mis contactos</a>
+                            <a class="dropdown-item" (click)="navigateToHistorialTransacciones()">Historial de transacciones</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ayudaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda/Soporte</a>
+                        <div class="dropdown-menu" aria-labelledby="ayudaDropdown">
+                            <a class="dropdown-item" (click)="navigateToFAQ()">Preguntas frecuentes</a>
+                            <a class="dropdown-item" (click)="navigateToContactarSoporte()">Contactar soporte</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="faq-section">
+        <h1>Preguntas Frecuentes</h1>
+        <form class="form-inline my-2 my-lg-0" (submit)="filterFAQs($event)">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm" />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      
+        <div class="faq-container">
+          <div *ngFor="let category of filteredCategories">
+            <h2 class="category-title">{{ category.name }}</h2>
+            <div *ngFor="let subcategory of category.subcategories">
+              <h3 class="subcategory-title">{{ subcategory.name }}</h3>
+              <div *ngFor="let faq of subcategory.faqs" class="faq-item">
+                <button class="faq-question" (click)="toggleFaq($event.currentTarget)">{{ faq.question }}</button>
+                <div class="faq-answer">
+                  <p>{{ faq.answer }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

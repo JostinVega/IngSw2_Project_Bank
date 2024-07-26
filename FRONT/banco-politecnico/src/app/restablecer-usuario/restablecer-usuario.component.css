@@ -1,0 +1,352 @@
+/* Estilos para el cuerpo de la página */
+body {
+  background-image: url('../../assets/img/poliban.png');
+  background-size: 100% 100%; /* La altura será del 100% y el ancho se ajustará automáticamente */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: left; /* Centra la imagen en la pantalla */
+  background-attachment: fixed; /* Hace que la imagen permanezca fija al hacer scroll */
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Asegura que el fondo cubra toda la altura de la pantalla */
+  width: 100vw; /* Asegura que el fondo cubra todo el ancho de la pantalla */
+}
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .minh-100 {
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    background-color: #2E86C1 !important;
+  }
+  
+  .navbar .navbar-brand {
+    color: white !important;
+  }
+  
+  .navbar .navbar-brand:hover {
+    color: #206EA9 !important; /* Color al pasar el ratón */
+  }
+  
+  .navbar .nav-link {
+    color: white !important;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #206EA9!important; /* Color al pasar el ratón */
+  }
+  
+  .navbar .form-inline .form-control {
+    margin-right: 10px;
+  }
+  
+  .navbar .btn-outline-success {
+    color: white !important;
+    border-color: white !important;
+  }
+  
+  .navbar .btn-outline-success:hover {
+    color: #206ea9 !important;
+    border-color: #206ea9 !important;
+  }
+  
+  /* Animación */
+  @keyframes slideAndFade {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+  }
+  
+  /* Estilos para el texto animado */
+  .moving-text {
+    font-size: 1em !important;
+    color: white !important;
+    animation: slideAndFade 3s linear normal;
+    width: 40%;
+    text-align: center;
+    opacity: 0;
+  }
+  
+  /* Estilos para el contenedor del ícono */
+  .icono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .icono img.logo {
+    max-width: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .icono h1.nombre {
+    font-size: 24px;
+    color: #2E86C1;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  /* Pie de página */
+  .footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #2E86C1;
+    color: white;
+  }
+  
+  .footer-content p {
+    margin: 1px 0;
+    color: white;
+  }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .container {
+      flex: 1;
+    }
+    
+    /* Estilos para el contenedor del ícono */
+    .icono {
+      display: flex;
+      align-items: left;
+      justify-content: left;
+      margin-bottom: 10px;
+      padding-top: 5px;
+      padding-left: 5px;
+    }
+    
+    /* Estilos para el logo dentro del contenedor del ícono */
+    .icono img.logo {
+      max-width: 40px;
+      margin-right: 10px;
+    }
+    
+    /* Estilos para el nombre del banco dentro del contenedor del ícono */
+    .icono h1.nombre {
+      font-size: 15px;
+      color: white;
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+    }
+    
+    @media screen and (max-width: 768px) {
+      /* Navegación */
+      .navbar-nav {
+          flex-direction: column;
+      }
+      
+      .navbar-nav .nav-item {
+          margin-right: 0;
+          margin-bottom: 10px;
+      }
+    
+      .navbar-nav .dropdown-menu {
+          width: 100%;
+      }
+    
+      /* Estilos para el contenedor del ícono */
+      .icono {
+          display: flex;
+          align-items: right;
+          justify-content: left;
+          margin-bottom: 10px;
+          padding-top: 5px;
+          padding-left: 5px;
+      }
+    
+      /* Estilos para el logo dentro del contenedor del ícono */
+      .icono img.logo {
+          max-width: 40px;
+          margin-right: 10px;
+      }
+    
+      /* Estilos para el nombre del banco dentro del contenedor del ícono */
+      .icono h1.nombre {
+          font-size: 15px;
+          color: white;
+          margin: 0;
+          font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+      }
+    
+    
+      /* Pie de página */
+      .footer-content p {
+          font-size: 0.8em;
+      }
+    }
+      
+       /*Form*/
+      
+      /* Form styling */
+      .restablecer-usuario-form {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          color: #206ea9;
+          height: 100vh;
+        }
+        
+        .form-content {
+          width: 400px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          background-color: #f2f2f2;
+        }
+        
+        .form-header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+        
+        .back-button {
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
+        
+        .back-button:hover {
+          transform: scale(1.1);
+          transition: transform 0.3s ease-in-out;
+          cursor: pointer;
+        }
+        
+        .back-button .icon {
+          height: 30px;
+          width: 30px;
+        }
+        
+        .form-header span {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        
+        .form-body {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        
+        .form-body label {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+      
+        .form-body input {
+          font-size: 16px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          text-align: left;
+          width: 100%;
+        }
+        
+        .form-body input:focus {
+          border-color: #206ea9;
+          outline: none;
+        }
+        
+        .change-usuario-button {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          background-color: #206ea9;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+        }
+        
+        .change-usuario-button:hover {
+          background-color: #2e86c1;
+        }
+        
+        
+        input[type="text"] {
+          width: calc(100% - 20px);
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 1em;
+          width: 100%;
+        }
+        
+        .text{
+          color: black;
+          font-size: 10px;
+          text-align: justify;
+          padding-top: 5px;
+        }
+        
+       
+        .requirements .error-icon img {
+          width: 20px; /* Ajusta el tamaño del ícono según sea necesario */
+          height: 20px;
+          margin-right: 10px; /* Añade un margen derecho al ícono */
+      }
+    
+      .error-message {
+        color: #a94442;
+        background-color: #f2dede;
+        border: 1px solid #ebccd1;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-size: 0.85em;
+        max-width: 100%;
+        word-wrap: break-word;
+      }
+      
+      .alert.alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border-color: #f5c6cb;
+      }
+      
+      .text-danger {
+        color: #a94442 !important;
+        background-color: #f2dede;
+        border: 1px solid #ebccd1;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 5px;
+        font-size: 0.85em;
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+
+    @media screen and (max-width: 1200px) {
+      body{
+      background-image: none;
+      } 
+      
+      }

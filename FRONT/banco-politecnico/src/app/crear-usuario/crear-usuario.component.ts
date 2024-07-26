@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistroService } from '../services/informacion-registro.service';
 import * as bcrypt from 'bcryptjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -11,6 +12,7 @@ import * as bcrypt from 'bcryptjs';
 })
 export class CrearUsuarioComponent implements OnInit {
   registrationForm: FormGroup;
+  errorMessage: string = '';
 
   constructor(private fb: FormBuilder, private registroService: RegistroService, private router: Router) {
     this.registrationForm = this.fb.group({
@@ -61,18 +63,41 @@ export class CrearUsuarioComponent implements OnInit {
 
   async onSubmit() {
     if (this.registrationForm.valid) {
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(this.registrationForm.value.password, salt);
+      const username = this.registrationForm.value.username;
+      const isUsernameTaken = await this.checkIfUsernameTaken(username);
 
-      this.registroService.setRegistrationData('step3', {
-        username: this.registrationForm.value.username,
-        password: hashedPassword
-      });
-      this.router.navigate(['/preguntas-seguridad']);
+      if (isUsernameTaken) {
+        this.errorMessage = 'El nombre de usuario ya está en uso.';
+      } else {
+        const confirmed = window.confirm("¿Está seguro de que desea continuar con los datos ingresados?");
+        if (confirmed) {
+          const salt = await bcrypt.genSalt(10);
+          const hashedPassword = await bcrypt.hash(this.registrationForm.value.password, salt);
+
+          this.registroService.setRegistrationData('step3', {
+            username: this.registrationForm.value.username,
+            password: hashedPassword
+          });
+          this.router.navigate(['/preguntas-seguridad']);
+        }
+      }
     } else {
       console.error('Formulario no válido');
+      this.registrationForm.markAllAsTouched(); 
+    }
+  }
+
+  private async checkIfUsernameTaken(username: string): Promise<boolean> {
+    try {
+      const response = await this.registroService.getUsuarioByUsuarioRegistro(username).toPromise();
+      return response.consulta;
+    } catch (error) {
+      if (error instanceof HttpErrorResponse && error.status === 404) {
+        return false; // Username not found, can be used
+      } else {
+        console.error('Error al verificar el nombre de usuario:', error);
+        throw new Error('Error al verificar el nombre de usuario');
+      }
     }
   }
 }
-
-

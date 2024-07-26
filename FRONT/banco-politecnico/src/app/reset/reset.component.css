@@ -1,88 +1,119 @@
+/* Estilos para el cuerpo de la página */
 body {
-    background: #f2f2f2;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #FFFFFF;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.minh-100 {
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #2E86C1 !important;
+}
+
+.navbar .navbar-brand {
+  color: white !important;
+}
+
+.navbar .navbar-brand:hover {
+  color: #206EA9 !important; /* Color al pasar el ratón */
+}
+
+.navbar .nav-link {
+  color: white !important;
+}
+
+.navbar .nav-link:hover {
+  color: #206EA9!important; /* Color al pasar el ratón */
+}
+
+.navbar .form-inline .form-control {
+  margin-right: 10px;
+}
+
+.navbar .btn-outline-success {
+  color: white !important;
+  border-color: white !important;
+}
+
+.navbar .btn-outline-success:hover {
+  color: #206ea9 !important;
+  border-color: #206ea9 !important;
+}
+
+/* Animación */
+@keyframes slideAndFade {
+  0% {
+      transform: translateX(-100%);
+      opacity: 1;
   }
-  
-  
-  /* Estilos para la barra de navegación */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #206EA9;
-    padding: 10px 30px;
+  70% {
+      transform: translateX(0);
+      opacity: 1;
   }
-  
-  /* Estilos para el texto animado en la barra de navegación */
-  .navbar .text {
-    font-size: 1em;
-    color: white;
+  100% {
+      transform: translateX(100%);
+      opacity: 0;
   }
-  
-  /* Estilos para la lista de navegación dentro de la barra */
-  .navbar nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  /* Estilos para cada elemento de la lista de navegación */
-  .navbar nav ul li {
-    margin-left: 20px;
-  }
-  
-  /* Estilos para los enlaces dentro de la lista de navegación */
-  .navbar nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease; /* Transición para el cambio de color de fondo */
-  }
-  
-  /* Estilos para los enlaces al pasar el mouse */
-  .navbar nav ul li a:hover {
-    background-color: #2e86c1; /*  Cambia el color de fondo al pasar el mouse */ 
-    text-decoration: none; 
-  }
-  
-  /* Animación*/
-  @keyframes slideAndFade {
-    0% {
-        transform: translateX(-100%);
-        opacity: 1;
-    }
-    70% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-  }
-  
-  /* Estilos para el texto animado */
-  .moving-text {
-    font-size: 1em;
-    color: white;
-    animation: slideAndFade 5s linear forwards;
-  }
-  
-  /* Estilos para el contenido del pie de página */
-  .footer-content {
-    text-align: center;
-    padding: 1px;
-    background-color: #206ea9;
-    color: white;
-  }
-  
-  /* Estilos para el párrafo dentro del pie de página */
-  .footer-content p {
-    margin: 1px 0;
-    color: white;
-  }
-  
+}
+
+/* Estilos para el texto animado */
+.moving-text {
+  font-size: 1em !important;
+  color: white !important;
+  animation: slideAndFade 3s linear normal;
+  width: 40%;
+  text-align: center;
+  opacity: 0;
+}
+
+/* Estilos para el contenedor del ícono */
+.icono {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icono img.logo {
+  max-width: 60px;
+  margin-bottom: 10px;
+}
+
+.icono h1.nombre {
+  font-size: 24px;
+  color: #2E86C1;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Pie de página */
+.footer-content {
+  text-align: center;
+  padding: 1px;
+  background-color: #2E86C1;
+  color: white;
+}
+
+.footer-content p {
+  margin: 1px 0;
+  color: white;
+}
   body {
     display: flex;
     flex-direction: column;
@@ -278,6 +309,25 @@ body {
       height: 20px;
       margin-right: 10px; /* Añade un margen derecho al ícono */
   }
+
+  .error-message {
+    color: #a94442;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.85em;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+  
+  .alert.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+  }
+  
   
   
     

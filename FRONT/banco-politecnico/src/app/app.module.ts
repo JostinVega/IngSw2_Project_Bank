@@ -17,7 +17,7 @@ import { ContactosComponent } from './contactos/contactos.component';
     NosotrosComponent,
     AyudaComponent,
     ContactosComponent
-
+    
   ],
   imports: [
     BrowserModule,
@@ -68,12 +68,29 @@ import { VerificarCodigoComponent } from './verificar-codigo/verificar-codigo.co
 import { CodigoService } from './services/codigo.service';
 import { VerificarTransferenciaComponent } from './verificar-transferencia/verificar-transferencia.component';
 import { ConfirmChangePasswordComponent } from './confirm-change-password/confirm-change-password.component';
-import { VerificarUpdatePersonalComponent } from './verificar-update-personal/verificar-update-personal.component';
+import { ActualizarInformacionComponent } from './actualizar-informacion/actualizar-informacion.component';
+import { HistorialTransaccionesComponent } from './historial-transacciones/historial-transacciones.component';
+import { VerificarInicioComponent } from './verificar-inicio/verificar-inicio.component';
+import { VerPerfilComponent } from './ver-perfil/ver-perfil.component';
+import { FaqComponent } from './faq/faq.component';
+import { ContactarSoporteComponent } from './contactar-soporte/contactar-soporte.component';
+import { VerifyChangePasswordComponent } from './verify-change-password/verify-change-password.component';
 import { ConfirmarUpdatePersonalComponent } from './confirmar-update-personal/confirmar-update-personal.component';
-import { VerificarUserRecoveryComponent } from './verificar-user-recovery/verificar-user-recovery.component';
-import { ConfirmarUserRecoveryComponent } from './confirmar-user-recovery/confirmar-user-recovery.component';
-import { QuestionsSecUserRecoveryComponent } from './questions-sec-user-recovery/questions-sec-user-recovery.component';
-import { ChangeUsernameRecoveryComponent } from './change-username-recovery/change-username-recovery.component';
+import { VerificarUpdatePersonalComponent } from './verificar-update-personal/verificar-update-personal.component';
+import { ValidacionCedulaComponent } from './validacion-cedula/validacion-cedula.component';
+import { ResponderPreguntasSeguridadComponent } from './responder-preguntas-seguridad/responder-preguntas-seguridad.component';
+import { VerificarUsuarioComponent } from './verificar-usuario/verificar-usuario.component';
+import { RestablecerUsuarioComponent } from './restablecer-usuario/restablecer-usuario.component';
+import { ConfirmarReseteoUsernameComponent } from './confirmar-reseteo-username/confirmar-reseteo-username.component';
+import { CrearContactosComponent } from './crear-contactos/crear-contactos.component';
+import { AdminComponent } from './admin/admin.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ManageAccountsComponent } from './manage-accounts/manage-accounts.component';
+import { DepositComponent } from './deposit/deposit.component';
+import { VerificarAdministradorComponent } from './verificar-administrador/verificar-administrador.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import { VerPerfilUsuarioComponent } from './ver-perfil-usuario/ver-perfil-usuario.component';
+import { RealizarDepositoComponent } from './realizar-deposito/realizar-deposito.component';
 
 @NgModule({
   declarations: [
@@ -108,12 +125,29 @@ import { ChangeUsernameRecoveryComponent } from './change-username-recovery/chan
     VerificarCodigoComponent,
     VerificarTransferenciaComponent,
     ConfirmChangePasswordComponent,
-    VerificarUpdatePersonalComponent,
+    ActualizarInformacionComponent,
+    HistorialTransaccionesComponent,
+    VerificarInicioComponent,
+    VerPerfilComponent,
+    FaqComponent,
+    ContactarSoporteComponent,
+    VerifyChangePasswordComponent,
     ConfirmarUpdatePersonalComponent,
-    VerificarUserRecoveryComponent,
-    ConfirmarUserRecoveryComponent,
-    QuestionsSecUserRecoveryComponent,
-    ChangeUsernameRecoveryComponent,
+    VerificarUpdatePersonalComponent,
+    ValidacionCedulaComponent,
+    ResponderPreguntasSeguridadComponent,
+    VerificarUsuarioComponent,
+    RestablecerUsuarioComponent,
+    ConfirmarReseteoUsernameComponent,
+    CrearContactosComponent,
+    AdminComponent,
+    ManageUsersComponent,
+    ManageAccountsComponent,
+    DepositComponent,
+    VerificarAdministradorComponent,
+    TransactionHistoryComponent,
+    VerPerfilUsuarioComponent,
+    RealizarDepositoComponent,
   ],
   imports: [
     BrowserModule,

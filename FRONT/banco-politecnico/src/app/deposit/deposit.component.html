@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Politécnico</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/banco.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="deposit.component.css">
+</head>
+<body>
+
+    <!--Barra de navegación-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="icono">
+            <img src="assets/img/banco.png" alt="PoliBanco" class="logo">
+            <h1 class="nombre">BANCO<br>POLITÉCNICO</h1>
+        </div>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateToInicioAdministrador()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminActionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu" aria-labelledby="adminActionsDropdown">
+                            <a class="dropdown-item" (click)="navigateToAdministrarUsuarios()">Gestionar Usuarios</a>
+                        </div>
+                    </li>
+                    <!-- Nuevo menú Depósitos -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="depositsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Depósitos</a>
+                      <div class="dropdown-menu" aria-labelledby="depositsDropdown">
+                          <a class="dropdown-item" (click)="navigateToDepositos()">Realizar Depósito</a>
+                          <a class="dropdown-item" (click)="navigateToTranferencias()">Historial de Transacciones</a>
+                      </div>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">
+                            <img src="assets/img/logout-icon.png" alt="Logout" class="logout-icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Formulario de depósito -->
+    <div class="container mt-5 deposit-form-container">
+        <h2>Realizar Depósito</h2>
+        <form (ngSubmit)="onSubmit()" #depositForm="ngForm">
+            <div class="form-group">
+                <label for="user">Seleccionar Usuario</label>
+                <select class="form-control" id="user" required [(ngModel)]="selectedUser" (change)="onUserChange($event)" name="user" #user="ngModel">
+                    <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="account">Seleccionar Cuenta</label>
+                <select class="form-control" id="account" required [(ngModel)]="depositData.account" (change)="onAccountChange($event)" name="account" #account="ngModel">
+                    <option *ngFor="let account of filteredAccounts" [value]="account.id">{{ account.numeroCuenta }} - {{ account.tipoCuenta }}</option>
+                </select>
+                <div *ngIf="noAccountsMessage" class="alert alert-warning mt-2" role="alert">
+                    {{ noAccountsMessage }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="numeroCuenta">Número de Cuenta</label>
+                <input type="text" class="form-control" id="numeroCuenta" [(ngModel)]="selectedAccount.numeroCuenta" name="numeroCuenta" disabled>
+            </div>
+            <div class="form-group">
+                <label for="tipoCuenta">Tipo de Cuenta</label>
+                <input type="text" class="form-control" id="tipoCuenta" [(ngModel)]="selectedAccount.tipoCuenta" name="tipoCuenta" disabled>
+            </div>
+            <div class="form-group">
+              <label for="saldo">Saldo</label>
+              <input type="text" class="form-control" id="saldo" [(ngModel)]="selectedAccount.saldo" name="saldo" disabled>
+            </div>
+            <div class="form-group">
+              <label for="amount">Monto</label>
+              <input type="number" class="form-control" id="amount" required [(ngModel)]="depositData.amount" name="amount" #amount="ngModel" min="1" (ngModelChange)="onAmountChange()">
+              <div *ngIf="amountErrorMessage" class="alert alert-danger mt-2" role="alert">
+                  {{ amountErrorMessage }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description">Descripción</label>
+              <input type="text" class="form-control" id="description" [(ngModel)]="depositData.description" name="description" required>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!depositForm.form.valid">Realizar Depósito</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Banco Politécnico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

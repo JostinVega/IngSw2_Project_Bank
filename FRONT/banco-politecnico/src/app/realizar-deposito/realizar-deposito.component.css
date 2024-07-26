@@ -1,0 +1,145 @@
+body {
+    background: #f7f9fc;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .container {
+    flex: 1;
+  }
+  
+  /* Barra de navegación */
+  .navbar {
+    background-color: #206ea9 !important;
+    color: white;
+  }
+  
+  .navbar .nav-link, .navbar .navbar-brand {
+    color: white !important;
+  }
+  
+  .navbar .nav-item:not(:last-child) {
+    margin-right: 35px;
+    cursor: pointer;
+  }
+  
+  .dropdown-toggle::after {
+    transition: transform 0.15s linear;
+  }
+  
+  .show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+  }
+  
+  /* Estilos para el contenedor del ícono */
+  .icono {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+  
+  .icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+  }
+  
+  .icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+  }
+  
+  /* Icono de salir */
+  .logout-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Pie de página */
+  .footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #206ea9;
+    color: white;
+  }
+  
+  .footer-content p {
+    margin: 1px 0;
+    color: white;
+  }
+  
+  footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+  }
+  
+  /* Estilos para el formulario de depósito */
+  .deposit-form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .deposit-form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .deposit-form-container .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .deposit-form-container .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+    height: auto; /* Añadido para evitar que el texto se tape */
+  }
+  
+  .deposit-form-container .btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .deposit-form-container .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .deposit-form-container .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .deposit-form-container .form-control[disabled] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+  
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  

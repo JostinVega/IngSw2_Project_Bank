@@ -1,18 +1,21 @@
 /* Estilos para la página de verificación */
 /* Estilos generales del cuerpo */
+
+
+/* Estilos para el cuerpo del documento */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8;
+    background-color: #E3F5EE !important;
     color: #333;
 }
 
-/* Contenedor principal */
+/* Estilos para el contenedor principal */
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 100px auto;
     padding: 20px;
     box-sizing: border-box;
     background-color: #fff;
@@ -20,87 +23,52 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Encabezado */
-header {
+
+/* Animación */
+@keyframes slideAndFade {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Estilos para el texto animado */
+.moving-text {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+    color: #C7D8E4;
+    animation: slideAndFade 3s linear normal;
+    width: 40%;
+    text-align: center;
+    opacity: 0;
 }
 
-/* Estilos para el lado izquierdo del encabezado */
-.header-left h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #2d5d7a;
-}
-
-/* Estilos para el lado derecho del encabezado */
-.header-right p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-}
-
-/* Contenedor principal del contenido */
-main {
+/* Estilos para el ícono del banco */
+.icono {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px 0;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 20px;
 }
 
-/* Pasos de registro */
-.main-left {
-    flex: 1;
-    margin-right: 20px;
-    padding: 80px;
-}
-
-.main-left h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #206ea9;
-}
-
-.main-left ol {
-    list-style-type: none;
-    padding-left: 0;
-    color: #333;
-}
-
-.main-left li {
-    margin-bottom: 10px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-.step-icon {
-    width: 30px;
-    height: 30px;
+.icono img.logo {
+    max-width: 60px;
     margin-right: 10px;
-    opacity: 0.3;
 }
 
-.step-icon:hover {
-    opacity: 1;
-    transform: scale(1.1); /* Agranda el elemento al 110% de su tamaño original */
-    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto */
-    cursor: pointer;
-}
-
-.step-icon.active {
-    opacity: 1;
-}
-
-.noactive {
-    opacity: 0.3;
-}
-
-.active {
-    opacity: 1;
+.icono h1.nombre {
+    font-size: 20px;
+    color: #2E86C1;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
 }
 
 /* Estilos para el formulario de verificación */
@@ -158,59 +126,51 @@ main {
 }
 
 /* Estilos para los botones del formulario */
-.verification-form .form-buttons {
+.form-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
 }
 
-.verification-form .form-buttons button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.verification-form .form-buttons button[type="submit"] {
+.form-buttons button {
     background-color: #206ea9;
-    color: #fff;
-}
-
-.verification-form .form-buttons button[type="submit"]:hover {
-    background-color: #2d5d7a;
-}
-
-/* Estilos para los botones adicionales del formulario */
-.verification-form .buttons button {
-    padding: 10px 20px;
-    font-size: 16px;
+    color: white;
+    padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 120px;
 }
 
-/* Estilos para el ícono del banco */
-.icono {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    margin-bottom: 20px;
+.form-buttons button:hover {
+    background-color: #2E86C1;
 }
 
-.icono img.logo {
-    max-width: 60px;
-    margin-right: 10px;
+.form-buttons .btn-regresar{
+    background-color: #ccc;
 }
 
-.icono h1.nombre {
-    font-size: 20px;
-    color: #2E86C1;
-    margin: 0;
-    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+.form-buttons .btn-regresar:hover {
+    background-color: #d2d1d1;
+}
+
+.btn-reenviar {
+    background-color: #206ea9;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+}
+
+.btn-reenviar{
+    background-color: #ccc;
+}
+
+.btn-reenviar:hover {
+    background-color: #d2d1d1;
 }
 
 /*Responsive*/
@@ -220,16 +180,7 @@ main {
         width: 100%;
         padding: 10px;
     }
-
-    main {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .main-left{
-        padding-left: 150px;
-    }
-    .main-left, .verification-form {
+    .verification-form {
         width: 100%;
         margin-bottom: 20px;
     }

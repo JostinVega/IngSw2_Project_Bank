@@ -1,0 +1,279 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #FFFFFF;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .minh-100 {
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    background-color: #2E86C1 !important;
+  }
+  
+  .navbar .navbar-brand {
+    color: white !important;
+  }
+  
+  .navbar .navbar-brand:hover {
+    color: #206EA9 !important; /* Color al pasar el ratón */
+  }
+  
+  .navbar .nav-link {
+    color: white !important;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #206EA9!important; /* Color al pasar el ratón */
+  }
+  
+  .navbar .form-inline .form-control {
+    margin-right: 10px;
+  }
+  
+  .navbar .btn-outline-success {
+    color: white !important;
+    border-color: white !important;
+  }
+  
+  .navbar .btn-outline-success:hover {
+    color: #206ea9 !important;
+    border-color: #206ea9 !important;
+  }
+  
+  /* Animación */
+  @keyframes slideAndFade {
+    0% {
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+  }
+  
+  /* Estilos para el texto animado */
+  .moving-text {
+    font-size: 1em;
+    color: white;
+    animation: slideAndFade 3s linear normal;
+    width: 40%;
+    text-align: center;
+    opacity: 0;
+  }
+  
+  /* Estilos para el contenedor del ícono */
+  .icono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .icono img.logo {
+    max-width: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .icono h1.nombre {
+    font-size: 24px;
+    color: #2E86C1;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  /* Pie de página */
+  .footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #2E86C1;
+    color: white;
+  }
+  
+  .footer-content p {
+    margin: 1px 0;
+    color: white;
+  }
+  
+  @media screen and (max-width: 768px) {
+    /* Navegación */
+    .navbar-nav {
+        flex-direction: column;
+    }
+    
+    .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+  
+    .navbar-nav .dropdown-menu {
+        width: 100%;
+    }
+  
+    /* Estilos para el contenedor del ícono */
+    .icono {
+        display: flex;
+        align-items: right;
+        justify-content: left;
+        margin-bottom: 10px;
+        padding-top: 5px;
+        padding-left: 5px;
+    }
+  
+    /* Estilos para el logo dentro del contenedor del ícono */
+    .icono img.logo {
+        max-width: 40px;
+        margin-right: 10px;
+    }
+  
+    /* Estilos para el nombre del banco dentro del contenedor del ícono */
+    .icono h1.nombre {
+        font-size: 15px;
+        color: white;
+        margin: 0;
+        font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+    }
+  
+  
+    /* Pie de página */
+    .footer-content p {
+        font-size: 0.8em;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  /*Form*/
+  
+  /* Form styling */
+  .reset-password-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #206ea9;
+    height: 100vh;
+  }
+  
+  .form-content {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  .form-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .back-button .icon {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .form-header span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-body label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .form-body input {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+  }
+  
+  .form-body input:focus {
+    border-color: #206ea9;
+    outline: none;
+  }
+  
+  .continue-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #206ea9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .continue-button:hover {
+    background-color: #2e86c1;
+  }
+  
+  
+  
+  
+  
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+  }
+  
+  
+  
+  
+  
+  

@@ -1,10 +1,27 @@
 body {
     background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+.container {
+    flex: 1;
+}
+
+/*Barra de navegación*/
+.navbar {
+    background-color: #206ea9 !important;
+    color: white;
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: white !important;
+}
 
 .navbar .nav-item:not(:last-child) {
     margin-right: 35px;
+    cursor: pointer;
 }
 
 .dropdown-toggle::after {
@@ -15,131 +32,69 @@ body {
     transform: translateY(3px);
 }
 
-.welcome-section {
-    padding: 20px;
+/* Estilos para el contenedor del ícono */
+.icono {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+/* Estilos para el logo dentro del contenedor del ícono */
+.icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
+.icono h1.nombre {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+}
+
+/*Icono de salir*/
+.logout-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/*Pie de página */
+/* Estilos para el contenido del pie de página */
+.footer-content {
     text-align: center;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    border-radius: 8px;
+    padding: 1px;
+    background-color: #206ea9;
+    color: white;
+}
+
+/* Estilos para el párrafo dentro del pie de página */
+.footer-content p {
+    margin: 1px 0;
+    color: white;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
 }
 
 
-.account-summary-container {
-    position: relative;
-    margin: 20px auto;
-    max-width: 600px;
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
 
-.account-summary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-}
 
-.account-cards-wrapper {
-    display: flex;
-    transition: transform 0.3s ease;
-    width: 100%;
-}
 
-.account-card {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px;
-    min-width: calc(100% - 40px); /* Ensure each card has a fixed width */
-    flex-shrink: 0;
-    margin-right: 5px;
-}
+/*Accesos rápidos*/
 
-.account-card:hover{
-    transform: scale(0.9); /* Agranda el elemento al 110% de su tamaño original */
-    transition: transform 0.3s ease-in-out; /* Transición suave para el efecto */
-    cursor: pointer;
-}
-
-.account-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    font-weight: bold;
+.accesos-rapidos{
+    font-size: 20px;
     color: #1b5889;
+    font-weight: bold;
+    text-align: center;
 }
-
-.favorite-account {
-    display: flex;
-    align-items: center;
-    color: rgb(255, 215, 0);
-}
-
-.favorite-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-
-.account-body p {
-    margin: 5px 0;
-    color: #555;
-}
-
-.account-nav-left,
-.account-nav-right {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-}
-
-.account-nav-left {
-    left: 10px;
-}
-
-.account-nav-right {
-    right: 10px;
-}
-
-.nav-icon {
-    width: 24px;
-    height: 24px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .quick-access-container {
     margin: 20px auto;
@@ -162,7 +117,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
-    /*width: calc(33.333% - 20px); /* Three cards per row with margin */
+    /*width: calc(33.333% - 20px); / Three cards per row with margin */
     text-align: center;
     transition: transform 0.3s ease;
 }
@@ -195,126 +150,35 @@ body {
     text-decoration: underline;
 }
 
-
-
-.logout-icon {
-    width: 30px;
-    height: 30px;
-}
-
-
-
-
-
-.text {
-    font-size: 0.8em;
-    color: white;
-}
-
-/* Animación*/
-@keyframes slideAndFade {
-    0% {
-        transform: translateX(-100%);
-        opacity: 1;
-    }
-    70% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
-
-/* Estilos para el texto animado */
-.moving-text {
-    font-size: 0.8em;
-    color: white;
-    animation: slideAndFade 5s linear forwards;
-}
-
-
-/* Estilos para el contenido del pie de página */
-.footer-content {
-    text-align: center;
-    padding: 1px;
-    background-color: #206ea9;
-    color: white;
-}
-
-/* Estilos para el párrafo dentro del pie de página */
-.footer-content p {
-    margin: 1px 0;
-    color: white;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.container {
-    flex: 1;
-}
-
-footer {
-    color: white;
-    text-align: center;
-    margin-top: auto;
-}
+/*Mis cuentas*/
+/*Cuenta favorita*/
 
 .mis-cuentas{
     font-size: 20px;
     color: #1b5889;
     font-weight: bold;
-}
-
-.accesos-rapidos{
-    font-size: 20px;
-    color: #1b5889;
-    font-weight: bold;
     text-align: center;
 }
 
-
-
-/* Estilos para el contenedor del ícono */
-.icono {
+.favorite-account {
     display: flex;
-    align-items: left;
-    justify-content: left;
-    margin-bottom: 10px;
-    padding-top: 5px;
-    padding-left: 5px;
+    align-items: center;
+    color: rgb(255, 215, 0);
 }
 
-/* Estilos para el logo dentro del contenedor del ícono */
-.icono img.logo {
-    max-width: 40px;
-    margin-right: 10px;
+.favorite-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
-/* Estilos para el nombre del banco dentro del contenedor del ícono */
-.icono h1.nombre {
-    font-size: 15px;
-    color: white;
-    margin: 0;
-    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
-}
-
-
-.navbar {
-    background-color: #206ea9 !important;
-    color: white;
+.account-body p {
+    margin: 5px 0;
+    color: #555;
 }
 
 
 
-.navbar .nav-link, .navbar .navbar-brand {
-    color: white !important;
-}
 
 @media screen and (max-width: 768px) {
     /* Navegación */
@@ -335,10 +199,6 @@ footer {
     .account-summary-container {
         max-width: 100%;
         padding: 10px;
-    }
-
-    .account-card {
-        min-width: calc(100% - 40px);
     }
 
     /* Contenedor de accesos rápidos */
@@ -386,3 +246,204 @@ footer {
         font-size: 0.8em;
     }
 }
+
+/*Mis cuentas*/
+.account-summary-container {
+    position: relative;
+    margin: 20px auto;
+    max-width: 600px;
+    min-width: 600px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*overflow-x: auto;*/
+    overflow: hidden; /* Asegura que el desbordamiento esté oculto */
+}
+
+.account-summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.account-cards-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+    width: 100%;
+
+}
+
+.account-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0;
+    width: 100%; /* Asegurarse de que la tarjeta ocupe el 100% del contenedor */
+    flex-shrink: 0;
+    transition: opacity 0.3s ease; /* Transición suave para opacidad */
+}
+
+.account-card.hidden {
+    opacity: 0; /* Ocultar tarjetas no actuales */
+}
+
+.account-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #1b5889;
+}
+
+.favorite-account {
+    display: flex;
+    align-items: center;
+    color: rgb(255, 215, 0);
+}
+
+.favorite-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.account-body p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.account-summary-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.account-summary-container::-webkit-scrollbar-thumb {
+    background: #206EA9;
+    border-radius: 8px;
+}
+
+.account-summary-container::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+
+.account-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0  rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    flex-shrink: 0;
+}
+
+.account-card:hover {
+    transform: scale(0.9); 
+    transition: transform 0.3s ease-in-out; 
+    cursor: pointer;
+}
+
+.account-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.account-navigation button {
+    background-color: transparent; /* Fondo transparente para mostrar solo el icono */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.account-navigation button:disabled {
+    background-color: transparent; /* Fondo transparente para los botones deshabilitados */
+    cursor: not-allowed;
+}
+
+.account-navigation img {
+    width: 35px; /* Ajusta el tamaño del icono según tus necesidades */
+    height: 35px;
+}
+
+
+
+
+
+
+
+
+
+.account-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0; /* Eliminado el margen para evitar que las tarjetas se solapen */
+    width: 100%; /* Asegurarse de que la tarjeta ocupe el 100% del contenedor */
+    flex-shrink: 0;
+    transition: opacity 0.3s ease; /* Transición suave para opacidad */
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #1b5889;
+}
+
+.favorite-account {
+    display: flex;
+    align-items: center;
+    color: rgb(255, 215, 0);
+}
+
+.favorite-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.account-body {
+    margin-top: 10px;
+}
+
+.account-body p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.account-balance {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.balance-amount {
+    margin-left: 10px;
+    margin-right: 10px; /* Ajuste de margen para separar el saldo del ícono */
+}
+
+.tipo-cuenta {
+    display: grid;
+    justify-content: right;
+    margin-bottom: 0;
+}
+.view-balance-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    
+}
+
+

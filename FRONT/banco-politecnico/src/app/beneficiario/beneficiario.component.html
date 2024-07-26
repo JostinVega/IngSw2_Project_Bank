@@ -21,38 +21,35 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/inicio']">Inicio</a>
+                        <a class="nav-link" (click)="navigateToInicio()">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="miPerfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi Perfil</a>
                         <div class="dropdown-menu" aria-labelledby="miPerfilDropdown">
-                            <a class="dropdown-item" href="#">Ver Usuario</a>
-                            <a class="dropdown-item" href="#">Actualizar Información Personal</a>
-                            <a class="dropdown-item" href="#">Configuración de Seguridad</a>
+                            <a class="dropdown-item" (click)="navigateToVerUsuario()">Ver Usuario</a>
+                            <a class="dropdown-item" (click)="navigateToActualizarInformacion()">Actualizar Información Personal</a>
+                            <a class="dropdown-item" (click)="navigateToChangePassword()">Cambiar contraseña</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
                         <div class="dropdown-menu" aria-labelledby="cuentaDropdown">
-                            <a class="dropdown-item" href="#">Abrir una nueva cuenta bancaria</a>
-                            <a class="dropdown-item" href="#">Detalles de la Cuenta</a>
-                            <a class="dropdown-item" href="#">Historial de Actividad</a>
+                            <a class="dropdown-item" (click)="navigateToNewAccount()">Abrir una nueva cuenta bancaria</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="transaccionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transacciones</a>
                         <div class="dropdown-menu" aria-labelledby="transaccionesDropdown">
-                            <a class="dropdown-item" href="#">Transferencias</a>
-                            <a class="dropdown-item" href="#">Pagos de Facturas</a>
-                            <a class="dropdown-item" href="#">Historial de Transacciones</a>
+                            <a class="dropdown-item" (click)="navigateToTransfer()">Transferencias</a>
+                            <a class="dropdown-item" (click)="navigateToAddContact()">Mis contactos</a>
+                            <a class="dropdown-item" (click)="navigateToHistorialTransacciones()">Historial de Transacciones</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="ayudaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ayuda/Soporte</a>
                         <div class="dropdown-menu" aria-labelledby="ayudaDropdown">
-                            <a class="dropdown-item" href="#">Preguntas Frecuentes</a>
-                            <a class="dropdown-item" href="#">Contactar Soporte</a>
-                            <a class="dropdown-item" href="#">Reportar un Problema</a>
+                            <a class="dropdown-item" (click)="navigateToFAQ()">Preguntas Frecuentes</a>
+                            <a class="dropdown-item" (click)="navigateToContactarSoporte()">Contactar Soporte</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -93,7 +90,7 @@
                             <i class="material-icons">more_vert</i>
                         </button>
                         <div *ngIf="selectedContactIndex === i" class="menu">
-                            <button (click)="deleteContact(i)">Eliminar</button>
+                            <button (click)="deleteContact(contact, i)">Eliminar</button>
                             <button (click)="addFavorite(contact)">Agregar como favorito</button>
                         </div>
                     </li>
@@ -104,7 +101,7 @@
                 <i class="material-icons icon">person_add</i> Agregar nuevo beneficiario
             </button>
             
-            <button class="continue-button" [disabled]="!selectedContact" (click)="navigateToConfirmarTransferencia()">
+            <button class="continue-button" (click)="navigateToConfirmarTransferencia()">
                 Siguiente
             </button>
         </div>

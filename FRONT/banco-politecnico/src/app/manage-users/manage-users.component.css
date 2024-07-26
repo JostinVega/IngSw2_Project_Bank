@@ -1,0 +1,229 @@
+body {
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .container {
+    flex: 1;
+  }
+  
+  /* Barra de navegación */
+  .navbar {
+    background-color: #206ea9 !important;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .nav-link, .navbar .navbar-brand {
+    color: white !important;
+    font-size: 16px;
+  }
+  
+  .navbar .nav-item:not(:last-child) {
+    margin-right: 35px;
+    cursor: pointer;
+  }
+  
+  .dropdown-toggle::after {
+    transition: transform 0.15s linear;
+  }
+  
+  .show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+  }
+  
+  /* Estilos para el contenedor del ícono */
+  .icono {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+  
+  /* Estilos para el logo dentro del contenedor del ícono */
+  .icono img.logo {
+    max-width: 40px;
+    margin-right: 10px;
+  }
+  
+  /* Estilos para el nombre del banco dentro del contenedor del ícono */
+  .icono h1.nombre {
+    font-size: 18px;
+    color: white;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
+  }
+  
+  /* Icono de salir */
+  .logout-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Pie de página */
+  .footer-content {
+    text-align: center;
+    padding: 1px;
+    background-color: #206ea9;
+    color: white;
+  }
+  
+  .footer-content p {
+    margin: 1px 0;
+    color: white;
+  }
+  
+  footer {
+    color: white;
+    text-align: center;
+    margin-top: auto;
+  }
+  
+  /* Estilos para la tabla y la barra de búsqueda */
+  .search-bar {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .search-bar input {
+    border: 1px solid #206ea9;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .search-bar .btn-primary {
+    border-radius: 0 5px 5px 0;
+  }
+  
+  .table-responsive {
+    margin-top: 20px;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ffffff; /* Color de fondo blanco para las filas impares */
+  }
+  
+  .table-striped tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9; /* Color de fondo suave para las filas pares */
+  }
+  
+  .table-striped tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Estilo para los botones dentro de la tabla */
+  .table .btn {
+    margin-right: 2px; /* Reducir margen entre botones */
+    font-size: 12px; /* Reducir tamaño de la fuente */
+    padding: 4px 6px; /* Reducir padding */
+    border-radius: 5px; /* Redondear los bordes */
+    white-space: nowrap; /* Mantener el texto en una sola línea */
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  /* Borde y sombreado para la tabla */
+  .table {
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white; /* Asegurar fondo blanco */
+  }
+  
+  .table th, .table td {
+    padding: 8px 10px; /* Reducir el padding para mayor espacio */
+    text-align: center; /* Centrar el texto */
+    border-bottom: 2px solid #ddd; /* Añadir borde inferior */
+    border-right: 1px solid #ddd; /* Añadir borde derecho */
+    white-space: nowrap; /* Mantener el texto en una sola línea */
+  }
+  
+  .table th {
+    background-color: #206ea9; /* Color de fondo para las cabeceras */
+    color: white; /* Color del texto en las cabeceras */
+    text-align: center; /* Centrar el texto */
+    vertical-align: middle; /* Alinear verticalmente el contenido */
+  }
+  
+  .table td {
+    vertical-align: middle; /* Alinear verticalmente el contenido */
+    text-align: center; /* Centrar el texto */
+  }
+  
+  .table td:last-child, .table th:last-child {
+    border-right: none; /* Quitar el borde derecho en la última columna */
+  }
+  
+  /* Ajustar el ancho de la tabla para evitar barra de desplazamiento horizontal */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table {
+    width: 100%;
+    table-layout: auto; /* Ajustar el ancho de las columnas automáticamente */
+  }
+  
+  /* Ajustar el ancho de las columnas */
+  .table th:first-child, .table td:first-child {
+    width: 40px; /* Reducir el ancho de la primera columna */
+  }
+  
+  .table th:nth-child(2), .table td:nth-child(2) {
+    width: 150px; /* Ajustar el ancho de la columna de Número de Identidad */
+  }
+  
+  .table th:nth-child(3), .table td:nth-child(3) {
+    width: 150px; /* Ajustar el ancho de la columna de Nombre de Usuario */
+  }
+  
+  .table th:nth-child(4), .table td:nth-child(4) {
+    width: 200px; /* Ajustar el ancho de la columna de Correo Electrónico */
+  }
+  
+  .table th:nth-child(5), .table td:nth-child(5) {
+    width: 100px; /* Ajustar el ancho de la columna de Rol */
+  }
+  
+  .table th:nth-child(6), .table td:nth-child(6) {
+    width: 100px; /* Ajustar el ancho de la columna de Estado */
+  }
+  
+  .table th:nth-child(7), .table td:nth-child(7) {
+    width: 150px; /* Ajustar el ancho de la columna de Acciones */
+  }
+  
+  /* Estilos para el mensaje de alerta */
+  .alert-warning {
+    font-size: 16px; /* Aumentar tamaño de la fuente */
+    font-weight: bold; /* Hacer el texto en negrita */
+    background-color: #fff3cd; /* Color de fondo más profesional */
+    border: 1px solid #ffeeba; /* Borde del mensaje */
+    color: #856404; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Añadir espacio interior */
+    margin-top: 20px; /* Espacio superior */
+    text-align: center; /* Centrar el texto */
+  }
+  
