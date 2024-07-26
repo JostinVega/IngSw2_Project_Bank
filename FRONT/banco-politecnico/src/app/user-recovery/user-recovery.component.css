@@ -2,189 +2,51 @@ body {
   background: #f2f2f2;
 }
 
-.navbar .nav-item:not(:last-child) {
-  margin-right: 35px;
-}
 
-.dropdown-toggle::after {
-  transition: transform 0.15s linear;
-}
-
-.show.dropdown .dropdown-toggle::after {
-  transform: translateY(3px);
-}
-
-.welcome-section {
-  padding: 20px;
-  text-align: center;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  border-radius: 8px;
-}
-
-.account-summary-container {
-  position: relative;
-  margin: 20px auto;
-  max-width: 600px;
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.account-summary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-}
-
-.account-cards-wrapper {
-  display: flex;
-  transition: transform 0.3s ease;
-  width: 100%;
-}
-
-.account-card {
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 20px;
-  min-width: calc(100% - 40px); /* Ensure each card has a fixed width */
-  flex-shrink: 0;
-  margin-right: 5px;
-}
-
-.account-card:hover{
-  transform: scale(0.9); /* Agranda el elemento al 110% de su tamaño original */
-  transition: transform 0.3s ease-in-out; /* Transición suave para el efecto */
-  cursor: pointer;
-}
-
-.account-header {
+/* Estilos para la barra de navegación */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
-  font-weight: bold;
-  color: #1b5889;
+  background-color: #206EA9;
+  padding: 10px 30px;
 }
 
-.favorite-account {
-  display: flex;
-  align-items: center;
-  color: rgb(255, 215, 0);
-}
-
-.favorite-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-}
-
-.account-body p {
-  margin: 5px 0;
-  color: #555;
-}
-
-.account-nav-left,
-.account-nav-right {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-
-.account-nav-left {
-  left: 10px;
-}
-
-.account-nav-right {
-  right: 10px;
-}
-
-.nav-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.quick-access-container {
-  margin: 20px auto;
-  max-width: 1000px;
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.quick-access {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.quick-access-card {
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.quick-access-card:hover {
-  transform: translateY(-5px);
-}
-
-.quick-access-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
-}
-
-.quick-access-title {
-  font-weight: bold;
-  color: #1b5889;
-  margin-bottom: 10px;
-}
-
-.quick-access-link {
-  color: #1b5889;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.quick-access-link:hover {
-  color: #2e86c1;
-  text-decoration: underline;
-}
-
-.logout-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.text {
-  font-size: 0.8em;
+/* Estilos para el texto animado en la barra de navegación */
+.navbar .text {
+  font-size: 1em;
   color: white;
 }
 
-/* Animación */
+/* Estilos para la lista de navegación dentro de la barra */
+.navbar nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+/* Estilos para cada elemento de la lista de navegación */
+.navbar nav ul li {
+  margin-left: 20px;
+}
+
+/* Estilos para los enlaces dentro de la lista de navegación */
+.navbar nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease; /* Transición para el cambio de color de fondo */
+}
+
+/* Estilos para los enlaces al pasar el mouse */
+.navbar nav ul li a:hover {
+  background-color: #2e86c1; /*  Cambia el color de fondo al pasar el mouse */
+  text-decoration: none;
+}
+
+/* Animación*/
 @keyframes slideAndFade {
   0% {
       transform: translateX(-100%);
@@ -202,7 +64,7 @@ body {
 
 /* Estilos para el texto animado */
 .moving-text {
-  font-size: 0.8em;
+  font-size: 1em;
   color: white;
   animation: slideAndFade 5s linear forwards;
 }
@@ -231,25 +93,6 @@ body {
   flex: 1;
 }
 
-footer {
-  color: white;
-  text-align: center;
-  margin-top: auto;
-}
-
-.mis-cuentas{
-  font-size: 20px;
-  color: #1b5889;
-  font-weight: bold;
-}
-
-.accesos-rapidos{
-  font-size: 20px;
-  color: #1b5889;
-  font-weight: bold;
-  text-align: center;
-}
-
 /* Estilos para el contenedor del ícono */
 .icono {
   display: flex;
@@ -260,11 +103,13 @@ footer {
   padding-left: 5px;
 }
 
+/* Estilos para el logo dentro del contenedor del ícono */
 .icono img.logo {
   max-width: 40px;
   margin-right: 10px;
 }
 
+/* Estilos para el nombre del banco dentro del contenedor del ícono */
 .icono h1.nombre {
   font-size: 15px;
   color: white;
@@ -272,16 +117,8 @@ footer {
   font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
 }
 
-.navbar {
-  background-color: #206ea9 !important;
-  color: white;
-}
-
-.navbar .nav-link, .navbar .navbar-brand {
-  color: white !important;
-}
-
 @media screen and (max-width: 768px) {
+  /* Navegación */
   .navbar-nav {
       flex-direction: column;
   }
@@ -295,25 +132,7 @@ footer {
       width: 100%;
   }
 
-  .account-summary-container {
-      max-width: 100%;
-      padding: 10px;
-  }
-
-  .account-card {
-      min-width: calc(100% - 40px);
-  }
-
-  .quick-access {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .quick-access-card {
-      width: 100%;
-      margin: 10px 0;
-  }
-
+  /* Estilos para el contenedor del ícono */
   .icono {
       display: flex;
       align-items: right;
@@ -323,11 +142,13 @@ footer {
       padding-left: 5px;
   }
 
+  /* Estilos para el logo dentro del contenedor del ícono */
   .icono img.logo {
       max-width: 40px;
       margin-right: 10px;
   }
 
+  /* Estilos para el nombre del banco dentro del contenedor del ícono */
   .icono h1.nombre {
       font-size: 15px;
       color: white;
@@ -335,16 +156,23 @@ footer {
       font-family: 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
   }
 
-  .mis-cuentas, .accesos-rapidos {
-      text-align: center;
-  }
 
+  /* Pie de página */
   .footer-content p {
       font-size: 0.8em;
   }
 }
 
-/* Estilos para el formulario de actualización */
+
+
+
+
+
+
+
+/*Form*/
+
+/* Form styling */
 .cedula-form {
   display: flex;
   justify-content: center;
@@ -379,6 +207,7 @@ footer {
 .back-button:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .back-button .icon {
@@ -415,7 +244,7 @@ footer {
   outline: none;
 }
 
-.submit-button {
+.continue-button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -427,12 +256,25 @@ footer {
   text-align: center;
 }
 
-.submit-button:hover {
+.continue-button:hover {
   background-color: #2e86c1;
 }
 
-/* Estilos de Error */
-.text-danger {
-  font-size: 0.9em;
-  margin-top: 5px;
+
+
+
+
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 100%;
 }
+
+
+
+
+
