@@ -4,6 +4,10 @@ Este repositorio contiene el código fuente y la documentación de un proyecto d
 
 Este aplicativo bancario web, denominado Banco Politécnico, fue desarrollado como parte del curso de Ingeniería de Software II en la Escuela Politécnica Nacional durante el periodo 2024-A. El proyecto refleja la aplicación práctica de conceptos avanzados en desarrollo de software, con un enfoque en la creación de una plataforma segura y eficiente para la gestión de transacciones bancarias en línea.
 
+## Aplicación Desplegada
+
+Se puede acceder al aplicativo mediante https://bancopolitecnico.com/
+
 ## Instrucciones de instalación
 
 ### Instalación de dependencias de Node.js
