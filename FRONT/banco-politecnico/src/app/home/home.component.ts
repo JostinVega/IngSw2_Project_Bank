@@ -392,7 +392,7 @@ export class HomeComponent implements OnInit {
     const recaptchaResponse = (document.querySelector('.g-recaptcha-response') as HTMLInputElement).value;
     if (recaptchaResponse) {
       this.http.post('https://www.google.com/recaptcha/api/siteverify', {
-        secret: '', // Reemplaza YOUR_SECRET_KEY con tu clave secreta
+        secret: process.env.FRONT_SECRET, // Reemplaza YOUR_SECRET_KEY con tu clave secreta
         response: recaptchaResponse
       }).subscribe((recaptchaResult: any) => {
         if (recaptchaResult.success) {
